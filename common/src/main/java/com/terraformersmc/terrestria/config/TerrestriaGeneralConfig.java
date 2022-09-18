@@ -5,7 +5,7 @@ public class TerrestriaGeneralConfig {
 	private boolean oceanVolcanoes = true;
 
 	public boolean areQuarterLogsEnabled() {
-		return quarterLogs;
+		return false;
 	}
 
 	public boolean areOceanVolcanoesEnabled() {

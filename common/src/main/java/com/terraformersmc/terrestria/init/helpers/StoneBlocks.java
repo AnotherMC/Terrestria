@@ -11,8 +11,6 @@ public class StoneBlocks {
 	public StoneVariantBlocks bricks;
 	public StoneVariantBlocks mossyBricks;
 
-	public StoneButtonBlock button;
-	public PressurePlateBlock pressurePlate;
 	public Block chiseledBricks;
 	public Block crackedBricks;
 
@@ -29,8 +27,6 @@ public class StoneBlocks {
 		blocks.bricks = StoneVariantBlocks.register(name + "_bricks", name + "_brick", color);
 		blocks.mossyBricks = StoneVariantBlocks.register("mossy_" + name + "_bricks", "mossy_" + name + "_brick", color);
 
-		blocks.button = TerrestriaRegistry.register(name + "_button", new StoneButtonBlock(FabricBlockSettings.copyOf(Blocks.STONE).mapColor(color)));
-		blocks.pressurePlate = TerrestriaRegistry.register(name + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.MOBS, FabricBlockSettings.copyOf(Blocks.STONE).mapColor(color)));
 		blocks.chiseledBricks = TerrestriaRegistry.register("chiseled_" + name + "_bricks", new Block(FabricBlockSettings.copyOf(Blocks.STONE).mapColor(color)));
 		blocks.crackedBricks = TerrestriaRegistry.register("cracked_" + name + "_bricks", new Block(FabricBlockSettings.copyOf(Blocks.STONE).mapColor(color)));
 

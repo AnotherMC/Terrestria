@@ -2,7 +2,6 @@ package com.terraformersmc.terrestria.data;
 
 import com.terraformersmc.terraform.dirt.DirtBlocks;
 import com.terraformersmc.terrestria.init.TerrestriaBlocks;
-import com.terraformersmc.terrestria.init.TerrestriaBoats;
 import com.terraformersmc.terrestria.init.TerrestriaItems;
 import com.terraformersmc.terrestria.init.helpers.*;
 import com.terraformersmc.terrestria.tag.TerrestriaItemTags;
@@ -20,35 +19,10 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 
 	@Override
 	protected void generateTags() {
-		this.getOrCreateTagBuilder(ItemTags.BOATS)
-			.add(TerrestriaBoats.CYPRESS_BOAT_TYPE.getItem())
-			.add(TerrestriaBoats.HEMLOCK_BOAT_TYPE.getItem())
-			.add(TerrestriaBoats.JAPANESE_MAPLE_BOAT_TYPE.getItem())
-			.add(TerrestriaBoats.RAINBOW_EUCALYPTUS_BOAT_TYPE.getItem())
-			.add(TerrestriaBoats.REDWOOD_BOAT_TYPE.getItem())
-			.add(TerrestriaBoats.RUBBER_BOAT_TYPE.getItem())
-			.add(TerrestriaBoats.SAKURA_BOAT_TYPE.getItem())
-			.add(TerrestriaBoats.WILLOW_BOAT_TYPE.getItem())
-			.add(TerrestriaBoats.YUCCA_PALM_BOAT_TYPE.getItem());
-
-		this.getOrCreateTagBuilder(ItemTags.CHEST_BOATS)
-			.add(TerrestriaBoats.CYPRESS_BOAT_TYPE.getChestItem())
-			.add(TerrestriaBoats.HEMLOCK_BOAT_TYPE.getChestItem())
-			.add(TerrestriaBoats.JAPANESE_MAPLE_BOAT_TYPE.getChestItem())
-			.add(TerrestriaBoats.RAINBOW_EUCALYPTUS_BOAT_TYPE.getChestItem())
-			.add(TerrestriaBoats.REDWOOD_BOAT_TYPE.getChestItem())
-			.add(TerrestriaBoats.RUBBER_BOAT_TYPE.getChestItem())
-			.add(TerrestriaBoats.SAKURA_BOAT_TYPE.getChestItem())
-			.add(TerrestriaBoats.WILLOW_BOAT_TYPE.getChestItem())
-			.add(TerrestriaBoats.YUCCA_PALM_BOAT_TYPE.getChestItem());
-
 		this.getOrCreateTagBuilder(ItemTags.LEAVES)
 			.add(TerrestriaItems.DARK_JAPANESE_MAPLE_LEAVES)
 			.add(TerrestriaItems.JAPANESE_MAPLE_SHRUB_LEAVES)
 			.add(TerrestriaItems.JUNGLE_PALM_LEAVES);
-
-		this.getOrCreateTagBuilder(ItemTags.OAK_LOGS)
-			.addTag(TerrestriaItemTags.SMALL_OAK_LOGS);
 
 		this.getOrCreateTagBuilder(ItemTags.SAPLINGS)
 			.add(TerrestriaItems.BRYCE_SAPLING)
@@ -84,10 +58,6 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 			.add(TerrestriaItems.SAKURA.planks)
 			.add(TerrestriaItems.WILLOW.planks)
 			.add(TerrestriaItems.YUCCA_PALM.planks);
-
-		this.getOrCreateTagBuilder(TerrestriaItemTags.SMALL_OAK_LOGS)
-			.add(TerrestriaItems.SMALL_OAK_LOG)
-			.add(TerrestriaItems.STRIPPED_SMALL_OAK_LOG);
 
 
 		// custom dirt item tags (no nice convenient item container?)
@@ -126,7 +96,6 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 			.addTag(TerrestriaItemTags.REDWOOD_LOGS)
 			.addTag(TerrestriaItemTags.RUBBER_LOGS)
 			.addTag(TerrestriaItemTags.SAKURA_LOGS)
-			.addTag(TerrestriaItemTags.SMALL_OAK_LOGS)
 			.addTag(TerrestriaItemTags.WILLOW_LOGS)
 			.addTag(TerrestriaItemTags.YUCCA_PALM_LOGS);
 	}
@@ -147,7 +116,6 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 		if (stoneItem.bricks != null) {
 			stoneBuilder
 				.add(stoneItem.bricks.full)
-
 				.add(stoneItem.chiseledBricks)
 				.add(stoneItem.crackedBricks);
 
@@ -174,14 +142,10 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 			addStoneVariant(stoneItem.smooth);
 		}
 
-		getOrCreateTagBuilder(ItemTags.BUTTONS).add(stoneItem.button);
 		// There is no item tag for stone pressure plates...
 	}
 
 	private void addStoneVariant(StoneVariantItems stoneVariantItem) {
-		getOrCreateTagBuilder(ItemTags.SLABS).add(stoneVariantItem.slab);
-		getOrCreateTagBuilder(ItemTags.STAIRS).add(stoneVariantItem.stairs);
-		getOrCreateTagBuilder(ItemTags.WALLS).add(stoneVariantItem.wall);
 	}
 
 	private FabricTagBuilder<Item> addWood(TagKey<Item> logTag, WoodItems woodItem) {
@@ -199,16 +163,6 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 		// There is no item tag for fence gates...
 		getOrCreateTagBuilder(ItemTags.LEAVES).add(woodItem.leaves);
 		getOrCreateTagBuilder(ItemTags.PLANKS).add(woodItem.planks);
-		getOrCreateTagBuilder(ItemTags.SLABS).add(woodItem.slab);
-		getOrCreateTagBuilder(ItemTags.STAIRS).add(woodItem.stairs);
-		getOrCreateTagBuilder(ItemTags.SIGNS).add(woodItem.sign);
-		getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS).add(woodItem.button);
-		getOrCreateTagBuilder(ItemTags.WOODEN_DOORS).add(woodItem.door);
-		getOrCreateTagBuilder(ItemTags.WOODEN_FENCES).add(woodItem.fence);
-		getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES).add(woodItem.pressurePlate);
-		getOrCreateTagBuilder(ItemTags.WOODEN_SLABS).add(woodItem.slab);
-		getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS).add(woodItem.stairs);
-		getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS).add(woodItem.trapdoor);
 
 		return(woodBuilder);
 	}

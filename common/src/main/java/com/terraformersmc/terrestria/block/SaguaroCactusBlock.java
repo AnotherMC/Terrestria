@@ -1,9 +1,9 @@
 package com.terraformersmc.terrestria.block;
 
-import com.terraformersmc.terraform.wood.block.BareSmallLogBlock;
 import com.terraformersmc.terrestria.init.TerrestriaBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.ai.pathing.PathNodeType;
@@ -20,10 +20,10 @@ import net.minecraft.world.WorldView;
 
 import java.util.function.Supplier;
 
-public class SaguaroCactusBlock extends BareSmallLogBlock {
+public class SaguaroCactusBlock extends PillarBlock {
 
-	public SaguaroCactusBlock(Supplier<Block> stripped, Settings settings) {
-		super(stripped, settings);
+	public SaguaroCactusBlock(Settings settings) {
+		super(settings);
 	}
 
 	@Override
@@ -71,27 +71,8 @@ public class SaguaroCactusBlock extends BareSmallLogBlock {
 		if (isSupportedBlock(world.getBlockState(pos.down()).getBlock())) {
 			return true;
 		}
-		if (state.get(BareSmallLogBlock.DOWN)) {
-			blockState = world.getBlockState(pos.down());
-			return (blockState.getBlock() == TerrestriaBlocks.SAGUARO_CACTUS && blockState.get(BareSmallLogBlock.UP));
-		}
-		if (state.get(BareSmallLogBlock.SOUTH)) {
-			blockState = world.getBlockState(pos.south());
-			return (blockState.getBlock() == TerrestriaBlocks.SAGUARO_CACTUS && blockState.get(BareSmallLogBlock.NORTH));
-		}
-		if (state.get(BareSmallLogBlock.NORTH)) {
-			blockState = world.getBlockState(pos.north());
-			return (blockState.getBlock() == TerrestriaBlocks.SAGUARO_CACTUS && blockState.get(BareSmallLogBlock.SOUTH));
-		}
-		if (state.get(BareSmallLogBlock.WEST)) {
-			blockState = world.getBlockState(pos.west());
-			return (blockState.getBlock() == TerrestriaBlocks.SAGUARO_CACTUS && blockState.get(BareSmallLogBlock.EAST));
-		}
-		if (state.get(BareSmallLogBlock.EAST)) {
-			blockState = world.getBlockState(pos.east());
-			return (blockState.getBlock() == TerrestriaBlocks.SAGUARO_CACTUS && blockState.get(BareSmallLogBlock.WEST));
-		}
-		return false;
+
+		return canBeSupported(world, pos);
 	}
 
 	private boolean canBeSupported(WorldView world, BlockPos pos) {

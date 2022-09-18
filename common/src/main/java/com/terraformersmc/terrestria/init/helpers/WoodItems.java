@@ -11,41 +11,19 @@ public class WoodItems {
 	public BlockItem wood;
 	public BlockItem leaves;
 	public BlockItem planks;
-	public BlockItem slab;
-	public BlockItem stairs;
-	public BlockItem fence;
-	public BlockItem fenceGate;
-	public BlockItem door;
-	public BlockItem button;
-	public BlockItem pressurePlate;
-	public SignItem sign;
-	public BlockItem trapdoor;
 	public BlockItem strippedLog;
 	public BlockItem strippedWood;
-	public TerraformBoatItem boat;
-	public TerraformBoatItem chestBoat;
 
 	private WoodItems() {
 	}
 
-	public static WoodItems register(String name, WoodBlocks blocks, TerraformBoatItem boatItem, TerraformBoatItem chestBoatItem) {
+	public static WoodItems register(String name, WoodBlocks blocks) {
 		WoodItems items = new WoodItems();
 
 		items.log = TerrestriaRegistry.registerBuildingBlockItem(name + "_log", blocks.log);
 		items.leaves = TerrestriaRegistry.registerDecorationBlockItem(name + "_leaves", blocks.leaves);
 		items.planks = TerrestriaRegistry.registerBuildingBlockItem(name + "_planks", blocks.planks);
-		items.slab = TerrestriaRegistry.registerBuildingBlockItem(name + "_slab", blocks.slab);
-		items.stairs = TerrestriaRegistry.registerBuildingBlockItem(name + "_stairs", blocks.stairs);
-		items.fence = TerrestriaRegistry.registerDecorationBlockItem(name + "_fence", blocks.fence);
-		items.fenceGate = TerrestriaRegistry.registerRedstoneBlockItem(name + "_fence_gate", blocks.fenceGate);
-		items.door = TerrestriaRegistry.registerRedstoneBlockItem(name + "_door", blocks.door);
-		items.button = TerrestriaRegistry.registerRedstoneBlockItem(name + "_button", blocks.button);
-		items.pressurePlate = TerrestriaRegistry.registerRedstoneBlockItem(name + "_pressure_plate", blocks.pressurePlate);
-		items.trapdoor = TerrestriaRegistry.registerRedstoneBlockItem(name + "_trapdoor", blocks.trapdoor);
-		items.sign = TerrestriaRegistry.registerSignItem(name + "_sign", blocks.sign, blocks.wallSign);
 		items.strippedLog = TerrestriaRegistry.registerBuildingBlockItem("stripped_" + name + "_log", blocks.strippedLog);
-		items.boat = boatItem;
-		items.chestBoat = chestBoatItem;
 
 		if (blocks.log != blocks.wood) {
 			items.wood = TerrestriaRegistry.registerBuildingBlockItem(name + "_wood", blocks.wood);

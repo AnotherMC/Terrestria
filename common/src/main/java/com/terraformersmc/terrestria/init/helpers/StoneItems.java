@@ -10,8 +10,6 @@ public class StoneItems {
 	public StoneVariantItems bricks;
 	public StoneVariantItems mossyBricks;
 
-	public BlockItem button;
-	public BlockItem pressurePlate;
 	public BlockItem chiseledBricks;
 	public BlockItem crackedBricks;
 
@@ -27,8 +25,6 @@ public class StoneItems {
 		items.bricks = StoneVariantItems.register(name + "_bricks", name + "_brick", blocks.bricks);
 		items.mossyBricks = StoneVariantItems.register("mossy_" + name + "_bricks", "mossy_" + name + "_brick", blocks.mossyBricks);
 
-		items.button = TerrestriaRegistry.registerRedstoneBlockItem(name + "_button", blocks.button);
-		items.pressurePlate = TerrestriaRegistry.registerRedstoneBlockItem(name + "_pressure_plate", blocks.pressurePlate);
 		items.chiseledBricks = TerrestriaRegistry.registerBuildingBlockItem("chiseled_" + name + "_bricks", blocks.chiseledBricks);
 		items.crackedBricks = TerrestriaRegistry.registerBuildingBlockItem("cracked_" + name + "_bricks", blocks.crackedBricks);
 

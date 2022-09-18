@@ -3,7 +3,6 @@ package com.terraformersmc.terrestria.feature.tree.trunkplacers;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.terraformersmc.terraform.wood.block.BareSmallLogBlock;
 import com.terraformersmc.terrestria.feature.tree.trunkplacers.templates.SmallTrunkPlacer;
 import com.terraformersmc.terrestria.init.TerrestriaTrunkPlacerTypes;
 
@@ -46,7 +45,7 @@ public class SaguaroCactusTrunkPlacer extends SmallTrunkPlacer {
 		height = random.nextInt(1) + 5;
 
 		// Place the first 2 blocks of the cactus
-		placeSpecificBlockState(world, replacer, currentPosition, treeFeatureConfig.trunkProvider.getBlockState(random, currentPosition).with(BareSmallLogBlock.DOWN, true));
+		placeSpecificBlockState(world, replacer, currentPosition, treeFeatureConfig.trunkProvider.getBlockState(random, currentPosition));
 		setBlockStateAndUpdate(treeFeatureConfig, random, replacer, world, currentPosition.move(Direction.UP), Direction.UP);
 
 		// Place one branch always

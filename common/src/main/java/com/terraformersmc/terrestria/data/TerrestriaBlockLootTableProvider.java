@@ -2,7 +2,6 @@ package com.terraformersmc.terrestria.data;
 
 import com.terraformersmc.terraform.dirt.DirtBlocks;
 import com.terraformersmc.terrestria.init.TerrestriaBlocks;
-import com.terraformersmc.terrestria.init.helpers.QuarteredWoodBlocks;
 import com.terraformersmc.terrestria.init.helpers.StoneBlocks;
 import com.terraformersmc.terrestria.init.helpers.WoodBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -40,8 +39,6 @@ public class TerrestriaBlockLootTableProvider extends FabricBlockLootTableProvid
 		addDrop(TerrestriaBlocks.SAGUARO_CACTUS);
 		addDrop(TerrestriaBlocks.SAGUARO_CACTUS_SAPLING);
 		addDrop(TerrestriaBlocks.SAKURA_SAPLING);
-		addDrop(TerrestriaBlocks.SMALL_OAK_LOG);
-		addDrop(TerrestriaBlocks.STRIPPED_SMALL_OAK_LOG);
 		addDrop(TerrestriaBlocks.TALL_CATTAIL, dropsWithShears(TerrestriaBlocks.CATTAIL));
 		addDrop(TerrestriaBlocks.TINY_CACTUS);
 		addDrop(TerrestriaBlocks.WILLOW_SAPLING);
@@ -114,30 +111,22 @@ public class TerrestriaBlockLootTableProvider extends FabricBlockLootTableProvid
 	private void addStoneDrops(StoneBlocks stoneBlock) {
 		if (stoneBlock.bricks != null) {
 			addDrop(stoneBlock.bricks.full);
-			addDrop(stoneBlock.bricks.slab, BlockLootTableGenerator::slabDrops);
-			addDrop(stoneBlock.bricks.stairs);
-			addDrop(stoneBlock.bricks.wall);
+
 
 			addDrop(stoneBlock.chiseledBricks);
 			addDrop(stoneBlock.crackedBricks);
 		}
 		if (stoneBlock.cobblestone != null) {
 			addDrop(stoneBlock.cobblestone.full);
-			addDrop(stoneBlock.cobblestone.slab, BlockLootTableGenerator::slabDrops);
-			addDrop(stoneBlock.cobblestone.stairs);
-			addDrop(stoneBlock.cobblestone.wall);
+
 		}
 		if (stoneBlock.mossyBricks != null) {
 			addDrop(stoneBlock.mossyBricks.full);
-			addDrop(stoneBlock.mossyBricks.slab, BlockLootTableGenerator::slabDrops);
-			addDrop(stoneBlock.mossyBricks.stairs);
-			addDrop(stoneBlock.mossyBricks.wall);
+
 		}
 		if (stoneBlock.mossyCobblestone != null) {
 			addDrop(stoneBlock.mossyCobblestone.full);
-			addDrop(stoneBlock.mossyCobblestone.slab, BlockLootTableGenerator::slabDrops);
-			addDrop(stoneBlock.mossyCobblestone.stairs);
-			addDrop(stoneBlock.mossyCobblestone.wall);
+
 		}
 		if (stoneBlock.plain != null) {
 			if (stoneBlock.cobblestone != null) {
@@ -145,42 +134,21 @@ public class TerrestriaBlockLootTableProvider extends FabricBlockLootTableProvid
 			} else {
 				addDrop(stoneBlock.plain.full);
 			}
-			addDrop(stoneBlock.plain.slab, BlockLootTableGenerator::slabDrops);
-			addDrop(stoneBlock.plain.stairs);
-			addDrop(stoneBlock.plain.wall);
+
 		}
 		if (stoneBlock.smooth != null) {
 			addDrop(stoneBlock.smooth.full);
-			addDrop(stoneBlock.smooth.slab, BlockLootTableGenerator::slabDrops);
-			addDrop(stoneBlock.smooth.stairs);
-			addDrop(stoneBlock.smooth.wall);
+
 		}
 
-		addDrop(stoneBlock.button);
-		addDrop(stoneBlock.pressurePlate);
 	}
 
 	private void addWoodDrops(WoodBlocks woodBlock, @Nullable SaplingBlock sapling) {
-		addDrop(woodBlock.button);
-		addDrop(woodBlock.door, BlockLootTableGenerator::doorDrops);
-		addDrop(woodBlock.fence);
-		addDrop(woodBlock.fenceGate);
 		addDrop(woodBlock.log);
 		addDrop(woodBlock.planks);
-		addDrop(woodBlock.pressurePlate);
-		addDrop(woodBlock.sign);
-		addDrop(woodBlock.slab, BlockLootTableGenerator::slabDrops);
-		addDrop(woodBlock.stairs);
 		addDrop(woodBlock.strippedLog);
 		addDrop(woodBlock.strippedWood);
-		addDrop(woodBlock.trapdoor);
-		addDrop(woodBlock.wallSign);
 		addDrop(woodBlock.wood);
-
-		if (woodBlock instanceof QuarteredWoodBlocks) {
-			addDrop(((QuarteredWoodBlocks) woodBlock).quarterLog);
-			addDrop(((QuarteredWoodBlocks) woodBlock).strippedQuarterLog);
-		}
 
 		if (sapling != null) {
 			addDrop(woodBlock.leaves, leavesDrop(woodBlock.leaves, sapling, 0.05f, 0.0625f, 0.083333336f, 0.1f));

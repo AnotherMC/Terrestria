@@ -1,9 +1,7 @@
 package com.terraformersmc.terrestria.init;
 
 import com.terraformersmc.terraform.dirt.block.TerraformDirtPathBlock;
-import com.terraformersmc.terraform.wood.block.BareSmallLogBlock;
 import com.terraformersmc.terraform.leaves.block.LeafPileBlock;
-import com.terraformersmc.terraform.wood.block.SmallLogBlock;
 import com.terraformersmc.terraform.tree.block.TerraformDesertSaplingBlock;
 import com.terraformersmc.terraform.dirt.DirtBlocks;
 import com.terraformersmc.terraform.dirt.TerraformDirtRegistry;
@@ -18,7 +16,6 @@ import com.terraformersmc.terrestria.block.TerraformDesertPlantBlock;
 import com.terraformersmc.terrestria.block.TerraformSeagrassBlock;
 import com.terraformersmc.terrestria.block.sapling.TerrestriaLargeSaplingGenerator;
 import com.terraformersmc.terrestria.block.sapling.TerrestriaSaplingGenerator;
-import com.terraformersmc.terrestria.init.helpers.QuarteredWoodBlocks;
 import com.terraformersmc.terrestria.init.helpers.StoneBlocks;
 import com.terraformersmc.terrestria.init.helpers.TerrestriaRegistry;
 import com.terraformersmc.terrestria.init.helpers.WoodBlocks;
@@ -37,19 +34,17 @@ import net.minecraft.world.BlockView;
 // This class exports public block constants, these fields have to be public
 @SuppressWarnings("WeakerAccess")
 public class TerrestriaBlocks {
-	public static QuarteredWoodBlocks REDWOOD;
-	public static QuarteredWoodBlocks HEMLOCK;
+	public static WoodBlocks REDWOOD;
+	public static WoodBlocks HEMLOCK;
 	public static WoodBlocks RUBBER;
-	public static QuarteredWoodBlocks CYPRESS;
+	public static WoodBlocks CYPRESS;
 	public static WoodBlocks WILLOW;
 	public static WoodBlocks JAPANESE_MAPLE;
-	public static QuarteredWoodBlocks RAINBOW_EUCALYPTUS;
+	public static WoodBlocks RAINBOW_EUCALYPTUS;
 	public static WoodBlocks SAKURA;
 	public static WoodBlocks YUCCA_PALM;
 
-	public static SmallLogBlock SMALL_OAK_LOG;
-	public static SmallLogBlock STRIPPED_SMALL_OAK_LOG;
-	public static BareSmallLogBlock SAGUARO_CACTUS;
+	public static Block SAGUARO_CACTUS;
 
 	public static LeavesBlock JAPANESE_MAPLE_SHRUB_LEAVES;
 	public static LeavesBlock DARK_JAPANESE_MAPLE_LEAVES;
@@ -110,22 +105,17 @@ public class TerrestriaBlocks {
 	public static void init() {
 		FlammableBlockRegistry flammable = FlammableBlockRegistry.getDefaultInstance();
 
-		REDWOOD = QuarteredWoodBlocks.register("redwood", WoodColors.REDWOOD, flammable, true);
-		HEMLOCK = QuarteredWoodBlocks.register("hemlock", WoodColors.HEMLOCK, flammable, true);
+		REDWOOD = WoodBlocks.register("redwood", WoodColors.REDWOOD, flammable);
+		HEMLOCK = WoodBlocks.register("hemlock", WoodColors.HEMLOCK, flammable);
 		RUBBER = WoodBlocks.register("rubber", WoodColors.RUBBER, flammable);
-		CYPRESS = QuarteredWoodBlocks.register("cypress", WoodColors.CYPRESS, flammable);
+		CYPRESS = WoodBlocks.register("cypress", WoodColors.CYPRESS, flammable);
 		WILLOW = WoodBlocks.register("willow", WoodColors.WILLOW, flammable);
 		JAPANESE_MAPLE = WoodBlocks.register("japanese_maple", WoodColors.JAPANESE_MAPLE, flammable);
-		RAINBOW_EUCALYPTUS = QuarteredWoodBlocks.register("rainbow_eucalyptus", WoodColors.RAINBOW_EUCALYPTUS, flammable);
+		RAINBOW_EUCALYPTUS = WoodBlocks.register("rainbow_eucalyptus", WoodColors.RAINBOW_EUCALYPTUS, flammable);
 		SAKURA = WoodBlocks.register("sakura", WoodColors.SAKURA, flammable, WoodBlocks.LogSize.SMALL);
 		YUCCA_PALM = WoodBlocks.register("yucca_palm", WoodColors.YUCCA_PALM, flammable, WoodBlocks.LogSize.SMALL);
 
-		STRIPPED_SMALL_OAK_LOG = TerrestriaRegistry.register("stripped_small_oak_log", new SmallLogBlock(Blocks.OAK_LEAVES, null, FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
-		SMALL_OAK_LOG = TerrestriaRegistry.register("small_oak_log", new SmallLogBlock(Blocks.OAK_LEAVES, () -> STRIPPED_SMALL_OAK_LOG, FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
-		SAGUARO_CACTUS = TerrestriaRegistry.register("saguaro_cactus", new SaguaroCactusBlock(null, FabricBlockSettings.copyOf(Blocks.CACTUS)));
-
-		flammable.add(SMALL_OAK_LOG, 5, 5);
-		flammable.add(STRIPPED_SMALL_OAK_LOG, 5, 5);
+		SAGUARO_CACTUS = TerrestriaRegistry.register("saguaro_cactus", new SaguaroCactusBlock(FabricBlockSettings.copyOf(Blocks.CACTUS)));
 
 		JAPANESE_MAPLE_SHRUB_LEAVES = TerrestriaRegistry.register("japanese_maple_shrub_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never)));
 

@@ -1,7 +1,7 @@
 package com.terraformersmc.terrestria.feature.tree.trunkplacers.templates;
 
-import com.terraformersmc.terraform.wood.block.BareSmallLogBlock;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -21,15 +21,15 @@ public abstract class SmallTrunkPlacer extends TrunkPlacer {
 
 	protected void setBlockStateAndUpdate(TreeFeatureConfig config, Random random, BiConsumer<BlockPos, BlockState> replacer, TestableWorld world, BlockPos origin, Direction direction) {
 		//Place the block
-		checkAndPlaceSpecificBlockState(world, origin, replacer, config.trunkProvider.getBlockState(random, origin).with(getPropertyFromDirection(direction.getOpposite()), true));
+		checkAndPlaceSpecificBlockState(world, origin, replacer, config.trunkProvider.getBlockState(random, origin).with(PillarBlock.AXIS, direction.getAxis()));
 
 		// Fix the one behind it to connect if it's a BareSmallLogBlock
 		addSmallLogConnection(config, random, replacer, world, origin.offset(direction.getOpposite()), direction);
 	}
 
 	protected void addSmallLogConnection(TreeFeatureConfig config, Random random, BiConsumer<BlockPos, BlockState> replacer, TestableWorld world, BlockPos origin, Direction direction) {
-		if (world.testBlockState(origin, tester -> tester.getBlock() instanceof BareSmallLogBlock)) {
-			placeSpecificBlockState(world, replacer, origin, getOriginalState(config, world, origin, random).with(getPropertyFromDirection(direction), true));
+		if (world.testBlockState(origin, tester -> tester.getBlock() instanceof PillarBlock)) {
+			placeSpecificBlockState(world, replacer, origin, getOriginalState(config, world, origin, random).with(PillarBlock.AXIS, direction.getAxis()));
 		}
 	}
 
@@ -45,34 +45,27 @@ public abstract class SmallTrunkPlacer extends TrunkPlacer {
 
 	protected BlockState getOriginalState(TreeFeatureConfig config, TestableWorld world, BlockPos pos, Random random) {
 
-		if (!world.testBlockState(pos, tester -> tester.getBlock() instanceof BareSmallLogBlock)) {
-			return null;
+		if (!world.testBlockState(pos, tester -> tester.getBlock() instanceof PillarBlock)) {
+			return config.trunkProvider.getBlockState(random, pos);
 		}
 
-		return config.trunkProvider.getBlockState(random, pos)
-				.with(BareSmallLogBlock.NORTH, world.testBlockState(pos, test -> test.get(BareSmallLogBlock.NORTH)))
-				.with(BareSmallLogBlock.SOUTH, world.testBlockState(pos, test -> test.get(BareSmallLogBlock.SOUTH)))
-				.with(BareSmallLogBlock.EAST, world.testBlockState(pos, test -> test.get(BareSmallLogBlock.EAST)))
-				.with(BareSmallLogBlock.WEST, world.testBlockState(pos, test -> test.get(BareSmallLogBlock.WEST)))
-				.with(BareSmallLogBlock.UP, world.testBlockState(pos, test -> test.get(BareSmallLogBlock.UP)))
-				.with(BareSmallLogBlock.DOWN, world.testBlockState(pos, test -> test.get(BareSmallLogBlock.DOWN)));
-	}
+		var mut = pos.mutableCopy();
 
-	protected BooleanProperty getPropertyFromDirection(Direction direction) {
-		switch (direction) {
-			case SOUTH:
-				return BareSmallLogBlock.SOUTH;
-			case NORTH:
-				return BareSmallLogBlock.NORTH;
-			case WEST:
-				return BareSmallLogBlock.WEST;
-			case EAST:
-				return BareSmallLogBlock.EAST;
-			case DOWN:
-				return BareSmallLogBlock.DOWN;
-			case UP:
-				return BareSmallLogBlock.UP;
+		Direction.Axis axis;
+		if (
+				world.testBlockState(mut.set(pos).move(Direction.NORTH, 1), test -> test.getBlock() instanceof PillarBlock)
+						|| world.testBlockState(mut.set(pos).move(Direction.SOUTH, 1), test -> test.getBlock() instanceof PillarBlock)
+		) {
+			axis = Direction.Axis.Z;
+		} else if (
+				world.testBlockState(mut.set(pos).move(Direction.WEST, 1), test -> test.getBlock() instanceof PillarBlock)
+						|| world.testBlockState(mut.set(pos).move(Direction.EAST, 1), test -> test.getBlock() instanceof PillarBlock)
+		) {
+			axis = Direction.Axis.Z;
+		} else {
+			axis = Direction.Axis.Y;
 		}
-		return null;
+
+		return config.trunkProvider.getBlockState(random, pos).with(PillarBlock.AXIS, axis);
 	}
 }

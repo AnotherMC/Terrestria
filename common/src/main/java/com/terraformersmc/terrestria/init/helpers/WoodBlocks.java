@@ -18,22 +18,13 @@ public class WoodBlocks {
 	public Block wood;
 	public Block leaves;
 	public Block planks;
-	public SlabBlock slab;
-	public StairsBlock stairs;
-	public FenceBlock fence;
-	public FenceGateBlock fenceGate;
-	public DoorBlock door;
-	public WoodenButtonBlock button;
-	public PressurePlateBlock pressurePlate;
-	public TerraformSignBlock sign;
-	public TerraformWallSignBlock wallSign;
-	public TrapdoorBlock trapdoor;
 	public Block strippedLog;
 	public Block strippedWood;
 	protected String name;
 	protected WoodColors colors;
 
-	public WoodBlocks() {}
+	public WoodBlocks() {
+	}
 
 	protected static WoodBlocks register(String name, WoodColors colors, FlammableBlockRegistry registry, LogSize size, boolean useExtendedLeaves) {
 		WoodBlocks blocks = registerManufactured(name, colors, registry);
@@ -51,17 +42,12 @@ public class WoodBlocks {
 			}
 		}
 
-		if (size.equals(LogSize.SMALL)) {
-			blocks.strippedLog = TerrestriaRegistry.register("stripped_" + name + "_log", new SmallLogBlock(blocks.leaves, null, FabricBlockSettings.copyOf(Blocks.OAK_LOG).mapColor(colors.planks)));
-			blocks.strippedWood = blocks.strippedLog; //No need for a stripped wood type
-			blocks.log = TerrestriaRegistry.register(name + "_log", new SmallLogBlock(blocks.leaves, () -> blocks.strippedLog, FabricBlockSettings.copyOf(Blocks.OAK_LOG).mapColor(colors.bark)));
-			blocks.wood = blocks.log; //No need for a stripped wood type
-		} else {
+
 			blocks.strippedLog = TerrestriaRegistry.register("stripped_" + name + "_log", new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).mapColor(colors.planks)));
 			blocks.strippedWood = TerrestriaRegistry.register("stripped_" + name + "_wood", new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).mapColor(colors.planks)));
 			blocks.log = TerrestriaRegistry.register(name + "_log", new StrippableLogBlock(() -> blocks.strippedLog, colors.planks, FabricBlockSettings.copyOf(Blocks.OAK_LOG).mapColor(colors.bark)));
 			blocks.wood = TerrestriaRegistry.register(name + "_wood", new StrippableLogBlock(() -> blocks.strippedWood, colors.bark, FabricBlockSettings.copyOf(Blocks.OAK_LOG).mapColor(colors.bark)));
-		}
+
 
 		blocks.addTreeFireInfo(registry);
 
@@ -82,24 +68,11 @@ public class WoodBlocks {
 		blocks.colors = colors;
 
 		blocks.planks = TerrestriaRegistry.register(name + "_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).mapColor(colors.planks)));
-		blocks.slab = TerrestriaRegistry.register(name + "_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB).mapColor(colors.planks)));
-		blocks.stairs = TerrestriaRegistry.register(name + "_stairs", new StairsBlock(blocks.planks.getDefaultState(), FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).mapColor(colors.planks)));
-		blocks.fence = TerrestriaRegistry.register(name + "_fence", new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE).mapColor(colors.planks)));
-		blocks.fenceGate = TerrestriaRegistry.register(name + "_fence_gate", new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE).mapColor(colors.planks)));
-		blocks.door = TerrestriaRegistry.register(name + "_door", new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).mapColor(colors.planks)));
-		blocks.button = TerrestriaRegistry.register(name + "_button", new WoodenButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON).mapColor(colors.planks)));
-		blocks.pressurePlate = TerrestriaRegistry.register(name + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE).mapColor(colors.planks)));
-		blocks.trapdoor = TerrestriaRegistry.register(name + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR).mapColor(colors.planks)));
 
 		Identifier signTexture = new Identifier(Terrestria.MOD_ID, "entity/signs/" + name);
 
-		blocks.sign = TerrestriaRegistry.register(name + "_sign", new TerraformSignBlock(signTexture, FabricBlockSettings.copyOf(Blocks.OAK_SIGN).mapColor(colors.planks)));
-		blocks.wallSign = TerrestriaRegistry.register(name + "_wall_sign", new TerraformWallSignBlock(signTexture, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).mapColor(colors.planks)));
-
 		blocks.addManufacturedFireInfo(registry);
 
-		FuelRegistry.INSTANCE.add(blocks.fence, 300);
-		FuelRegistry.INSTANCE.add(blocks.fenceGate, 300);
 
 		return blocks;
 	}
@@ -121,10 +94,6 @@ public class WoodBlocks {
 
 	public void addManufacturedFireInfo(FlammableBlockRegistry registry) {
 		registry.add(planks, 5, 20);
-		registry.add(slab, 5, 20);
-		registry.add(stairs, 5, 20);
-		registry.add(fence, 5, 20);
-		registry.add(fenceGate, 5, 20);
 	}
 
 	public enum LogSize {

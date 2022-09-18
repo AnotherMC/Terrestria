@@ -14,7 +14,6 @@ public final class TerrestriaItemTags {
 	public static final TagKey<Item> REDWOOD_LOGS = TerrestriaItemTags.of("redwood_logs");
 	public static final TagKey<Item> RUBBER_LOGS = TerrestriaItemTags.of("rubber_logs");
 	public static final TagKey<Item> SAKURA_LOGS = TerrestriaItemTags.of("sakura_logs");
-	public static final TagKey<Item> SMALL_OAK_LOGS = TerrestriaItemTags.of("small_oak_logs");
 	public static final TagKey<Item> WILLOW_LOGS = TerrestriaItemTags.of("willow_logs");
 	public static final TagKey<Item> YUCCA_PALM_LOGS = TerrestriaItemTags.of("yucca_palm_logs");
 

@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "terrestria:block/sakura_log_section",
+        "side": "terrestria:block/sakura_log"
+	}
+}
