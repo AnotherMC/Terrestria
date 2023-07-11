@@ -51,9 +51,6 @@ public class TerrestriaConfiguredFeatures {
 	public static RegistryKey<ConfiguredFeature<?, ?>> FALLEN_HEMLOCK_LOG = createRegistryKey("fallen_hemlock_log");
 	public static RegistryKey<ConfiguredFeature<?, ?>> FALLEN_REDWOOD_LOG = createRegistryKey("fallen_redwood_log");
 
-	public static RegistryKey<ConfiguredFeature<?, ?>> JAPANESE_MAPLE_SHRUB = createRegistryKey("japanese_maple_shrub");
-	public static RegistryKey<ConfiguredFeature<?, ?>> JAPANESE_MAPLE_TREE = createRegistryKey("japanese_maple_tree");
-	public static RegistryKey<ConfiguredFeature<?, ?>> DARK_JAPANESE_MAPLE_TREE = createRegistryKey("dark_japanese_maple_tree");
 	public static RegistryKey<ConfiguredFeature<?, ?>> YUCCA_PALM_TREE = createRegistryKey("yucca_palm_tree");
 	public static RegistryKey<ConfiguredFeature<?, ?>> OAK_DOT_SHRUB = createRegistryKey("oak_dot_shrub");
 	public static RegistryKey<ConfiguredFeature<?, ?>> ACACIA_DOT_SHRUB = createRegistryKey("acacia_dot_shrub");
@@ -66,7 +63,7 @@ public class TerrestriaConfiguredFeatures {
 
 	public static void populate(FabricDynamicRegistryProvider.Entries entries) {
 		entries.add(BRYCE_TREE, configureFeature(Feature.TREE, new TreeFeatureConfig.Builder(
-				SimpleBlockStateProvider.of(TerrestriaBlocks.SMALL_OAK_LOG),
+				SimpleBlockStateProvider.of(Blocks.OAK_WOOD),
 				new SpindlyTrunkPlacer(10, 0, 0),
 				SimpleBlockStateProvider.of(Blocks.OAK_LEAVES),
 				new SmallLogSphereFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
@@ -111,7 +108,6 @@ public class TerrestriaConfiguredFeatures {
 		entries.add(FALLEN_HEMLOCK_LOG, configureFeature(Feature.TREE, fallenLogOf(TerrestriaBlocks.HEMLOCK, TerrestriaBlocks.HEMLOCK_SAPLING.getDefaultState(), new FallenStraightTrunkPlacer(5, 3, 1))));
 		entries.add(FALLEN_REDWOOD_LOG, configureFeature(Feature.TREE, fallenLogOf(TerrestriaBlocks.REDWOOD, TerrestriaBlocks.REDWOOD_SAPLING.getDefaultState(), new FallenStraightTrunkPlacer(7, 2, 1))));
 
-		entries.add(JAPANESE_MAPLE_SHRUB, configureFeature(Feature.TREE, shrubOf(TerrestriaBlocks.JAPANESE_MAPLE.log.getDefaultState(), TerrestriaBlocks.JAPANESE_MAPLE_SHRUB_LEAVES.getDefaultState(), TerrestriaBlocks.JAPANESE_MAPLE_SHRUB_SAPLING.getDefaultState())));
 		entries.add(OAK_SHRUB, configureFeature(Feature.TREE, shrubOf(Blocks.OAK_LOG.getDefaultState(), Blocks.OAK_LEAVES.getDefaultState(), Blocks.OAK_SAPLING.getDefaultState())));
 
 		entries.add(RAINBOW_EUCALYPTUS_TREE, configureFeature(TerrestriaFeatures.QUARTERED_MEGA_TREE, new QuarteredMegaTreeConfig(new TreeFeatureConfig.Builder(
@@ -122,7 +118,7 @@ public class TerrestriaConfiguredFeatures {
 				new TwoLayersFeatureSize(1, 1, 1))
 				.ignoreVines()
 				.build(),
-				SimpleBlockStateProvider.of(TerrestriaBlocks.RAINBOW_EUCALYPTUS.quarterLog),
+				SimpleBlockStateProvider.of(TerrestriaBlocks.RAINBOW_EUCALYPTUS.log),
 				SimpleBlockStateProvider.of(TerrestriaBlocks.RAINBOW_EUCALYPTUS.wood))));
 
 		entries.add(SMALL_RAINBOW_EUCALYPTUS_TREE, configureFeature(Feature.TREE, (new TreeFeatureConfig.Builder(
@@ -142,31 +138,6 @@ public class TerrestriaConfiguredFeatures {
 				new TwoLayersFeatureSize(1, 0, 1))
 				.build()));
 
-		entries.add(SAKURA_TREE, configureFeature(Feature.TREE, new TreeFeatureConfig.Builder(
-				SimpleBlockStateProvider.of(TerrestriaBlocks.SAKURA.log),
-				new SmallCanopyTree4BranchTrunkPlacer(4, 1, 1),
-				SimpleBlockStateProvider.of(TerrestriaBlocks.SAKURA.leaves),
-				new SmallCanopyFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
-				new TwoLayersFeatureSize(1, 0, 1))
-				.decorators(ImmutableList.of(new SakuraTreeDecorator()))
-				.build()));
-
-		entries.add(JAPANESE_MAPLE_TREE, configureFeature(Feature.TREE, new TreeFeatureConfig.Builder(
-				SimpleBlockStateProvider.of(TerrestriaBlocks.JAPANESE_MAPLE.log),
-				new CanopyTree4BranchTrunkPlacer(4, 1, 1),
-				SimpleBlockStateProvider.of(TerrestriaBlocks.JAPANESE_MAPLE.leaves),
-				new JapaneseCanopyFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
-				new TwoLayersFeatureSize(1, 0, 1))
-				.build()));
-
-		entries.add(DARK_JAPANESE_MAPLE_TREE, configureFeature(Feature.TREE, new TreeFeatureConfig.Builder(
-				SimpleBlockStateProvider.of(TerrestriaBlocks.JAPANESE_MAPLE.log),
-				new CanopyTree4BranchTrunkPlacer(4, 1, 1),
-				SimpleBlockStateProvider.of(TerrestriaBlocks.DARK_JAPANESE_MAPLE_LEAVES),
-				new JapaneseCanopyFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
-				new TwoLayersFeatureSize(1, 0, 1))
-				.build()));
-
 		entries.add(MEGA_CYPRESS_TREE, configureFeature(TerrestriaFeatures.QUARTERED_MEGA_TREE, new QuarteredMegaTreeConfig(new TreeFeatureConfig.Builder(
 				SimpleBlockStateProvider.of(TerrestriaBlocks.CYPRESS.log),
 				new QuarteredMegaCanopyTrunkPlacer(5, 2, 1),
@@ -175,7 +146,7 @@ public class TerrestriaConfiguredFeatures {
 				new TwoLayersFeatureSize(1, 1, 1))
 				.ignoreVines()
 				.build(),
-				SimpleBlockStateProvider.of(TerrestriaBlocks.CYPRESS.quarterLog),
+				SimpleBlockStateProvider.of(TerrestriaBlocks.CYPRESS.log),
 				SimpleBlockStateProvider.of(TerrestriaBlocks.CYPRESS.wood))));
 
 		entries.add(WILLOW_TREE, configureFeature(Feature.TREE, canopyOf(TerrestriaBlocks.WILLOW, TerrestriaBlocks.WILLOW_SAPLING.getDefaultState(), new CanopyTree4BranchTrunkPlacer(4, 1, 1), ImmutableList.of(new DanglingLeavesTreeDecorator(TerrestriaBlocks.WILLOW.leaves.getDefaultState())))));
@@ -280,9 +251,6 @@ public class TerrestriaConfiguredFeatures {
 	}
 
 	static QuarteredMegaTreeConfig giantSpruceOf(WoodBlocks woodBlocks, BlockState sapling, int minHeight, int extraRandomHeight1, int extraRandomHeight2, int minLeavesRadius, int maxLeavesRadius, int minBareHeight, int maxBareHeight) {
-		if (!woodBlocks.hasQuarterLog()) {
-			throw new IllegalArgumentException("giantSpruceOf() requires WoodBlocks with defined Quarter Logs: " + woodBlocks.getName());
-		}
 		return new QuarteredMegaTreeConfig(new TreeFeatureConfig.Builder(
 				SimpleBlockStateProvider.of(woodBlocks.log),
 				new MegaTrunkPlacer(minHeight, extraRandomHeight1, extraRandomHeight2),
@@ -291,7 +259,7 @@ public class TerrestriaConfiguredFeatures {
 				new TwoLayersFeatureSize(2, 1, 2))
 				.ignoreVines()
 				.build(),
-				SimpleBlockStateProvider.of(woodBlocks.quarterLog),
+				SimpleBlockStateProvider.of(woodBlocks.log),
 				SimpleBlockStateProvider.of(woodBlocks.wood));
 	}
 

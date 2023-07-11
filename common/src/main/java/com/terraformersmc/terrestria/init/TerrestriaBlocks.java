@@ -43,17 +43,11 @@ public class TerrestriaBlocks {
 	public static WoodBlocks RUBBER;
 	public static WoodBlocks CYPRESS;
 	public static WoodBlocks WILLOW;
-	public static WoodBlocks JAPANESE_MAPLE;
 	public static WoodBlocks RAINBOW_EUCALYPTUS;
-	public static WoodBlocks SAKURA;
 	public static WoodBlocks YUCCA_PALM;
 
-	public static SmallLogBlock SMALL_OAK_LOG;
-	public static SmallLogBlock STRIPPED_SMALL_OAK_LOG;
 	public static BareSmallLogBlock SAGUARO_CACTUS;
 
-	public static LeavesBlock JAPANESE_MAPLE_SHRUB_LEAVES;
-	public static LeavesBlock DARK_JAPANESE_MAPLE_LEAVES;
 	public static LeavesBlock JUNGLE_PALM_LEAVES;
 
 	public static SeagrassBlock CATTAIL;
@@ -65,9 +59,6 @@ public class TerrestriaBlocks {
 	public static SaplingBlock RUBBER_SAPLING;
 	public static SaplingBlock CYPRESS_SAPLING;
 	public static SaplingBlock WILLOW_SAPLING;
-	public static SaplingBlock JAPANESE_MAPLE_SAPLING;
-	public static SaplingBlock JAPANESE_MAPLE_SHRUB_SAPLING;
-	public static SaplingBlock DARK_JAPANESE_MAPLE_SAPLING;
 	public static SaplingBlock RAINBOW_EUCALYPTUS_SAPLING;
 	public static SaplingBlock SAKURA_SAPLING;
 	public static SaplingBlock JUNGLE_PALM_SAPLING;
@@ -81,9 +72,6 @@ public class TerrestriaBlocks {
 	public static FlowerPotBlock POTTED_RUBBER_SAPLING;
 	public static FlowerPotBlock POTTED_CYPRESS_SAPLING;
 	public static FlowerPotBlock POTTED_WILLOW_SAPLING;
-	public static FlowerPotBlock POTTED_JAPANESE_MAPLE_SAPLING;
-	public static FlowerPotBlock POTTED_JAPANESE_MAPLE_SHRUB_SAPLING;
-	public static FlowerPotBlock POTTED_DARK_JAPANESE_MAPLE_SAPLING;
 	public static FlowerPotBlock POTTED_RAINBOW_EUCALYPTUS_SAPLING;
 	public static FlowerPotBlock POTTED_SAKURA_SAPLING;
 	public static FlowerPotBlock POTTED_SAGUARO_CACTUS_SAPLING;
@@ -115,21 +103,14 @@ public class TerrestriaBlocks {
 		REDWOOD = WoodBlocks.register("redwood", WoodColors.REDWOOD, WoodBlocks.LogSize.NORMAL, false, true, true);
 
 		// normal trunk
-		JAPANESE_MAPLE = WoodBlocks.register("japanese_maple", WoodColors.JAPANESE_MAPLE);
 		RUBBER = WoodBlocks.register("rubber", WoodColors.RUBBER);
 		WILLOW = WoodBlocks.register("willow", WoodColors.WILLOW);
 
 		// small trunk
-		SAKURA = WoodBlocks.register("sakura", WoodColors.SAKURA, WoodBlocks.LogSize.SMALL, true, false, false);
-		YUCCA_PALM = WoodBlocks.register("yucca_palm", WoodColors.YUCCA_PALM, WoodBlocks.LogSize.SMALL);
+		YUCCA_PALM = WoodBlocks.register("yucca_palm", WoodColors.YUCCA_PALM, WoodBlocks.LogSize.NORMAL);
 
 		SAGUARO_CACTUS = TerrestriaRegistry.register("saguaro_cactus", SaguaroCactusBlock.of(Blocks.CACTUS.getDefaultMapColor()));
-		SMALL_OAK_LOG = TerrestriaRegistry.register("small_oak_log", SmallLogBlock.of(Blocks.OAK_LEAVES, Blocks.STRIPPED_OAK_WOOD.getDefaultMapColor(), Blocks.OAK_WOOD.getDefaultMapColor()));
-		STRIPPED_SMALL_OAK_LOG = TerrestriaRegistry.register("stripped_small_oak_log", SmallLogBlock.of(Blocks.OAK_LEAVES, Blocks.STRIPPED_OAK_WOOD.getDefaultMapColor()));
-
 		// strange leaves
-		DARK_JAPANESE_MAPLE_LEAVES = TerrestriaRegistry.register("dark_japanese_maple_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).mapColor(MapColor.TERRACOTTA_RED).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never)));
-		JAPANESE_MAPLE_SHRUB_LEAVES = TerrestriaRegistry.register("japanese_maple_shrub_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never)));
 		JUNGLE_PALM_LEAVES = TerrestriaRegistry.register("jungle_palm_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never)));
 
 		// swamp blocks
@@ -141,10 +122,7 @@ public class TerrestriaBlocks {
 
 		BRYCE_SAPLING = TerrestriaRegistry.register("bryce_sapling", new TerraformDesertSaplingBlock(new TerrestriaSaplingGenerator(() -> TerrestriaConfiguredFeatures.BRYCE_TREE), saplingSettings));
 		CYPRESS_SAPLING = TerrestriaRegistry.register("cypress_sapling", new SaplingBlock(new TerrestriaLargeSaplingGenerator(() -> TerrestriaConfiguredFeatures.CYPRESS_TREE, () -> TerrestriaConfiguredFeatures.MEGA_CYPRESS_TREE), saplingSettings.mapColor(WoodColors.CYPRESS.leaves)));
-		DARK_JAPANESE_MAPLE_SAPLING = TerrestriaRegistry.register("dark_japanese_maple_sapling", new SaplingBlock(new TerrestriaSaplingGenerator(() -> TerrestriaConfiguredFeatures.DARK_JAPANESE_MAPLE_TREE), saplingSettings.mapColor(MapColor.TERRACOTTA_RED)));
 		HEMLOCK_SAPLING = TerrestriaRegistry.register("hemlock_sapling", new SaplingBlock(new TerrestriaLargeSaplingGenerator(() -> TerrestriaConfiguredFeatures.HEMLOCK_TREE, () -> TerrestriaConfiguredFeatures.MEGA_HEMLOCK_TREE), saplingSettings.mapColor(WoodColors.HEMLOCK.leaves)));
-		JAPANESE_MAPLE_SAPLING = TerrestriaRegistry.register("japanese_maple_sapling", new SaplingBlock(new TerrestriaSaplingGenerator(() -> TerrestriaConfiguredFeatures.JAPANESE_MAPLE_TREE), saplingSettings.mapColor(WoodColors.JAPANESE_MAPLE.leaves)));
-		JAPANESE_MAPLE_SHRUB_SAPLING = TerrestriaRegistry.register("japanese_maple_shrub_sapling", new SaplingBlock(new TerrestriaSaplingGenerator(() -> TerrestriaConfiguredFeatures.JAPANESE_MAPLE_SHRUB), saplingSettings));
 		JUNGLE_PALM_SAPLING = TerrestriaRegistry.register("jungle_palm_sapling", new TerraformDesertSaplingBlock(new TerrestriaSaplingGenerator(() -> TerrestriaConfiguredFeatures.JUNGLE_PALM_TREE), saplingSettings));
 		RAINBOW_EUCALYPTUS_SAPLING = TerrestriaRegistry.register("rainbow_eucalyptus_sapling", new SaplingBlock(new TerrestriaLargeSaplingGenerator(() -> TerrestriaConfiguredFeatures.SMALL_RAINBOW_EUCALYPTUS_TREE, () -> TerrestriaConfiguredFeatures.RAINBOW_EUCALYPTUS_TREE), saplingSettings.mapColor(WoodColors.RAINBOW_EUCALYPTUS.leaves)));
 		REDWOOD_SAPLING = TerrestriaRegistry.register("redwood_sapling", new SaplingBlock(new TerrestriaLargeSaplingGenerator(() -> TerrestriaConfiguredFeatures.REDWOOD_TREE, () -> TerrestriaConfiguredFeatures.MEGA_REDWOOD_TREE), saplingSettings.mapColor(WoodColors.REDWOOD.leaves)));
@@ -181,9 +159,6 @@ public class TerrestriaBlocks {
 		POTTED_RUBBER_SAPLING = TerrestriaRegistry.register("potted_rubber_sapling", new FlowerPotBlock(RUBBER_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
 		POTTED_CYPRESS_SAPLING = TerrestriaRegistry.register("potted_cypress_sapling", new FlowerPotBlock(CYPRESS_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
 		POTTED_WILLOW_SAPLING = TerrestriaRegistry.register("potted_willow_sapling", new FlowerPotBlock(WILLOW_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
-		POTTED_JAPANESE_MAPLE_SAPLING = TerrestriaRegistry.register("potted_japanese_maple_sapling", new FlowerPotBlock(JAPANESE_MAPLE_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
-		POTTED_JAPANESE_MAPLE_SHRUB_SAPLING = TerrestriaRegistry.register("potted_japanese_maple_shrub_sapling", new FlowerPotBlock(JAPANESE_MAPLE_SHRUB_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
-		POTTED_DARK_JAPANESE_MAPLE_SAPLING = TerrestriaRegistry.register("potted_dark_japanese_maple_sapling", new FlowerPotBlock(DARK_JAPANESE_MAPLE_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
 		POTTED_RAINBOW_EUCALYPTUS_SAPLING = TerrestriaRegistry.register("potted_rainbow_eucalyptus_sapling", new FlowerPotBlock(RAINBOW_EUCALYPTUS_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
 		POTTED_SAKURA_SAPLING = TerrestriaRegistry.register("potted_sakura_sapling", new FlowerPotBlock(SAKURA_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
 		POTTED_JUNGLE_PALM_SAPLING = TerrestriaRegistry.register("potted_jungle_palm_sapling", new FlowerPotBlock(JUNGLE_PALM_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
@@ -207,11 +182,6 @@ public class TerrestriaBlocks {
 	private static void addFlammables() {
 		FlammableBlockRegistry flammableRegistry = FlammableBlockRegistry.getDefaultInstance();
 
-		flammableRegistry.add(SMALL_OAK_LOG, 5, 5);
-		flammableRegistry.add(STRIPPED_SMALL_OAK_LOG, 5, 5);
-
-		flammableRegistry.add(JAPANESE_MAPLE_SHRUB_LEAVES, 30, 60);
-		flammableRegistry.add(DARK_JAPANESE_MAPLE_LEAVES, 30, 60);
 		flammableRegistry.add(JUNGLE_PALM_LEAVES, 30, 60);
 
 		flammableRegistry.add(DEAD_GRASS, 30, 60);
@@ -224,7 +194,6 @@ public class TerrestriaBlocks {
 	}
 
 	private static void addStrippables() {
-		StrippableBlockRegistry.register(SMALL_OAK_LOG, STRIPPED_SMALL_OAK_LOG);
 	}
 
 	public static boolean never(BlockState state, BlockView world, BlockPos pos) {

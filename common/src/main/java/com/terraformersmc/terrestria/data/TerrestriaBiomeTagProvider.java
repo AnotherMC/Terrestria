@@ -31,9 +31,7 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 			.addOptional(TerrestriaBiomes.VOLCANIC_ISLAND);
 
 		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.IS_FOREST.id()))
-			.addOptional(TerrestriaBiomes.CYPRESS_FOREST)
-			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
-			.addOptional(TerrestriaBiomes.SAKURA_FOREST);
+			.addOptional(TerrestriaBiomes.CYPRESS_FOREST);
 
 		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.IS_HILL.id()))
 			.addOptional(TerrestriaBiomes.VOLCANIC_ISLAND);
@@ -81,10 +79,8 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 			.addOptional(TerrestriaBiomes.CYPRESS_SWAMP)
 			.addOptional(TerrestriaBiomes.DENSE_WOODLANDS)
 			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
-			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
 			.addOptional(TerrestriaBiomes.LUSH_REDWOOD_FOREST)
-			.addOptional(TerrestriaBiomes.REDWOOD_FOREST)
-			.addOptional(TerrestriaBiomes.SAKURA_FOREST);
+			.addOptional(TerrestriaBiomes.REDWOOD_FOREST);
 
 		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, ConventionalBiomeTags.DEAD.id()))
 			.addOptional(TerrestriaBiomes.DUNES);
@@ -107,14 +103,12 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 			.addOptional(TerrestriaBiomes.DUNES)
 			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
 			.addOptional(TerrestriaBiomes.HEMLOCK_TREELINE)
-			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
 			.addOptional(TerrestriaBiomes.LUSH_DESERT)
 			.addOptional(TerrestriaBiomes.LUSH_REDWOOD_FOREST)
 			.addOptional(TerrestriaBiomes.OASIS)
 			.addOptional(TerrestriaBiomes.OUTBACK)
 			.addOptional(TerrestriaBiomes.RAINBOW_RAINFOREST)
 			.addOptional(TerrestriaBiomes.REDWOOD_FOREST)
-			.addOptional(TerrestriaBiomes.SAKURA_FOREST)
 			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_FOREST)
 			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_TREELINE)
 			.addOptional(TerrestriaBiomes.VOLCANIC_ISLAND)
@@ -140,9 +134,7 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 
 		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, ConventionalBiomeTags.TREE_DECIDUOUS.id()))
 			.addOptional(TerrestriaBiomes.DENSE_WOODLANDS)
-			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
-			.addOptional(TerrestriaBiomes.RAINBOW_RAINFOREST)
-			.addOptional(TerrestriaBiomes.SAKURA_FOREST);
+			.addOptional(TerrestriaBiomes.RAINBOW_RAINFOREST);
 
 
 		/*
@@ -167,14 +159,12 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 			.addOptional(TerrestriaBiomes.DUNES)
 			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
 			.addOptional(TerrestriaBiomes.HEMLOCK_TREELINE)
-			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
 			.addOptional(TerrestriaBiomes.LUSH_DESERT)
 			.addOptional(TerrestriaBiomes.LUSH_REDWOOD_FOREST)
 			.addOptional(TerrestriaBiomes.OASIS)
 			.addOptional(TerrestriaBiomes.OUTBACK)
 			.addOptional(TerrestriaBiomes.RAINBOW_RAINFOREST)
 			.addOptional(TerrestriaBiomes.REDWOOD_FOREST)
-			.addOptional(TerrestriaBiomes.SAKURA_FOREST)
 			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_FOREST)
 			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_TREELINE)
 			.addOptional(TerrestriaBiomes.VOLCANIC_ISLAND)
@@ -197,10 +187,8 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.RUINED_PORTAL_STANDARD_HAS_STRUCTURE.id()))
 			.addOptional(TerrestriaBiomes.CYPRESS_FOREST)
 			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
-			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
 			.addOptional(TerrestriaBiomes.LUSH_REDWOOD_FOREST)
 			.addOptional(TerrestriaBiomes.REDWOOD_FOREST)
-			.addOptional(TerrestriaBiomes.SAKURA_FOREST)
 			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_FOREST);
 
 		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.SWAMP_HUT_HAS_STRUCTURE.id()))
@@ -218,14 +206,12 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 			.addOptional(TerrestriaBiomes.DUNES)
 			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
 			.addOptional(TerrestriaBiomes.HEMLOCK_TREELINE)
-			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
 			.addOptional(TerrestriaBiomes.LUSH_DESERT)
 			.addOptional(TerrestriaBiomes.LUSH_REDWOOD_FOREST)
 			.addOptional(TerrestriaBiomes.OASIS)
 			.addOptional(TerrestriaBiomes.OUTBACK)
 			.addOptional(TerrestriaBiomes.RAINBOW_RAINFOREST)
 			.addOptional(TerrestriaBiomes.REDWOOD_FOREST)
-			.addOptional(TerrestriaBiomes.SAKURA_FOREST)
 			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_FOREST)
 			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_TREELINE)
 			.addOptional(TerrestriaBiomes.VOLCANIC_ISLAND)
@@ -238,10 +224,8 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 
 		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.VILLAGE_PLAINS_HAS_STRUCTURE.id()))
 			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
-			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
 			.addOptional(TerrestriaBiomes.LUSH_REDWOOD_FOREST)
-			.addOptional(TerrestriaBiomes.REDWOOD_FOREST)
-			.addOptional(TerrestriaBiomes.SAKURA_FOREST);
+			.addOptional(TerrestriaBiomes.REDWOOD_FOREST);
 
 		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.VILLAGE_SAVANNA_HAS_STRUCTURE.id()))
 			.addOptional(TerrestriaBiomes.OUTBACK);

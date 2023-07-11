@@ -33,11 +33,8 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 			.add(TerrestriaBlocks.POTTED_ALOE_VERA)
 			.add(TerrestriaBlocks.POTTED_BRYCE_SAPLING)
 			.add(TerrestriaBlocks.POTTED_CYPRESS_SAPLING)
-			.add(TerrestriaBlocks.POTTED_DARK_JAPANESE_MAPLE_SAPLING)
 			.add(TerrestriaBlocks.POTTED_HEMLOCK_SAPLING)
 			.add(TerrestriaBlocks.POTTED_INDIAN_PAINTBRUSH)
-			.add(TerrestriaBlocks.POTTED_JAPANESE_MAPLE_SAPLING)
-			.add(TerrestriaBlocks.POTTED_JAPANESE_MAPLE_SHRUB_SAPLING)
 			.add(TerrestriaBlocks.POTTED_JUNGLE_PALM_SAPLING)
 			.add(TerrestriaBlocks.POTTED_MONSTERAS)
 			.add(TerrestriaBlocks.POTTED_RAINBOW_EUCALYPTUS_SAPLING)
@@ -50,20 +47,13 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 			.add(TerrestriaBlocks.POTTED_YUCCA_PALM_SAPLING);
 
 		getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
-			.add(TerrestriaBlocks.DARK_JAPANESE_MAPLE_LEAVES)
-			.add(TerrestriaBlocks.JAPANESE_MAPLE_SHRUB_LEAVES)
 			.add(TerrestriaBlocks.JUNGLE_PALM_LEAVES);
 
 		getOrCreateTagBuilder(BlockTags.LEAVES)
-			.add(TerrestriaBlocks.DARK_JAPANESE_MAPLE_LEAVES)
-			.add(TerrestriaBlocks.JAPANESE_MAPLE_SHRUB_LEAVES)
 			.add(TerrestriaBlocks.JUNGLE_PALM_LEAVES);
 
 		getOrCreateTagBuilder(BlockTags.MOSS_REPLACEABLE)
 			.add(TerrestriaBlocks.VOLCANIC_ROCK.plain.full);
-
-		getOrCreateTagBuilder(BlockTags.OAK_LOGS)
-			.addTag(TerrestriaBlockTags.SMALL_OAK_LOGS);
 
 		getOrCreateTagBuilder(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
 			.add(Blocks.SMOOTH_SANDSTONE)
@@ -74,10 +64,7 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 		getOrCreateTagBuilder(BlockTags.SAPLINGS)
 			.add(TerrestriaBlocks.BRYCE_SAPLING)
 			.add(TerrestriaBlocks.CYPRESS_SAPLING)
-			.add(TerrestriaBlocks.DARK_JAPANESE_MAPLE_SAPLING)
 			.add(TerrestriaBlocks.HEMLOCK_SAPLING)
-			.add(TerrestriaBlocks.JAPANESE_MAPLE_SAPLING)
-			.add(TerrestriaBlocks.JAPANESE_MAPLE_SHRUB_SAPLING)
 			.add(TerrestriaBlocks.JUNGLE_PALM_SAPLING)
 			.add(TerrestriaBlocks.RAINBOW_EUCALYPTUS_SAPLING)
 			.add(TerrestriaBlocks.REDWOOD_SAPLING)
@@ -95,14 +82,6 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 		getOrCreateTagBuilder(TerrestriaBlockTags.BLACK_SAND)
 			.add(TerrestriaBlocks.BLACK_SAND);
 
-		getOrCreateTagBuilder(TerrestriaBlockTags.SMALL_OAK_LOGS)
-			.add(TerrestriaBlocks.SMALL_OAK_LOG)
-			.add(TerrestriaBlocks.STRIPPED_SMALL_OAK_LOG);
-
-		getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
-			.addTag(TerrestriaBlockTags.SMALL_OAK_LOGS);
-
-
 		// custom dirt block tags
 		addDirt(TerrestriaBlocks.ANDISOL);
 
@@ -115,11 +94,9 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 		// wood building block tags
 		addWood(TerrestriaBlockTags.CYPRESS_LOGS, TerrestriaBlocks.CYPRESS);
 		addWood(TerrestriaBlockTags.HEMLOCK_LOGS, TerrestriaBlocks.HEMLOCK);
-		addWood(TerrestriaBlockTags.JAPANESE_MAPLE_LOGS, TerrestriaBlocks.JAPANESE_MAPLE);
 		addWood(TerrestriaBlockTags.RAINBOW_EUCALYPTUS_LOGS, TerrestriaBlocks.RAINBOW_EUCALYPTUS);
 		addWood(TerrestriaBlockTags.REDWOOD_LOGS, TerrestriaBlocks.REDWOOD);
 		addWood(TerrestriaBlockTags.RUBBER_LOGS, TerrestriaBlocks.RUBBER);
-		addWood(TerrestriaBlockTags.SAKURA_LOGS, TerrestriaBlocks.SAKURA);
 		addWood(TerrestriaBlockTags.WILLOW_LOGS, TerrestriaBlocks.WILLOW);
 		addWood(TerrestriaBlockTags.YUCCA_PALM_LOGS, TerrestriaBlocks.YUCCA_PALM);
 	}
@@ -221,19 +198,12 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 			getOrCreateTagBuilder(TerrestriaBlockTags.STONE).add(stoneBlock.smooth.full);
 		}
 
-		getOrCreateTagBuilder(BlockTags.BUTTONS).add(stoneBlock.button);
-		getOrCreateTagBuilder(BlockTags.PRESSURE_PLATES).add(stoneBlock.pressurePlate);
 	}
 
 	private void addStoneVariant(StoneVariantBlocks stoneVariantBlock) {
-		getOrCreateTagBuilder(BlockTags.SLABS).add(stoneVariantBlock.slab);
-		getOrCreateTagBuilder(BlockTags.STAIRS).add(stoneVariantBlock.stairs);
-		getOrCreateTagBuilder(BlockTags.WALLS).add(stoneVariantBlock.wall);
 
 		getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-			.add(stoneVariantBlock.full)
-			.add(stoneVariantBlock.slab)
-			.add(stoneVariantBlock.stairs);
+			.add(stoneVariantBlock.full);
 			// Adding to WALLS does this for PICKAXE_MINEABLE.
 	}
 
@@ -251,29 +221,6 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 			getOrCreateTagBuilder(TerrestriaBlockTags.STRIPPED_WOOD).add(woodBlock.strippedWood);
 		}
 
-		if (woodBlock.hasQuarterLog()) {
-			woodBuilder
-				.add(woodBlock.quarterLog)
-				.add(woodBlock.strippedQuarterLog);
-			getOrCreateTagBuilder(TerrestriaBlockTags.STRIPPED_LOGS).add(woodBlock.strippedQuarterLog);
-		}
-
-		getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(woodBlock.fenceGate);
-		getOrCreateTagBuilder(BlockTags.LEAVES).add(woodBlock.leaves);
-		getOrCreateTagBuilder(BlockTags.PLANKS).add(woodBlock.planks);
-		getOrCreateTagBuilder(BlockTags.SLABS).add(woodBlock.slab);
-		getOrCreateTagBuilder(BlockTags.STAIRS).add(woodBlock.stairs);
-		getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(woodBlock.sign);
-		getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(woodBlock.wallSign);
-		getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(woodBlock.hangingSign);
-		getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(woodBlock.wallHangingSign);
-		getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(woodBlock.button);
-		getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(woodBlock.door);
-		getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(woodBlock.fence);
-		getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(woodBlock.pressurePlate);
-		getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(woodBlock.slab);
-		getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(woodBlock.stairs);
-		getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(woodBlock.trapdoor);
 
 		// Adding to FENCE_GATES or any WOODEN tag does this for AXE_MINEABLE.
 		getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(woodBlock.leaves);
@@ -284,7 +231,6 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 		// If the log burns, we assume all the logs, planks, and wood burn.
 		if (woodBlock.log.getDefaultState().isBurnable()) {
 			getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(logTag);
-			getOrCreateTagBuilder(TerrestriaBlockTags.PLANKS_THAT_BURN).add(woodBlock.planks);
 		}
 	}
 }

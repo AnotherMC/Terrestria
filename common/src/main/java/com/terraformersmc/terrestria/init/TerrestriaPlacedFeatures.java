@@ -74,7 +74,6 @@ public class TerrestriaPlacedFeatures {
 	public static final RegistryKey<PlacedFeature> DENSE_JAPANESE_MAPLE_TREES = createRegistryKey("dense_japanese_maple_trees");
 	public static final RegistryKey<PlacedFeature> DENSE_DARK_JAPANESE_MAPLE_TREES = createRegistryKey("dense_dark_japanese_maple_trees");
 	public static final RegistryKey<PlacedFeature> DENSE_JAPANESE_MAPLE_SHRUBS = createRegistryKey("dense_japanese_maple_shrubs");
-	public static final RegistryKey<PlacedFeature> DENSER_SAKURA_TREES = createRegistryKey("denser_sakura_trees");
 	public static final RegistryKey<PlacedFeature> DENSEST_CYPRESS_TREES = createRegistryKey("densest_cypress_trees");
 	public static final RegistryKey<PlacedFeature> DENSER_RAINBOW_EUCALYPTUS_TREES = createRegistryKey("denser_rainbow_eucalyptus_trees");
 	public static final RegistryKey<PlacedFeature> DENSE_RUBBER_TREES = createRegistryKey("dense_rubber_trees");
@@ -285,13 +284,7 @@ public class TerrestriaPlacedFeatures {
 			PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
 			BlockFilterPlacementModifier.of(ON_DIRT_OR_SAND)));
 
-		entries.add(DENSE_JAPANESE_MAPLE_TREES, placeTreeFeature(entries, 3, ON_DIRT, TerrestriaConfiguredFeatures.JAPANESE_MAPLE_TREE));
 
-		entries.add(DENSE_DARK_JAPANESE_MAPLE_TREES, placeTreeFeature(entries, 3, ON_DIRT, TerrestriaConfiguredFeatures.DARK_JAPANESE_MAPLE_TREE));
-
-		entries.add(DENSE_JAPANESE_MAPLE_SHRUBS, placeTreeFeature(entries, 3, ON_DIRT, TerrestriaConfiguredFeatures.JAPANESE_MAPLE_SHRUB));
-
-		entries.add(DENSER_SAKURA_TREES, placeTreeFeature(entries, 6, ON_DIRT, TerrestriaConfiguredFeatures.SAKURA_TREE));
 
 		entries.add(DENSEST_CYPRESS_TREES, placeTreeFeature(entries, 9, ON_DIRT, TerrestriaConfiguredFeatures.CYPRESS_TREE));
 

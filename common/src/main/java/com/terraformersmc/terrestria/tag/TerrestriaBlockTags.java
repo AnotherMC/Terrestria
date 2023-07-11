@@ -22,7 +22,6 @@ public final class TerrestriaBlockTags {
 
 	public static final TagKey<Block> CYPRESS_LOGS = TerrestriaBlockTags.of("cypress_logs");
 	public static final TagKey<Block> HEMLOCK_LOGS = TerrestriaBlockTags.of("hemlock_logs");
-	public static final TagKey<Block> JAPANESE_MAPLE_LOGS = TerrestriaBlockTags.of("japanese_maple_logs");
 	public static final TagKey<Block> RAINBOW_EUCALYPTUS_LOGS = TerrestriaBlockTags.of("rainbow_eucalyptus_logs");
 	public static final TagKey<Block> REDWOOD_LOGS = TerrestriaBlockTags.of("redwood_logs");
 	public static final TagKey<Block> RUBBER_LOGS = TerrestriaBlockTags.of("rubber_logs");

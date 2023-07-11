@@ -33,12 +33,10 @@ public class TerrestriaTerraBlenderGeneration extends Region implements Runnable
 		if (BIOME_CONFIG.isBiomeEnabled(CYPRESS_SWAMP))            { this.addBiomeSimilar(mapper, BiomeKeys.SWAMP, CYPRESS_SWAMP); }
 		if (BIOME_CONFIG.isBiomeEnabled(DENSE_WOODLANDS))          { this.addBiomeSimilar(mapper, BiomeKeys.BIRCH_FOREST, DENSE_WOODLANDS); }
 		if (BIOME_CONFIG.isBiomeEnabled(HEMLOCK_RAINFOREST))       { this.addBiomeSimilar(mapper, BiomeKeys.TAIGA, HEMLOCK_RAINFOREST); }
-		if (BIOME_CONFIG.isBiomeEnabled(JAPANESE_MAPLE_FOREST))    { this.addBiomeSimilar(mapper, BiomeKeys.FOREST, JAPANESE_MAPLE_FOREST); }
 		if (BIOME_CONFIG.isBiomeEnabled(LUSH_REDWOOD_FOREST))      { this.addBiomeSimilar(mapper, BiomeKeys.OLD_GROWTH_BIRCH_FOREST, LUSH_REDWOOD_FOREST); }
 		if (BIOME_CONFIG.isBiomeEnabled(LUSH_DESERT))              { this.addBiomeSimilar(mapper, BiomeKeys.DESERT, LUSH_DESERT); }
 		if (BIOME_CONFIG.isBiomeEnabled(OUTBACK))                  { this.addBiomeSimilar(mapper, BiomeKeys.SAVANNA, OUTBACK); }
 		if (BIOME_CONFIG.isBiomeEnabled(REDWOOD_FOREST))           { this.addBiomeSimilar(mapper, BiomeKeys.FOREST, REDWOOD_FOREST); }
-		if (BIOME_CONFIG.isBiomeEnabled(SAKURA_FOREST))            { this.addBiomeSimilar(mapper, BiomeKeys.CHERRY_GROVE, SAKURA_FOREST); }
 		if (BIOME_CONFIG.isBiomeEnabled(SNOWY_HEMLOCK_FOREST))     { this.addBiomeSimilar(mapper, BiomeKeys.SNOWY_TAIGA, SNOWY_HEMLOCK_FOREST); }
 		if (BIOME_CONFIG.isBiomeEnabled(SNOWY_HEMLOCK_FOREST))     { this.addBiomeSimilar(mapper, BiomeKeys.GROVE, SNOWY_HEMLOCK_FOREST); }
 		if (BIOME_CONFIG.isBiomeEnabled(SNOWY_HEMLOCK_TREELINE))   { this.addBiomeSimilar(mapper, BiomeKeys.SNOWY_SLOPES, SNOWY_HEMLOCK_TREELINE); }

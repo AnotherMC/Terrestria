@@ -2,6 +2,7 @@ package com.terraformersmc.terrestria.feature.tree.trunkplacers.templates;
 
 import com.terraformersmc.terraform.wood.block.BareSmallLogBlock;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -21,7 +22,15 @@ public abstract class SmallTrunkPlacer extends TrunkPlacer {
 
 	protected void setBlockStateAndUpdate(TreeFeatureConfig config, Random random, BiConsumer<BlockPos, BlockState> replacer, TestableWorld world, BlockPos origin, Direction direction) {
 		//Place the block
-		checkAndPlaceSpecificBlockState(world, origin, replacer, config.trunkProvider.get(random, origin).with(getPropertyFromDirection(direction.getOpposite()), true));
+		var state = config.trunkProvider.get(random, origin);
+		if (state.getBlock() instanceof BareSmallLogBlock) {
+			state = state.with(getPropertyFromDirection(direction.getOpposite()), true);
+		} else if (state.getBlock() instanceof PillarBlock) {
+			state = state.with(PillarBlock.AXIS, direction.getAxis());
+		}
+
+
+		checkAndPlaceSpecificBlockState(world, origin, replacer, state);
 
 		// Fix the one behind it to connect if it's a BareSmallLogBlock
 		addSmallLogConnection(config, random, replacer, world, origin.offset(direction.getOpposite()), direction);
@@ -48,8 +57,12 @@ public abstract class SmallTrunkPlacer extends TrunkPlacer {
 		if (!world.testBlockState(pos, tester -> tester.getBlock() instanceof BareSmallLogBlock)) {
 			return null;
 		}
+		var state = config.trunkProvider.get(random, pos);
+		if (!(state.getBlock() instanceof BareSmallLogBlock)) {
+			return state;
+		}
 
-		return config.trunkProvider.get(random, pos)
+		return state
 				.with(BareSmallLogBlock.NORTH, world.testBlockState(pos, test -> test.get(BareSmallLogBlock.NORTH)))
 				.with(BareSmallLogBlock.SOUTH, world.testBlockState(pos, test -> test.get(BareSmallLogBlock.SOUTH)))
 				.with(BareSmallLogBlock.EAST, world.testBlockState(pos, test -> test.get(BareSmallLogBlock.EAST)))

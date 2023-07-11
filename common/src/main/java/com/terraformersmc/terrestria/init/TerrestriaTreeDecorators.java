@@ -18,7 +18,6 @@ public class TerrestriaTreeDecorators {
 
 	public static void init() {
 		DANGLING_LEAVES = register("dangling_leaves_tree_decorator", DanglingLeavesTreeDecorator.CODEC);
-		SAKURA = register("sakura_tree_decorator", SakuraTreeDecorator.CODEC);
 	}
 
 	private static <P extends TreeDecorator> TreeDecoratorType<P> register(String name, Codec<P> codec) {

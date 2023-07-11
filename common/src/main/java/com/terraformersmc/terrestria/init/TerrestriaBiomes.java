@@ -27,14 +27,12 @@ public class TerrestriaBiomes {
 	public static final RegistryKey<Biome> DUNES = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "dunes"));
 	public static final RegistryKey<Biome> HEMLOCK_RAINFOREST = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "hemlock_rainforest"));
 	public static final RegistryKey<Biome> HEMLOCK_TREELINE = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "hemlock_treeline"));
-	public static final RegistryKey<Biome> JAPANESE_MAPLE_FOREST = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "japanese_maple_forest"));
 	public static final RegistryKey<Biome> LUSH_DESERT = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "lush_desert"));
 	public static final RegistryKey<Biome> LUSH_REDWOOD_FOREST = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "lush_redwood_forest"));
 	public static final RegistryKey<Biome> OASIS = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "oasis"));
 	public static final RegistryKey<Biome> OUTBACK = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "outback"));
 	public static final RegistryKey<Biome> RAINBOW_RAINFOREST = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "rainbow_rainforest"));
 	public static final RegistryKey<Biome> REDWOOD_FOREST = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "redwood_forest"));
-	public static final RegistryKey<Biome> SAKURA_FOREST = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "sakura_forest"));
 	public static final RegistryKey<Biome> SNOWY_HEMLOCK_FOREST = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "snowy_hemlock_forest"));
 	public static final RegistryKey<Biome> SNOWY_HEMLOCK_TREELINE = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "snowy_hemlock_treeline"));
 	public static final RegistryKey<Biome> VOLCANIC_ISLAND = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Terrestria.MOD_ID, "volcanic_island"));
@@ -49,14 +47,12 @@ public class TerrestriaBiomes {
 			DUNES,
 			HEMLOCK_RAINFOREST,
 			HEMLOCK_TREELINE,
-			JAPANESE_MAPLE_FOREST,
 			LUSH_DESERT,
 			LUSH_REDWOOD_FOREST,
 			OASIS,
 			OUTBACK,
 			RAINBOW_RAINFOREST,
 			REDWOOD_FOREST,
-			SAKURA_FOREST,
 			SNOWY_HEMLOCK_FOREST,
 			SNOWY_HEMLOCK_TREELINE,
 			VOLCANIC_ISLAND,
@@ -72,14 +68,12 @@ public class TerrestriaBiomes {
 		entries.add(DUNES, DunesBiomes.create(entries));
 		entries.add(HEMLOCK_RAINFOREST, HemlockRainforestBiomes.create(entries, false));
 		entries.add(HEMLOCK_TREELINE, HemlockRainforestBiomes.create(entries, true));
-		entries.add(JAPANESE_MAPLE_FOREST, JapaneseMapleForestBiomes.create(entries));
 		entries.add(LUSH_DESERT, LushDesertBiomes.create(entries, false));
 		entries.add(LUSH_REDWOOD_FOREST, LushRedwoodForestBiomes.create(entries));
 		entries.add(OASIS, LushDesertBiomes.create(entries, true));
 		entries.add(OUTBACK, OutbackBiomes.create(entries));
 		entries.add(RAINBOW_RAINFOREST, RainbowRainforestBiomes.create(entries));
 		entries.add(REDWOOD_FOREST, RedwoodForestBiomes.create(entries, false));
-		entries.add(SAKURA_FOREST, SakuraForestBiomes.create(entries));
 		entries.add(SNOWY_HEMLOCK_FOREST, SnowyHemlockRainforestBiomes.create(entries, false));
 		entries.add(SNOWY_HEMLOCK_TREELINE, SnowyHemlockRainforestBiomes.create(entries, true));
 		entries.add(VOLCANIC_ISLAND, VolcanicIslandBiomes.create(entries));

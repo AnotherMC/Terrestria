@@ -58,11 +58,9 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 		// wood building block recipes
 		generateWood(exporter, TerrestriaItems.CYPRESS, TerrestriaItemTags.CYPRESS_LOGS);
 		generateWood(exporter, TerrestriaItems.HEMLOCK, TerrestriaItemTags.HEMLOCK_LOGS);
-		generateWood(exporter, TerrestriaItems.JAPANESE_MAPLE, TerrestriaItemTags.JAPANESE_MAPLE_LOGS);
 		generateWood(exporter, TerrestriaItems.RAINBOW_EUCALYPTUS, TerrestriaItemTags.RAINBOW_EUCALYPTUS_LOGS);
 		generateWood(exporter, TerrestriaItems.REDWOOD, TerrestriaItemTags.REDWOOD_LOGS);
 		generateWood(exporter, TerrestriaItems.RUBBER, TerrestriaItemTags.RUBBER_LOGS);
-		generateWood(exporter, TerrestriaItems.SAKURA, TerrestriaItemTags.SAKURA_LOGS);
 		generateWood(exporter, TerrestriaItems.WILLOW, TerrestriaItemTags.WILLOW_LOGS);
 		generateWood(exporter, TerrestriaItems.YUCCA_PALM, TerrestriaItemTags.YUCCA_PALM_LOGS);
 
@@ -71,51 +69,10 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 	}
 
 	private void generateWood(Consumer<RecipeJsonProvider> exporter, WoodItems woodItem, TagKey<Item> logsTag) {
-		if (woodItem.hasBoat()) {
-			assert (woodItem.boat != null);  // it's not null; this is just for IDEA
-			offerBoatRecipe(exporter, woodItem.boat, woodItem.planks);
-			assert (woodItem.chestBoat != null);  // it's not null; this is just for IDEA
-			offerChestBoatRecipe(exporter, woodItem.chestBoat, woodItem.boat);
+		if (woodItem.fallbackPlanks != null) {
+			ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, woodItem.fallbackPlanks, 4)
+					.input(logsTag).group("planks").criterion("has_logs", conditionsFromTag(logsTag)).offerTo(exporter, new Identifier("terrestria", getItemPath(woodItem.log) + "_to_planks"));
 		}
-
-		new ShapelessRecipeJsonBuilder(RecipeCategory.REDSTONE, woodItem.button, 1)
-			.group("wooden_button")
-			.input(woodItem.planks)
-			.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-			.offerTo(exporter);
-
-		createDoorRecipe(woodItem.door, Ingredient.ofItems(woodItem.planks))
-			.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-			.offerTo(exporter);
-
-		createFenceRecipe(woodItem.fence, Ingredient.ofItems(woodItem.planks))
-			.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-			.offerTo(exporter);
-
-		createFenceGateRecipe(woodItem.fenceGate, Ingredient.ofItems(woodItem.planks))
-			.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-			.offerTo(exporter);
-
-		offerHangingSignRecipe(exporter, woodItem.hangingSign, woodItem.strippedLog);
-
-		offerPlanksRecipe(exporter, woodItem.planks, logsTag, 4);
-
-		offerPressurePlateRecipe(exporter, woodItem.pressurePlate, woodItem.planks);
-
-		createSignRecipe(woodItem.sign, Ingredient.ofItems(woodItem.planks))
-			.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-			.offerTo(exporter);
-
-		offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, woodItem.slab, woodItem.planks);
-
-		createStairsRecipe(woodItem.stairs, Ingredient.ofItems(woodItem.planks))
-			.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-			.offerTo(exporter);
-
-		createTrapdoorRecipe(woodItem.trapdoor, Ingredient.ofItems(woodItem.planks))
-			.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-			.offerTo(exporter);
-
 		// leaf piles are an optional wood feature
 		if (woodItem.hasLeafPile()) {
 			assert (woodItem.leafPile != null);  // it's not null; this is just for IDEA
@@ -161,7 +118,6 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 				.offerTo(exporter);
 			offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneItem.bricks.full, stoneItem.plain.full);
 
-			offerChiseledBlockRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneItem.chiseledBricks, stoneItem.bricks.slab);
 			offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneItem.chiseledBricks, stoneItem.bricks.full);
 			offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneItem.chiseledBricks, stoneItem.plain.full);
 
@@ -200,19 +156,6 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 					stoneItem.plain.full,
 					0.1f, 200, "stone");
 			}
-
-			new ShapelessRecipeJsonBuilder(RecipeCategory.REDSTONE, stoneItem.button, 1)
-				.group("stone_button")
-				.input(stoneItem.plain.full)
-				.criterion("has_stone", InventoryChangedCriterion.Conditions.items(stoneItem.plain.full))
-				.offerTo(exporter);
-
-			new ShapedRecipeJsonBuilder(RecipeCategory.REDSTONE, stoneItem.pressurePlate, 1)
-				.group("stone_pressure_plate")
-				.pattern("SS")
-				.input('S', stoneItem.plain.full)
-				.criterion("has_stone", InventoryChangedCriterion.Conditions.items(stoneItem.plain.full))
-				.offerTo(exporter);
 		}
 		if (stoneItem.smooth != null) {
 			generateStoneVariant(exporter, stoneItem.smooth, null);
@@ -228,21 +171,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 	}
 
 	private void generateStoneVariant(Consumer<RecipeJsonProvider> exporter, StoneVariantItems stoneVariantItem, @Nullable BlockItem cutPlainItem) {
-		offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneVariantItem.slab, stoneVariantItem.full);
-		createStairsRecipe(stoneVariantItem.stairs, Ingredient.ofItems(stoneVariantItem.full))
-			.criterion("has_stone", InventoryChangedCriterion.Conditions.items(stoneVariantItem.full))
-			.offerTo(exporter);  // ?? so lame there is no offerStairsRecipe() !!
-		offerWallRecipe(exporter, RecipeCategory.DECORATIONS, stoneVariantItem.wall, stoneVariantItem.full);
 
-		offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneVariantItem.slab, stoneVariantItem.full, 2);
-		offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneVariantItem.stairs, stoneVariantItem.full);
-		offerStonecuttingRecipe(exporter, RecipeCategory.DECORATIONS, stoneVariantItem.wall, stoneVariantItem.full);
-
-		if (cutPlainItem != null) {
-			offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneVariantItem.slab, cutPlainItem, 2);
-			offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stoneVariantItem.stairs, cutPlainItem);
-			offerStonecuttingRecipe(exporter, RecipeCategory.DECORATIONS, stoneVariantItem.wall, cutPlainItem);
-		}
 	}
 
 	@Override

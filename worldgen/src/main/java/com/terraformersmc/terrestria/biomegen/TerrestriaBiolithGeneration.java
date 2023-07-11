@@ -21,12 +21,10 @@ public class TerrestriaBiolithGeneration implements Runnable {
 		if (BIOME_CONFIG.isBiomeEnabled(CYPRESS_SWAMP))            { BiomePlacement.replaceOverworld(BiomeKeys.SWAMP, CYPRESS_SWAMP, 0.325D); }
 		if (BIOME_CONFIG.isBiomeEnabled(DENSE_WOODLANDS))          { BiomePlacement.replaceOverworld(BiomeKeys.BIRCH_FOREST, DENSE_WOODLANDS, 0.325D); }
 		if (BIOME_CONFIG.isBiomeEnabled(HEMLOCK_RAINFOREST))       { BiomePlacement.replaceOverworld(BiomeKeys.TAIGA, HEMLOCK_RAINFOREST, 0.325D); }
-		if (BIOME_CONFIG.isBiomeEnabled(JAPANESE_MAPLE_FOREST))    { BiomePlacement.replaceOverworld(BiomeKeys.FOREST, JAPANESE_MAPLE_FOREST, 0.325D); }
 		if (BIOME_CONFIG.isBiomeEnabled(LUSH_REDWOOD_FOREST))      { BiomePlacement.replaceOverworld(BiomeKeys.OLD_GROWTH_BIRCH_FOREST, LUSH_REDWOOD_FOREST, 0.325D); }
 		if (BIOME_CONFIG.isBiomeEnabled(LUSH_DESERT))              { BiomePlacement.replaceOverworld(BiomeKeys.DESERT, LUSH_DESERT, 0.325D); }
 		if (BIOME_CONFIG.isBiomeEnabled(OUTBACK))                  { BiomePlacement.replaceOverworld(BiomeKeys.SAVANNA, OUTBACK, 0.325D); }
 		if (BIOME_CONFIG.isBiomeEnabled(REDWOOD_FOREST))           { BiomePlacement.replaceOverworld(BiomeKeys.FOREST, REDWOOD_FOREST, 0.325D); }
-		if (BIOME_CONFIG.isBiomeEnabled(SAKURA_FOREST))            { BiomePlacement.replaceOverworld(BiomeKeys.CHERRY_GROVE, SAKURA_FOREST, 0.325D); }
 		if (BIOME_CONFIG.isBiomeEnabled(SNOWY_HEMLOCK_FOREST))     { BiomePlacement.replaceOverworld(BiomeKeys.SNOWY_TAIGA, SNOWY_HEMLOCK_FOREST, 0.325D); }
 		if (BIOME_CONFIG.isBiomeEnabled(SNOWY_HEMLOCK_FOREST))     { BiomePlacement.replaceOverworld(BiomeKeys.GROVE, SNOWY_HEMLOCK_FOREST, 0.325D); }
 		if (BIOME_CONFIG.isBiomeEnabled(SNOWY_HEMLOCK_TREELINE))   { BiomePlacement.replaceOverworld(BiomeKeys.SNOWY_SLOPES, SNOWY_HEMLOCK_TREELINE, 0.325D); }

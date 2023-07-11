@@ -25,10 +25,6 @@ public class MixinBlockDustParticle {
 		// with the grass color.
 		//
 		// The below code does the same thing for our own blocks, since they too have particles that shouldn't be tinted.
-		if (block == TerrestriaBlocks.ANDISOL.getGrassBlock() || block == TerrestriaBlocks.SMALL_OAK_LOG
-				|| block == TerrestriaBlocks.STRIPPED_SMALL_OAK_LOG) {
-			return true;
-		}
 
 		return blockState.isOf(requiredBlock);
 	}

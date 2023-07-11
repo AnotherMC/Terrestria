@@ -56,30 +56,19 @@ public class TerrestriaItemGroups {
 		// BUILDING BLOCKS
 
 		// Wood Items
-		addGroupEntry(TerrestriaBlocks.SMALL_OAK_LOG, ItemGroups.BUILDING_BLOCKS, Items.OAK_WOOD);
-		addGroupEntry(TerrestriaBlocks.STRIPPED_SMALL_OAK_LOG, ItemGroups.BUILDING_BLOCKS, Items.STRIPPED_OAK_WOOD);
-
-
 		// NATURAL
 
 		// Wood Items
-		addGroupEntry(TerrestriaBlocks.SMALL_OAK_LOG, ItemGroups.NATURAL, Items.OAK_LOG);
-
 		// Sand and Sandstone
 		addGroupEntry(TerrestriaBlocks.BLACK_SAND, ItemGroups.NATURAL, NATURAL_SAND);
 
 		// Leaves
-		addGroupEntry(TerrestriaBlocks.DARK_JAPANESE_MAPLE_LEAVES, ItemGroups.NATURAL, NATURAL_LEAVES);
-		addGroupEntry(TerrestriaBlocks.JAPANESE_MAPLE_SHRUB_LEAVES, ItemGroups.NATURAL, NATURAL_LEAVES);
 		addGroupEntry(TerrestriaBlocks.JUNGLE_PALM_LEAVES, ItemGroups.NATURAL, NATURAL_LEAVES);
 
 		// Saplings
 		addGroupEntry(TerrestriaBlocks.BRYCE_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
 		addGroupEntry(TerrestriaBlocks.CYPRESS_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
-		addGroupEntry(TerrestriaBlocks.DARK_JAPANESE_MAPLE_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
 		addGroupEntry(TerrestriaBlocks.HEMLOCK_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
-		addGroupEntry(TerrestriaBlocks.JAPANESE_MAPLE_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
-		addGroupEntry(TerrestriaBlocks.JAPANESE_MAPLE_SHRUB_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
 		addGroupEntry(TerrestriaBlocks.JUNGLE_PALM_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
 		addGroupEntry(TerrestriaBlocks.RAINBOW_EUCALYPTUS_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
 		addGroupEntry(TerrestriaBlocks.REDWOOD_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
@@ -146,11 +135,9 @@ public class TerrestriaItemGroups {
 		// Add WoodItems
 		addWoodEntries(TerrestriaItems.CYPRESS);
 		addWoodEntries(TerrestriaItems.HEMLOCK);
-		addWoodEntries(TerrestriaItems.JAPANESE_MAPLE);
 		addWoodEntries(TerrestriaItems.RAINBOW_EUCALYPTUS);
 		addWoodEntries(TerrestriaItems.REDWOOD);
 		addWoodEntries(TerrestriaItems.RUBBER);
-		addWoodEntries(TerrestriaItems.SAKURA);
 		addWoodEntries(TerrestriaItems.WILLOW);
 		addWoodEntries(TerrestriaItems.YUCCA_PALM);
 
@@ -212,33 +199,13 @@ public class TerrestriaItemGroups {
 
 		// Stone Items
 		addGroupEntry(items.plain.full, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.plain.stairs, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.plain.slab, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.plain.wall, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.pressurePlate, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.button, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
 		addGroupEntry(items.cobblestone.full, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.cobblestone.stairs, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.cobblestone.slab, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.cobblestone.wall, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
 		addGroupEntry(items.mossyCobblestone.full, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.mossyCobblestone.stairs, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.mossyCobblestone.slab, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.mossyCobblestone.wall, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
 		addGroupEntry(items.smooth.full, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.smooth.stairs, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.smooth.slab, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.smooth.wall, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
 		addGroupEntry(items.bricks.full, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
 		addGroupEntry(items.crackedBricks, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.bricks.stairs, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.bricks.slab, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.bricks.wall, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
 		addGroupEntry(items.chiseledBricks, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
 		addGroupEntry(items.mossyBricks.full, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.mossyBricks.stairs, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.mossyBricks.slab, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
-		addGroupEntry(items.mossyBricks.wall, ItemGroups.BUILDING_BLOCKS, BUILDING_STONE_ITEMS);
 
 
 		// NATURAL
@@ -252,41 +219,20 @@ public class TerrestriaItemGroups {
 
 		// Wood Items
 		addGroupEntry(items.log, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		if (items.hasQuarterLog()) {
-			addGroupEntry(items.quarterLog, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		}
 		if (items.hasWood()) {
 			addGroupEntry(items.wood, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
 		}
 		addGroupEntry(items.strippedLog, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		if (items.hasQuarterLog()) {
-			addGroupEntry(items.strippedQuarterLog, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		}
 		if (items.hasWood()) {
 			addGroupEntry(items.strippedWood, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
 		}
-		addGroupEntry(items.planks, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(items.stairs, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(items.slab, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(items.fence, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(items.fenceGate, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(items.door, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(items.trapdoor, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(items.pressurePlate, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(items.button, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+
 
 
 		// NATURAL
 
 		// Wood Items
 		addGroupEntry(items.log, ItemGroups.NATURAL, NATURAL_LOG);
-		if (items.hasQuarterLog()) {
-			addGroupEntry(items.quarterLog, ItemGroups.NATURAL, NATURAL_LOG);
-			if (items.hasWood()) {
-				// At the moment, wood generates naturally on all quartered trees...
-				addGroupEntry(items.wood, ItemGroups.NATURAL, NATURAL_LOG);
-			}
-		}
 
 		// Leaves
 		addGroupEntry(items.leaves, ItemGroups.NATURAL, NATURAL_LEAVES);
@@ -294,21 +240,6 @@ public class TerrestriaItemGroups {
 			addGroupEntry(items.leafPile, ItemGroups.NATURAL, NATURAL_LEAVES);
 		}
 
-
-		// FUNCTIONAL
-
-		// Wood Items
-		addGroupEntry(items.sign, ItemGroups.FUNCTIONAL, FUNCTIONAL_SIGN);
-		addGroupEntry(items.hangingSign, ItemGroups.FUNCTIONAL, FUNCTIONAL_SIGN);
-
-
-		// TOOLS
-
-		// Boats
-		if (items.hasBoat()) {
-			addGroupEntry(items.boat, ItemGroups.TOOLS, TOOLS_BOAT);
-			addGroupEntry(items.chestBoat, ItemGroups.TOOLS, TOOLS_BOAT);
-		}
 	}
 
 	public static void addGroupEntry(ItemConvertible item, RegistryKey<ItemGroup> group) {
