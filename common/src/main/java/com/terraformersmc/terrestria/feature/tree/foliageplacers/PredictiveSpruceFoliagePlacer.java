@@ -44,16 +44,25 @@ public class PredictiveSpruceFoliagePlacer extends SpruceFoliagePlacer {
 	protected void generateSquare(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, BlockPos blockPos, int radius, int offsetY, boolean giantTrunk) {
 		int giantTrunkOffset = giantTrunk ? 1 : 0;
 		BlockPos.Mutable mutable = new BlockPos.Mutable();
-		int actualDistance;
+		float actualDistance;
+
+		var dRadius = radius + 3;
+		dRadius *= dRadius;
+
+		var rand = radius < 2 ? radius : radius - 1;
 
 		for (int offsetX = -radius; offsetX <= radius + giantTrunkOffset; ++offsetX) {
 			for (int offsetZ = -radius; offsetZ <= radius + giantTrunkOffset; ++offsetZ) {
 				if (!this.isPositionInvalid(random, offsetX, offsetY, offsetZ, radius, giantTrunk)) {
 					mutable.set(blockPos, offsetX, offsetY, offsetZ);
-					if (TreeFeature.canReplace(world, mutable)) {
+					var r = mutable.getSquaredDistance(mutable);
+					if (TreeFeature.canReplace(world, mutable) && r < dRadius) {
+						if (rand > r && random.nextFloat() > 0.9) {
+							continue;
+						}
 						actualDistance = calculateActualDistance(offsetX, offsetY, offsetZ, giantTrunk);
 						BlockState baseState = config.foliageProvider.get(random, mutable);
-						placer.placeBlock(mutable.toImmutable(), withDistance(baseState, actualDistance));
+						placer.placeBlock(mutable.toImmutable(), withDistance(baseState, (int) actualDistance));
 					}
 				}
 			}

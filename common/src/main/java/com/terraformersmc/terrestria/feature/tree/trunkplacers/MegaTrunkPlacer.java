@@ -48,11 +48,32 @@ public class MegaTrunkPlacer extends TrunkPlacer {
 		// Place the trunk
 		BlockPos.Mutable mutable = new BlockPos.Mutable();
 
+		//var dir = Direction.Type.HORIZONTAL.random(random);
+
+		//var curvedTree = random.nextFloat() < 0.7;
+
+		int xOff = 0;
+		int zOff = 0;
+		//int height = random.nextBetween(14, 16);
+
 		for(int i = 0; i < trunkHeight; ++i) {
-			setLog(world, mutable, replacer, getState(random, mutable, treeFeatureConfig, QuarterLogBlock.BarkSide.NORTHWEST), pos, 0, i, 0);
-			setLog(world, mutable, replacer, getState(random, mutable, treeFeatureConfig, QuarterLogBlock.BarkSide.NORTHEAST), pos, 1, i, 0);
-			setLog(world, mutable, replacer, getState(random, mutable, treeFeatureConfig, QuarterLogBlock.BarkSide.SOUTHEAST), pos, 1, i, 1);
-			setLog(world, mutable, replacer, getState(random, mutable, treeFeatureConfig, QuarterLogBlock.BarkSide.SOUTHWEST), pos, 0, i, 1);
+			setLog(world, mutable, replacer, getState(random, mutable, treeFeatureConfig, QuarterLogBlock.BarkSide.NORTHWEST), pos, xOff, i, zOff);
+			setLog(world, mutable, replacer, getState(random, mutable, treeFeatureConfig, QuarterLogBlock.BarkSide.NORTHEAST), pos, 1 + xOff, i, zOff);
+			setLog(world, mutable, replacer, getState(random, mutable, treeFeatureConfig, QuarterLogBlock.BarkSide.SOUTHEAST), pos, 1 + xOff, i, 1 + zOff);
+			setLog(world, mutable, replacer, getState(random, mutable, treeFeatureConfig, QuarterLogBlock.BarkSide.SOUTHWEST), pos, xOff, i, 1 + zOff);
+
+			/*if (curvedTree && i == height) {
+				xOff += dir.getOffsetX();
+				zOff += dir.getOffsetZ();
+				for (int y = 0; y < 3; y++) {
+					setLog(world, mutable, replacer, getState(random, mutable, treeFeatureConfig, QuarterLogBlock.BarkSide.NORTHWEST), pos, xOff, i + y, zOff);
+					setLog(world, mutable, replacer, getState(random, mutable, treeFeatureConfig, QuarterLogBlock.BarkSide.NORTHEAST), pos, 1 + xOff, i + y, zOff);
+					setLog(world, mutable, replacer, getState(random, mutable, treeFeatureConfig, QuarterLogBlock.BarkSide.SOUTHEAST), pos, 1 + xOff, i + y, 1 + zOff);
+					setLog(world, mutable, replacer, getState(random, mutable, treeFeatureConfig, QuarterLogBlock.BarkSide.SOUTHWEST), pos, xOff, i + y, 1 + zOff);
+				}
+				height = random.nextBetween(14, trunkHeight);
+			}*/
+
 		}
 
 		BlockStateProvider rootsProvider = treeFeatureConfig.trunkProvider;
