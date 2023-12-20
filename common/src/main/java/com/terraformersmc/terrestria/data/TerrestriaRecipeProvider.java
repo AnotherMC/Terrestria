@@ -20,7 +20,6 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
-import java.util.function.Consumer;
 
 public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 	protected TerrestriaRecipeProvider(FabricDataOutput dataOutput) {
@@ -28,7 +27,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 	}
 
 	@Override
-	public void generate(Consumer<RecipeJsonProvider> exporter) {
+	public void generate(RecipeExporter exporter) {
 		// misc. recipes
 		new ShapelessRecipeJsonBuilder(RecipeCategory.DECORATIONS, TerrestriaItems.BRYCE_SAPLING, 1)
 			.input(Items.OAK_SAPLING)
@@ -68,7 +67,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 		generateStone(exporter, TerrestriaItems.VOLCANIC_ROCK);
 	}
 
-	private void generateWood(Consumer<RecipeJsonProvider> exporter, WoodItems woodItem, TagKey<Item> logsTag) {
+	private void generateWood(RecipeExporter exporter, WoodItems woodItem, TagKey<Item> logsTag) {
 		if (woodItem.fallbackPlanks != null) {
 			ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, woodItem.fallbackPlanks, 4)
 					.input(logsTag).group("planks").criterion("has_logs", conditionsFromTag(logsTag)).offerTo(exporter, new Identifier("terrestria", getItemPath(woodItem.log) + "_to_planks"));
@@ -105,7 +104,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 		}
 	}
 
-	private void generateStone(Consumer<RecipeJsonProvider> exporter, StoneItems stoneItem) {
+	private void generateStone(RecipeExporter exporter, StoneItems stoneItem) {
 		if (stoneItem.bricks != null) {
 			generateStoneVariant(exporter, stoneItem.bricks, stoneItem.plain.full);
 
@@ -170,7 +169,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 		}
 	}
 
-	private void generateStoneVariant(Consumer<RecipeJsonProvider> exporter, StoneVariantItems stoneVariantItem, @Nullable BlockItem cutPlainItem) {
+	private void generateStoneVariant(RecipeExporter exporter, StoneVariantItems stoneVariantItem, @Nullable BlockItem cutPlainItem) {
 
 	}
 

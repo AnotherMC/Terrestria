@@ -16,7 +16,6 @@ import net.minecraft.world.WorldView;
 import org.joml.Vector3d;
 
 public class PricklyDesertPlantBlock extends TerraformDesertPlantBlock implements Fertilizable {
-
 	public PricklyDesertPlantBlock(Settings settings) {
 		super(settings, false);
 	}
@@ -37,7 +36,7 @@ public class PricklyDesertPlantBlock extends TerraformDesertPlantBlock implement
 	}
 
 	@Override
-	public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
 		return world.getBlockState(pos.down()).isIn(BlockTags.SAND);
 	}
 
