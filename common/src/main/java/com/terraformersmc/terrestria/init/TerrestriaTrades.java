@@ -7,10 +7,7 @@ public class TerrestriaTrades {
 		TerraformSaplingTradeHelper.registerWanderingTraderSaplingTrades(
 				TerrestriaBlocks.BRYCE_SAPLING,
 				TerrestriaBlocks.CYPRESS_SAPLING,
-				TerrestriaBlocks.DARK_JAPANESE_MAPLE_SAPLING,
 				TerrestriaBlocks.HEMLOCK_SAPLING,
-				TerrestriaBlocks.JAPANESE_MAPLE_SAPLING,
-				TerrestriaBlocks.JAPANESE_MAPLE_SHRUB_SAPLING,
 				TerrestriaBlocks.JUNGLE_PALM_SAPLING,
 				TerrestriaBlocks.RAINBOW_EUCALYPTUS_SAPLING,
 				TerrestriaBlocks.REDWOOD_SAPLING,
