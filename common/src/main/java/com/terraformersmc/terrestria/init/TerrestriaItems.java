@@ -68,7 +68,7 @@ public class TerrestriaItems {
 		YUCCA_PALM = WoodItems.register("yucca_palm", TerrestriaBlocks.YUCCA_PALM);
 
 		{
-			REDWOOD.fallbackPlanks = Items.ACACIA_PLANKS;
+			REDWOOD.fallbackPlanks = Items.MANGROVE_PLANKS;
 			HEMLOCK.fallbackPlanks = Items.BIRCH_PLANKS;
 			RUBBER.fallbackPlanks = Items.BIRCH_PLANKS;
 			CYPRESS.fallbackPlanks = Items.BIRCH_PLANKS;
