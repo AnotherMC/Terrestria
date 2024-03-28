@@ -5,8 +5,7 @@
   "mixins": [
     "MixinFluidBlock",
     "MixinLavaFluid",
-    "MixinWaterCreatureEntity",
-    "TreeDecoratorTypeAccessor"
+    "MixinWaterCreatureEntity"
   ],
   "injectors": {
     "defaultRequire": 1
