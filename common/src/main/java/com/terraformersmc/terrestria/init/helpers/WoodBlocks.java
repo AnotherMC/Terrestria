@@ -4,7 +4,6 @@ import com.terraformersmc.terraform.leaves.block.LeafPileBlock;
 import com.terraformersmc.terraform.wood.block.PillarLogHelper;
 import com.terraformersmc.terrestria.block.TerrestriaOptiLeavesBlock;
 import com.terraformersmc.terrestria.init.TerrestriaBlocks;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.Block;
@@ -30,13 +29,13 @@ public class WoodBlocks {
 		// register manufactured blocks
 
 		if (usesExtendedLeaves) {
-			leaves = TerrestriaRegistry.register(name + "_leaves", new TerrestriaOptiLeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).mapColor(colors.leaves).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never)));
+			leaves = TerrestriaRegistry.register(name + "_leaves", new TerrestriaOptiLeavesBlock(AbstractBlock.Settings.copy(Blocks.OAK_LEAVES).mapColor(colors.leaves).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never)));
 		} else {
-			leaves = TerrestriaRegistry.register(name + "_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).mapColor(colors.leaves).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never)));
+			leaves = TerrestriaRegistry.register(name + "_leaves", new LeavesBlock(AbstractBlock.Settings.copy(Blocks.OAK_LEAVES).mapColor(colors.leaves).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never)));
 		}
 
 		if (hasLeafPile) {
-			leafPile = TerrestriaRegistry.register(name + "_leaf_pile", new LeafPileBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).mapColor(colors.leaves)));
+			leafPile = TerrestriaRegistry.register(name + "_leaf_pile", new LeafPileBlock(AbstractBlock.Settings.copy(Blocks.PINK_PETALS).mapColor(colors.leaves)));
 		} else {
 			leafPile = null;
 		}

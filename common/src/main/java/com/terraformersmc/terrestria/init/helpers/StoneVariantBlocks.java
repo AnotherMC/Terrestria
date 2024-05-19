@@ -1,6 +1,5 @@
 package com.terraformersmc.terrestria.init.helpers;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 
 public class StoneVariantBlocks {
@@ -16,7 +15,7 @@ public class StoneVariantBlocks {
 	public static StoneVariantBlocks register(String name, String shapedName, MapColor color, Block family) {
 		StoneVariantBlocks blocks = new StoneVariantBlocks();
 
-		blocks.full = TerrestriaRegistry.register(name, new Block(FabricBlockSettings.copyOf(family).mapColor(color)));
+		blocks.full = TerrestriaRegistry.register(name, new Block(AbstractBlock.Settings.copy(family).mapColor(color)));
 
 		return blocks;
 	}
