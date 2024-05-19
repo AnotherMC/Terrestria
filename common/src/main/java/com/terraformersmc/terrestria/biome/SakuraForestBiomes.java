@@ -41,7 +41,6 @@ public class SakuraForestBiomes {
 		addBasicFeatures(builder);
 		DefaultBiomeFeatures.addDefaultOres(builder);
 		DefaultBiomeFeatures.addDefaultDisks(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, entries.ref(TerrestriaPlacedFeatures.DENSE_JAPANESE_MAPLE_SHRUBS));
 		DefaultBiomeFeatures.addForestGrass(builder);
 		DefaultBiomeFeatures.addDefaultMushrooms(builder);
 		DefaultBiomeFeatures.addDefaultVegetation(builder);
