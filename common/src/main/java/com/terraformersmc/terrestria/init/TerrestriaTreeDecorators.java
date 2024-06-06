@@ -1,7 +1,7 @@
 package com.terraformersmc.terrestria.init;
 
 import com.mojang.serialization.MapCodec;
-import com.terraformersmc.terraform.tree.decorator.DecoratorTypes;
+import com.terraformersmc.terraform.tree.api.decorator.DecoratorTypes;
 import com.terraformersmc.terrestria.Terrestria;
 import com.terraformersmc.terrestria.feature.tree.treedecorators.DanglingLeavesTreeDecorator;
 import com.terraformersmc.terrestria.feature.tree.treedecorators.SakuraTreeDecorator;
@@ -20,6 +20,6 @@ public class TerrestriaTreeDecorators {
 	}
 
 	private static <P extends TreeDecorator> TreeDecoratorType<P> register(String name, MapCodec<P> codec) {
-		return DecoratorTypes.registerTreeDecorator(new Identifier(Terrestria.MOD_ID, name), codec);
+		return DecoratorTypes.registerTreeDecorator(Identifier.of(Terrestria.MOD_ID, name), codec);
 	}
 }

@@ -1,12 +1,14 @@
 package com.terraformersmc.terrestria.init.helpers;
 
-import com.terraformersmc.terraform.leaves.block.LeafPileBlock;
-import com.terraformersmc.terraform.leaves.block.TransparentLeavesBlock;
-import com.terraformersmc.terraform.sign.block.TerraformHangingSignBlock;
-import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
-import com.terraformersmc.terraform.wood.block.*;
-import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
-import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
+import com.terraformersmc.terraform.leaves.api.block.LeafPileBlock;
+import com.terraformersmc.terraform.leaves.api.block.TransparentLeavesBlock;
+import com.terraformersmc.terraform.sign.api.block.TerraformHangingSignBlock;
+import com.terraformersmc.terraform.sign.api.block.TerraformSignBlock;
+import com.terraformersmc.terraform.sign.api.block.TerraformWallHangingSignBlock;
+import com.terraformersmc.terraform.sign.api.block.TerraformWallSignBlock;
+import com.terraformersmc.terraform.wood.api.block.PillarLogHelper;
+import com.terraformersmc.terraform.wood.api.block.QuarterLogBlock;
+import com.terraformersmc.terraform.wood.api.block.SmallLogBlock;
 import com.terraformersmc.terrestria.Terrestria;
 import com.terraformersmc.terrestria.block.TerrestriaOptiLeavesBlock;
 import com.terraformersmc.terrestria.init.TerrestriaBlocks;

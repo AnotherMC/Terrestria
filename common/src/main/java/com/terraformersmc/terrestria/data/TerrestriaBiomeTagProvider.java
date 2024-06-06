@@ -4,7 +4,7 @@ import com.terraformersmc.terrestria.init.TerrestriaBiomes;
 import com.terraformersmc.terrestria.tag.TerrestriaBiomeTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BiomeTags;
@@ -75,29 +75,42 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 		/*
 		 * Common biome categories
 		 */
-		getOrCreateTagBuilder(ConventionalBiomeTags.CLIMATE_TEMPERATE)
-			.addOptional(TerrestriaBiomes.CYPRESS_FOREST)
-			.addOptional(TerrestriaBiomes.CYPRESS_SWAMP)
-			.addOptional(TerrestriaBiomes.DENSE_WOODLANDS)
-			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
-			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
-			.addOptional(TerrestriaBiomes.LUSH_REDWOOD_FOREST)
-			.addOptional(TerrestriaBiomes.REDWOOD_FOREST)
-			.addOptional(TerrestriaBiomes.SAKURA_FOREST);
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_BADLANDS)
+			.addOptional(TerrestriaBiomes.CANYON);
 
-		getOrCreateTagBuilder(ConventionalBiomeTags.DEAD)
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_COLD_OVERWORLD)
+			.addOptional(TerrestriaBiomes.CALDERA)
+			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_FOREST)
+			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_TREELINE);
+
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_CONIFEROUS_TREE)
+			.addOptional(TerrestriaBiomes.CALDERA)
+			.addOptional(TerrestriaBiomes.CYPRESS_FOREST);
+
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_DEAD)
 			.addOptional(TerrestriaBiomes.DUNES);
 
-		getOrCreateTagBuilder(ConventionalBiomeTags.DESERT)
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_DECIDUOUS_TREE)
+			.addOptional(TerrestriaBiomes.DENSE_WOODLANDS)
+			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
+			.addOptional(TerrestriaBiomes.RAINBOW_RAINFOREST)
+			.addOptional(TerrestriaBiomes.SAKURA_FOREST);
+
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_DESERT)
 			.addOptional(TerrestriaBiomes.CANYON)
 			.addOptional(TerrestriaBiomes.DUNES)
 			.addOptional(TerrestriaBiomes.LUSH_DESERT)
 			.addOptional(TerrestriaBiomes.OASIS);
 
-		getOrCreateTagBuilder(ConventionalBiomeTags.EXTREME_HILLS)
-			.addOptional(TerrestriaBiomes.WINDSWEPT_REDWOOD_FOREST);
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_HOT_OVERWORLD)
+			.addOptional(TerrestriaBiomes.CANYON)
+			.addOptional(TerrestriaBiomes.LUSH_DESERT)
+			.addOptional(TerrestriaBiomes.OASIS)
+			.addOptional(TerrestriaBiomes.OUTBACK)
+			.addOptional(TerrestriaBiomes.RAINBOW_RAINFOREST)
+			.addOptional(TerrestriaBiomes.VOLCANIC_ISLAND);
 
-		getOrCreateTagBuilder(ConventionalBiomeTags.IN_OVERWORLD)
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_OVERWORLD)
 			.addOptional(TerrestriaBiomes.CALDERA)
 			.addOptional(TerrestriaBiomes.CANYON)
 			.addOptional(TerrestriaBiomes.CYPRESS_FOREST)
@@ -119,29 +132,29 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 			.addOptional(TerrestriaBiomes.VOLCANIC_ISLAND)
 			.addOptional(TerrestriaBiomes.WINDSWEPT_REDWOOD_FOREST);
 
-		getOrCreateTagBuilder(ConventionalBiomeTags.MESA)
-			.addOptional(TerrestriaBiomes.CANYON);
-
-		getOrCreateTagBuilder(ConventionalBiomeTags.SAVANNA)
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_SAVANNA)
 			.addOptional(TerrestriaBiomes.OUTBACK);
 
-		getOrCreateTagBuilder(ConventionalBiomeTags.SNOWY)
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_SNOWY)
 			.addOptional(TerrestriaBiomes.CALDERA)
 			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_FOREST)
 			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_TREELINE);
 
-		getOrCreateTagBuilder(ConventionalBiomeTags.SWAMP)
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_SWAMP)
 			.addOptional(TerrestriaBiomes.CYPRESS_SWAMP);
 
-		getOrCreateTagBuilder(ConventionalBiomeTags.TREE_CONIFEROUS)
-			.addOptional(TerrestriaBiomes.CALDERA)
-			.addOptional(TerrestriaBiomes.CYPRESS_FOREST);
-
-		getOrCreateTagBuilder(ConventionalBiomeTags.TREE_DECIDUOUS)
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_TEMPERATE_OVERWORLD)
+			.addOptional(TerrestriaBiomes.CYPRESS_FOREST)
+			.addOptional(TerrestriaBiomes.CYPRESS_SWAMP)
 			.addOptional(TerrestriaBiomes.DENSE_WOODLANDS)
+			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
 			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
-			.addOptional(TerrestriaBiomes.RAINBOW_RAINFOREST)
+			.addOptional(TerrestriaBiomes.LUSH_REDWOOD_FOREST)
+			.addOptional(TerrestriaBiomes.REDWOOD_FOREST)
 			.addOptional(TerrestriaBiomes.SAKURA_FOREST);
+
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_WINDSWEPT)
+			.addOptional(TerrestriaBiomes.WINDSWEPT_REDWOOD_FOREST);
 
 
 		/*
@@ -227,6 +240,30 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 			.addOptional(TerrestriaBiomes.SAKURA_FOREST)
 			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_FOREST)
 			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_TREELINE)
+			.addOptional(TerrestriaBiomes.VOLCANIC_ISLAND)
+			.addOptional(TerrestriaBiomes.WINDSWEPT_REDWOOD_FOREST);
+
+		getOrCreateTagBuilder(BiomeTags.TRAIL_RUINS_HAS_STRUCTURE)
+			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
+			.addOptional(TerrestriaBiomes.LUSH_REDWOOD_FOREST)
+			.addOptional(TerrestriaBiomes.RAINBOW_RAINFOREST)
+			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_FOREST)
+			.addOptional(TerrestriaBiomes.WINDSWEPT_REDWOOD_FOREST);
+
+		getOrCreateTagBuilder(BiomeTags.TRIAL_CHAMBERS_HAS_STRUCTURE)
+			.addOptional(TerrestriaBiomes.CANYON)
+			.addOptional(TerrestriaBiomes.CYPRESS_FOREST)
+			.addOptional(TerrestriaBiomes.CYPRESS_SWAMP)
+			.addOptional(TerrestriaBiomes.DENSE_WOODLANDS)
+			.addOptional(TerrestriaBiomes.DUNES)
+			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
+			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
+			.addOptional(TerrestriaBiomes.LUSH_DESERT)
+			.addOptional(TerrestriaBiomes.LUSH_REDWOOD_FOREST)
+			.addOptional(TerrestriaBiomes.OASIS)
+			.addOptional(TerrestriaBiomes.OUTBACK)
+			.addOptional(TerrestriaBiomes.RAINBOW_RAINFOREST)
+			.addOptional(TerrestriaBiomes.REDWOOD_FOREST)
 			.addOptional(TerrestriaBiomes.VOLCANIC_ISLAND)
 			.addOptional(TerrestriaBiomes.WINDSWEPT_REDWOOD_FOREST);
 

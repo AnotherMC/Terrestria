@@ -35,7 +35,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 			.input(Items.OAK_SAPLING)
 			.input(Items.STICK)
 			.criterion("has_bryce_sapling", InventoryChangedCriterion.Conditions.items(TerrestriaItems.BRYCE_SAPLING))
-			.offerTo(exporter, new Identifier(Terrestria.MOD_ID, "bryce_sapling_from_oak_sapling"));
+			.offerTo(exporter, Identifier.of(Terrestria.MOD_ID, "bryce_sapling_from_oak_sapling"));
 
 		CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(TerrestriaItems.SAGUARO_CACTUS), RecipeCategory.MISC, Items.GREEN_DYE, 1.0f, 200)
 			.criterion("has_cactus", InventoryChangedCriterion.Conditions.items(TerrestriaItems.SAGUARO_CACTUS))
@@ -248,6 +248,6 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 
 	@Override
 	protected Identifier getRecipeIdentifier(Identifier identifier) {
-		return new Identifier(Terrestria.MOD_ID, identifier.getPath());
+		return Identifier.of(Terrestria.MOD_ID, identifier.getPath());
 	}
 }

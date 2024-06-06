@@ -1,6 +1,6 @@
 package com.terraformersmc.terrestria.block;
 
-import com.terraformersmc.terraform.leaves.block.ExtendedLeavesBlock;
+import com.terraformersmc.terraform.leaves.api.block.ExtendedLeavesBlock;
 import com.terraformersmc.terrestria.Terrestria;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.Direction;

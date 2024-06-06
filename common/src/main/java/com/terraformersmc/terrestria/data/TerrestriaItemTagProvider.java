@@ -6,6 +6,8 @@ import com.terraformersmc.terrestria.tag.TerrestriaBlockTags;
 import com.terraformersmc.terrestria.tag.TerrestriaItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -65,9 +67,12 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 		copy(BlockTags.WOODEN_TRAPDOORS, ItemTags.WOODEN_TRAPDOORS);
 
 
-		copy(TerrestriaBlockTags.BLACK_SAND, TerrestriaItemTags.BLACK_SAND);
+		copy(ConventionalBlockTags.COBBLESTONES, ConventionalItemTags.COBBLESTONES);
 
-		copy(TerrestriaBlockTags.COBBLESTONE, TerrestriaItemTags.COBBLESTONE);
+		copy(ConventionalBlockTags.STONES, ConventionalItemTags.STONES);
+
+
+		copy(TerrestriaBlockTags.BLACK_SANDS, TerrestriaItemTags.BLACK_SANDS);
 
 		getOrCreateTagBuilder(TerrestriaItemTags.MOSSY_INGREDIENTS)
 			.add(Items.MOSS_BLOCK)
@@ -77,21 +82,22 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 
 		copy(TerrestriaBlockTags.SMALL_OAK_LOGS, TerrestriaItemTags.SMALL_OAK_LOGS);
 
-		copy(TerrestriaBlockTags.STONE, TerrestriaItemTags.STONE);
-
 		copy(TerrestriaBlockTags.STRIPPED_LOGS, TerrestriaItemTags.STRIPPED_LOGS);
 
 		copy(TerrestriaBlockTags.STRIPPED_WOOD, TerrestriaItemTags.STRIPPED_WOOD);
 
 
 		// dirt type tags
-		copy(TerrestriaBlockTags.DIRT, TerrestriaItemTags.DIRT);
+		copy(BlockTags.DIRT, ItemTags.DIRT);
+		copy(TerrestriaBlockTags.DIRTS, TerrestriaItemTags.DIRTS);
+		copy(TerrestriaBlockTags.PODZOLS, TerrestriaItemTags.PODZOLS);
 
 		// sand type tags
-		copy(TerrestriaBlockTags.SAND, TerrestriaItemTags.SAND);
+		copy(BlockTags.SAND, ItemTags.SAND);
+		copy(TerrestriaBlockTags.SANDS, TerrestriaItemTags.SANDS);
 
 		// stone type tags
-		copy(TerrestriaBlockTags.BASALT, TerrestriaItemTags.BASALT);
+		copy(TerrestriaBlockTags.BASALTS, TerrestriaItemTags.BASALTS);
 
 		// stone items
 		addStone(TerrestriaItems.VOLCANIC_ROCK);
@@ -117,6 +123,15 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 		addWood(TerrestriaItems.SAKURA);
 		addWood(TerrestriaItems.WILLOW);
 		addWood(TerrestriaItems.YUCCA_PALM);
+
+
+		// TODO: DEPRECATED as of 1.21
+		copy(TerrestriaBlockTags.BASALTS, TerrestriaItemTags.BASALT);
+		copy(TerrestriaBlockTags.BLACK_SANDS, TerrestriaItemTags.BLACK_SAND);
+		copy(ConventionalBlockTags.COBBLESTONES, TerrestriaItemTags.COBBLESTONE);
+		copy(TerrestriaBlockTags.DIRTS, TerrestriaItemTags.DIRT);
+		copy(TerrestriaBlockTags.SANDS, TerrestriaItemTags.SAND);
+		copy(ConventionalBlockTags.STONES, TerrestriaItemTags.STONE);
 	}
 
 	private void addStone(StoneItems stoneItem) {

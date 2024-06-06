@@ -19,7 +19,7 @@ public class TerrestriaTerraBlenderRare extends Region implements TerraBlenderAp
 	TerrestriaBiomeConfig BIOME_CONFIG = Terrestria.getConfigManager().getBiomeConfig();
 
 	public TerrestriaTerraBlenderRare() {
-		super(new Identifier(Terrestria.MOD_ID, "overworld_rare"), RegionType.OVERWORLD, 7);
+		super(Identifier.of(Terrestria.MOD_ID, "overworld_rare"), RegionType.OVERWORLD, 7);
 	}
 
 	@Override

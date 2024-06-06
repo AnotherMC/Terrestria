@@ -2,7 +2,7 @@ package com.terraformersmc.terrestria.feature.tree.foliageplacers;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.terraformersmc.terraform.leaves.block.ExtendedLeavesBlock;
+import com.terraformersmc.terraform.leaves.api.block.ExtendedLeavesBlock;
 import com.terraformersmc.terrestria.init.TerrestriaFoliagePlacerTypes;
 
 import net.minecraft.block.BlockState;

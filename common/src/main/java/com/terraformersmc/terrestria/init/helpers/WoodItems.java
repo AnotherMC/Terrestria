@@ -1,7 +1,6 @@
 package com.terraformersmc.terrestria.init.helpers;
 
 import com.terraformersmc.terraform.boat.api.TerraformBoatType;
-import com.terraformersmc.terraform.boat.impl.item.TerraformBoatItem;
 
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -30,8 +29,8 @@ public class WoodItems {
 	public final BlockItem strippedLog;
 	public final BlockItem strippedQuarterLog;
 	public final BlockItem strippedWood;
-	public final TerraformBoatItem boat;
-	public final TerraformBoatItem chestBoat;
+	public final Item boat;
+	public final Item chestBoat;
 
 	private WoodItems(String name, WoodBlocks blocks) {
 		this.NAME = name;
@@ -58,8 +57,8 @@ public class WoodItems {
 
 		BOAT_TYPE = TerrestriaBoats.register(name, planks);
 		if (BOAT_TYPE != null) {
-			boat = (TerraformBoatItem) BOAT_TYPE.getItem();
-			chestBoat = (TerraformBoatItem) BOAT_TYPE.getChestItem();
+			boat = BOAT_TYPE.getItem();
+			chestBoat = BOAT_TYPE.getChestItem();
 		} else {
 			boat = null;
 			chestBoat = null;

@@ -1,7 +1,7 @@
 package com.terraformersmc.terrestria.feature.tree.treedecorators;
 
 import com.mojang.serialization.MapCodec;
-import com.terraformersmc.terraform.wood.block.SmallLogBlock;
+import com.terraformersmc.terraform.wood.api.block.SmallLogBlock;
 import com.terraformersmc.terrestria.init.TerrestriaBlocks;
 import com.terraformersmc.terrestria.init.TerrestriaTreeDecorators;
 import net.minecraft.registry.tag.FluidTags;

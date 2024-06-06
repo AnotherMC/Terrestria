@@ -17,7 +17,7 @@ public final class TerrestriaBiomeTags {
 	}
 
 	private static TagKey<Biome> of(String path) {
-		return TerrestriaBiomeTags.of(new Identifier(Terrestria.MOD_ID, path));
+		return TerrestriaBiomeTags.of(Identifier.of(Terrestria.MOD_ID, path));
 	}
 
 	private static TagKey<Biome> of(Identifier id) {

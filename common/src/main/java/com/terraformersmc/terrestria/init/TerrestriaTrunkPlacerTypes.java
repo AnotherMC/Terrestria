@@ -1,7 +1,7 @@
 package com.terraformersmc.terrestria.init;
 
 import com.mojang.serialization.MapCodec;
-import com.terraformersmc.terraform.tree.placer.PlacerTypes;
+import com.terraformersmc.terraform.tree.api.placer.PlacerTypes;
 import com.terraformersmc.terrestria.Terrestria;
 import com.terraformersmc.terrestria.feature.tree.trunkplacers.*;
 import net.minecraft.util.Identifier;
@@ -36,6 +36,6 @@ public class TerrestriaTrunkPlacerTypes {
 	}
 
 	private static <P extends TrunkPlacer> TrunkPlacerType<P> register(String name, MapCodec<P> codec) {
-		return PlacerTypes.registerTrunkPlacer(new Identifier(Terrestria.MOD_ID, name), codec);
+		return PlacerTypes.registerTrunkPlacer(Identifier.of(Terrestria.MOD_ID, name), codec);
 	}
 }

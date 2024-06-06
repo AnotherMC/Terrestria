@@ -30,10 +30,10 @@ public class TerrestriaStructures {
 	}
 
 	private static <S extends Structure> StructureType<S> registerStructureType(String id, MapCodec<S> codec) {
-		return Registry.register(Registries.STRUCTURE_TYPE, new Identifier(Terrestria.MOD_ID, id), () -> codec);
+		return Registry.register(Registries.STRUCTURE_TYPE, Identifier.of(Terrestria.MOD_ID, id), () -> codec);
 	}
 
 	private static StructurePieceType registerStructurePiece(String id, StructurePieceType piece) {
-		return Registry.register(Registries.STRUCTURE_PIECE, new Identifier(Terrestria.MOD_ID, id), piece);
+		return Registry.register(Registries.STRUCTURE_PIECE, Identifier.of(Terrestria.MOD_ID, id), piece);
 	}
 }

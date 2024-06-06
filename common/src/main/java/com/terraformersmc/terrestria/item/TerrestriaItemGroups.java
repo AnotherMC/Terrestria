@@ -1,6 +1,6 @@
 package com.terraformersmc.terrestria.item;
 
-import com.terraformersmc.terraform.dirt.DirtBlocks;
+import com.terraformersmc.terraform.dirt.api.DirtBlocks;
 import com.terraformersmc.terrestria.Terrestria;
 import com.terraformersmc.terrestria.init.TerrestriaBlocks;
 import com.terraformersmc.terrestria.init.TerrestriaItems;

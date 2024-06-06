@@ -7,21 +7,14 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 public final class TerrestriaBlockTags {
-	public static final TagKey<Block> BASALT = TerrestriaBlockTags.of(Identifier.of("c", "basalt"));
-	public static final TagKey<Block> BLACK_SAND = TerrestriaBlockTags.of(Identifier.of("c", "black_sand"));
-	public static final TagKey<Block> COBBLESTONE = TerrestriaBlockTags.of(Identifier.of("c", "cobblestone"));
-	public static final TagKey<Block> DIRT = TerrestriaBlockTags.of(Identifier.of("c", "dirt"));
-	public static final TagKey<Block> GRAVEL = TerrestriaBlockTags.of(Identifier.of("c", "gravel"));
+	public static final TagKey<Block> BASALTS = TerrestriaBlockTags.of(Identifier.of("c", "basalts"));
+	public static final TagKey<Block> BLACK_SANDS = TerrestriaBlockTags.of(Identifier.of("c", "black_sands"));
+	public static final TagKey<Block> DIRTS = TerrestriaBlockTags.of(Identifier.of("c", "dirts"));
 	public static final TagKey<Block> PLANKS_THAT_BURN = TerrestriaBlockTags.of(Identifier.of("c", "planks_that_burn"));
-	public static final TagKey<Block> SAND = TerrestriaBlockTags.of(Identifier.of("c", "sand"));
-	public static final TagKey<Block> STONE = TerrestriaBlockTags.of(Identifier.of("c", "stone"));
+	public static final TagKey<Block> PODZOLS = TerrestriaBlockTags.of(Identifier.of("c", "podzols"));
+	public static final TagKey<Block> SANDS = TerrestriaBlockTags.of(Identifier.of("c", "sands"));
 	public static final TagKey<Block> STRIPPED_LOGS = TerrestriaBlockTags.of(Identifier.of("c", "stripped_logs"));
 	public static final TagKey<Block> STRIPPED_WOOD = TerrestriaBlockTags.of(Identifier.of("c", "stripped_wood"));
-
-	public static final TagKey<Block> FARMLAND = TerrestriaBlockTags.of(Identifier.of("terraform", "farmland"));
-	public static final TagKey<Block> GRASS_BLOCKS = TerrestriaBlockTags.of(Identifier.of("terraform", "grass_blocks"));
-	public static final TagKey<Block> PODZOL = TerrestriaBlockTags.of(Identifier.of("terraform", "podzol"));
-	public static final TagKey<Block> SOIL = TerrestriaBlockTags.of(Identifier.of("terraform", "soil"));
 
 	public static final TagKey<Block> CYPRESS_LOGS = TerrestriaBlockTags.of("cypress_logs");
 	public static final TagKey<Block> HEMLOCK_LOGS = TerrestriaBlockTags.of("hemlock_logs");
