@@ -19,18 +19,13 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class TerrestriaBlockLootTableProvider extends FabricBlockLootTableProvider {
-	private final CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture;
-
 	protected TerrestriaBlockLootTableProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
 		super(output, registriesFuture);
-
-		this.registriesFuture = registriesFuture;
 	}
 
 	@Override
 	public void generate() {
-		RegistryWrapper.Impl<Enchantment> enchantmentRegistry = registriesFuture.getNow(null)
-				.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+		RegistryWrapper.Impl<Enchantment> enchantmentRegistry = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
 
 		// simple blocks
 		addDrop(TerrestriaBlocks.AGAVE);

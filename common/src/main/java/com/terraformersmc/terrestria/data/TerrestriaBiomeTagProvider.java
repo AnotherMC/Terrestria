@@ -153,6 +153,10 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 			.addOptional(TerrestriaBiomes.REDWOOD_FOREST)
 			.addOptional(TerrestriaBiomes.SAKURA_FOREST);
 
+		getOrCreateTagBuilder(ConventionalBiomeTags.IS_VEGETATION_DENSE_OVERWORLD)
+			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
+			.addOptional(TerrestriaBiomes.SNOWY_HEMLOCK_FOREST);
+
 		getOrCreateTagBuilder(ConventionalBiomeTags.IS_WINDSWEPT)
 			.addOptional(TerrestriaBiomes.WINDSWEPT_REDWOOD_FOREST);
 
