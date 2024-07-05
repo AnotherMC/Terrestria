@@ -1,7 +1,7 @@
 package com.terraformersmc.terrestria.feature.tree.foliageplacers.templates;
 
-import com.terraformersmc.terraform.wood.block.BareSmallLogBlock;
-import com.terraformersmc.terraform.wood.block.SmallLogBlock;
+import com.terraformersmc.terraform.wood.api.block.BareSmallLogBlock;
+import com.terraformersmc.terraform.wood.api.block.SmallLogBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.IntProvider;

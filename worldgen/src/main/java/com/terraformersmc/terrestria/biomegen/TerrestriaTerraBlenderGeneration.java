@@ -22,7 +22,7 @@ public class TerrestriaTerraBlenderGeneration extends Region implements Runnable
 	TerrestriaBiomeConfig BIOME_CONFIG;
 
 	public TerrestriaTerraBlenderGeneration() {
-		super(new Identifier(Terrestria.MOD_ID, "overworld"), RegionType.OVERWORLD, 13);
+		super(Identifier.of(Terrestria.MOD_ID, "overworld"), RegionType.OVERWORLD, 13);
 	}
 
 	@Override

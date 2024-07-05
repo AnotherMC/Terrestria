@@ -1,6 +1,6 @@
 package com.terraformersmc.terrestria.block;
 
-import com.terraformersmc.terraform.dirt.block.TerraformGrassBlock;
+import com.terraformersmc.terraform.dirt.api.block.TerraformGrassBlock;
 import com.terraformersmc.terrestria.init.TerrestriaBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -52,7 +52,7 @@ public class BasaltGrassBlock extends TerraformGrassBlock {
 			BlockState state = world.getBlockState(pos);
 
 			// NB: this just converts short grass to tall grass, this isn't specific to GRASS_BLOCK
-			if (state.getBlock() == Blocks.SHORT_GRASS && random.nextInt(10) == 0) {
+			if (state.isOf(Blocks.SHORT_GRASS) && random.nextInt(10) == 0) {
 				((Fertilizable) state.getBlock()).grow(world, random, pos, state);
 			}
 

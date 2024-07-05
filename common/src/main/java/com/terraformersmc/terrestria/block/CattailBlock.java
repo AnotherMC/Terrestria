@@ -3,7 +3,6 @@ package com.terraformersmc.terrestria.block;
 import com.terraformersmc.terrestria.init.TerrestriaBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.SeagrassBlock;
 import net.minecraft.block.TallSeagrassBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
@@ -25,7 +24,7 @@ public class CattailBlock extends SeagrassBlock {
 		BlockState tallTop = tallBottom.with(TallSeagrassBlock.HALF, DoubleBlockHalf.UPPER);
 		BlockPos upper = pos.up();
 
-		if (world.getBlockState(upper).getBlock() == Blocks.AIR) {
+		if (world.getBlockState(upper).isAir()) {
 			world.setBlockState(pos, tallBottom, 2);
 			world.setBlockState(upper, tallTop, 2);
 		}

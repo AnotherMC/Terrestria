@@ -1,6 +1,6 @@
 package com.terraformersmc.terrestria.init;
 
-import com.terraformersmc.terraform.tree.merchant.TerraformSaplingTradeHelper;
+import com.terraformersmc.terraform.tree.api.merchant.TerraformSaplingTradeHelper;
 
 public class TerrestriaTrades {
 	public static void register() {

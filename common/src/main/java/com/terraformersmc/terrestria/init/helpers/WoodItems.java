@@ -1,7 +1,6 @@
 package com.terraformersmc.terrestria.init.helpers;
 
 import com.terraformersmc.terraform.boat.api.TerraformBoatType;
-import com.terraformersmc.terraform.boat.impl.item.TerraformBoatItem;
 
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;

@@ -1,18 +1,18 @@
 package com.terraformersmc.terrestria.data;
 
-import com.terraformersmc.terraform.dirt.DirtBlocks;
+import com.terraformersmc.terraform.dirt.api.DirtBlocks;
 import com.terraformersmc.terrestria.init.TerrestriaBlocks;
 import com.terraformersmc.terrestria.init.helpers.StoneBlocks;
 import com.terraformersmc.terrestria.init.helpers.WoodBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.SaplingBlock;
-import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.data.server.loottable.vanilla.VanillaBlockLootTableGenerator;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.entry.LeafEntry;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,6 +25,8 @@ public class TerrestriaBlockLootTableProvider extends FabricBlockLootTableProvid
 
 	@Override
 	public void generate() {
+		RegistryWrapper.Impl<Enchantment> enchantmentRegistry = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+
 		// simple blocks
 		addDrop(TerrestriaBlocks.AGAVE);
 		addDrop(TerrestriaBlocks.ALOE_VERA);
@@ -86,10 +88,10 @@ public class TerrestriaBlockLootTableProvider extends FabricBlockLootTableProvid
 
 		// even more specialty leaf-like drop thingy
 		addDrop(TerrestriaBlocks.SAGUARO_CACTUS,
-				BlockLootTableGenerator.dropsWithSilkTouch(TerrestriaBlocks.SAGUARO_CACTUS,
-						((LeafEntry.Builder<?>)this.addSurvivesExplosionCondition(TerrestriaBlocks.SAGUARO_CACTUS,
-								ItemEntry.builder(TerrestriaBlocks.SAGUARO_CACTUS_SAPLING)))
-								.conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE, 0.2f, 0.24285715f, 0.5f, 2.0f))));
+				dropsWithSilkTouch(TerrestriaBlocks.SAGUARO_CACTUS,
+						addSurvivesExplosionCondition(TerrestriaBlocks.SAGUARO_CACTUS,
+								ItemEntry.builder(TerrestriaBlocks.SAGUARO_CACTUS_SAPLING))
+								.conditionally(TableBonusLootCondition.builder(enchantmentRegistry.getOrThrow(Enchantments.FORTUNE), 0.2f, 0.24285715f, 0.5f, 2.0f))));
 	}
 
 	private void addDirtDrops(DirtBlocks dirtBlock) {

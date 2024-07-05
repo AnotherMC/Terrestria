@@ -1,7 +1,7 @@
 package com.terraformersmc.terrestria.init;
 
 import com.mojang.serialization.MapCodec;
-import com.terraformersmc.terraform.tree.placer.PlacerTypes;
+import com.terraformersmc.terraform.tree.api.placer.PlacerTypes;
 import com.terraformersmc.terrestria.Terrestria;
 import com.terraformersmc.terrestria.feature.tree.foliageplacers.*;
 import net.minecraft.util.Identifier;
@@ -34,6 +34,6 @@ public class TerrestriaFoliagePlacerTypes {
 	}
 
 	private static <P extends FoliagePlacer> FoliagePlacerType<P> register(String name, MapCodec<P> codec) {
-		return PlacerTypes.registerFoliagePlacer(new Identifier(Terrestria.MOD_ID, name), codec);
+		return PlacerTypes.registerFoliagePlacer(Identifier.of(Terrestria.MOD_ID, name), codec);
 	}
 }

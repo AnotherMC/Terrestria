@@ -1,6 +1,7 @@
 package com.terraformersmc.terrestria.data;
 
-import com.terraformersmc.terraform.dirt.DirtBlocks;
+import com.terraformersmc.terraform.dirt.api.DirtBlocks;
+import com.terraformersmc.terraform.dirt.api.TerraformDirtBlockTags;
 import com.terraformersmc.terrestria.init.TerrestriaBlocks;
 import com.terraformersmc.terrestria.init.helpers.StoneBlocks;
 import com.terraformersmc.terrestria.init.helpers.StoneVariantBlocks;
@@ -8,6 +9,7 @@ import com.terraformersmc.terrestria.init.helpers.WoodBlocks;
 import com.terraformersmc.terrestria.tag.TerrestriaBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ColoredFallingBlock;
@@ -79,7 +81,7 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 			.add(TerrestriaBlocks.MONSTERAS);
 
 
-		getOrCreateTagBuilder(TerrestriaBlockTags.BLACK_SAND)
+		getOrCreateTagBuilder(TerrestriaBlockTags.BLACK_SANDS)
 			.add(TerrestriaBlocks.BLACK_SAND);
 
 		// custom dirt block tags
@@ -89,7 +91,7 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 		addSand(TerrestriaBlocks.BLACK_SAND);
 
 		// stone building block tags
-		addStone(TerrestriaBlockTags.BASALT, TerrestriaBlocks.VOLCANIC_ROCK);
+		addStone(TerrestriaBlockTags.BASALTS, TerrestriaBlocks.VOLCANIC_ROCK);
 
 		// wood building block tags
 		addWood(TerrestriaBlockTags.CYPRESS_LOGS, TerrestriaBlocks.CYPRESS);
@@ -136,19 +138,19 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 			.add(dirtBlock.getPodzol());
 
 
-		getOrCreateTagBuilder(TerrestriaBlockTags.DIRT)
+		getOrCreateTagBuilder(TerrestriaBlockTags.DIRTS)
 			.add(dirtBlock.getDirt());
 
-		getOrCreateTagBuilder(TerrestriaBlockTags.FARMLAND)
+		getOrCreateTagBuilder(TerraformDirtBlockTags.FARMLAND)
 			.add(dirtBlock.getFarmland());
 
-		getOrCreateTagBuilder(TerrestriaBlockTags.GRASS_BLOCKS)
+		getOrCreateTagBuilder(TerraformDirtBlockTags.GRASS_BLOCKS)
 			.add(dirtBlock.getGrassBlock());
 
-		getOrCreateTagBuilder(TerrestriaBlockTags.PODZOL)
+		getOrCreateTagBuilder(TerrestriaBlockTags.PODZOLS)
 			.add(dirtBlock.getPodzol());
 
-		getOrCreateTagBuilder(TerrestriaBlockTags.SOIL)
+		getOrCreateTagBuilder(TerraformDirtBlockTags.SOIL)
 			.add(dirtBlock.getDirt())
 			.add(dirtBlock.getGrassBlock())
 			.add(dirtBlock.getPodzol());
@@ -159,7 +161,7 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 		getOrCreateTagBuilder(BlockTags.SAND).add(sandBlock);
 		getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(sandBlock);
 
-		getOrCreateTagBuilder(TerrestriaBlockTags.SAND).add(sandBlock);
+		getOrCreateTagBuilder(TerrestriaBlockTags.SANDS).add(sandBlock);
 	}
 
 	@SuppressWarnings("SameParameterValue")
@@ -181,7 +183,7 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 		if (stoneBlock.cobblestone != null) {
 			stoneBuilder.add(stoneBlock.cobblestone.full);
 			addStoneVariant(stoneBlock.cobblestone);
-			getOrCreateTagBuilder(TerrestriaBlockTags.COBBLESTONE).add(stoneBlock.cobblestone.full);
+			getOrCreateTagBuilder(ConventionalBlockTags.COBBLESTONES).add(stoneBlock.cobblestone.full);
 		}
 		if (stoneBlock.mossyBricks != null) {
 			stoneBuilder.add(stoneBlock.mossyBricks.full);
@@ -195,12 +197,12 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 		if (stoneBlock.plain != null) {
 			stoneBuilder.add(stoneBlock.plain.full);
 			addStoneVariant(stoneBlock.plain);
-			getOrCreateTagBuilder(TerrestriaBlockTags.STONE).add(stoneBlock.plain.full);
+			getOrCreateTagBuilder(ConventionalBlockTags.STONES).add(stoneBlock.plain.full);
 		}
 		if (stoneBlock.smooth != null) {
 			stoneBuilder.add(stoneBlock.smooth.full);
 			addStoneVariant(stoneBlock.smooth);
-			getOrCreateTagBuilder(TerrestriaBlockTags.STONE).add(stoneBlock.smooth.full);
+			getOrCreateTagBuilder(ConventionalBlockTags.STONES).add(stoneBlock.smooth.full);
 		}
 
 	}

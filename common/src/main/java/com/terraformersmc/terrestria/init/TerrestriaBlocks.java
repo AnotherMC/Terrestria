@@ -1,13 +1,13 @@
 package com.terraformersmc.terrestria.init;
 
-import com.terraformersmc.terraform.dirt.DirtBlocks;
-import com.terraformersmc.terraform.dirt.TerraformDirtRegistry;
-import com.terraformersmc.terraform.dirt.block.TerraformDirtPathBlock;
-import com.terraformersmc.terraform.dirt.block.TerraformFarmlandBlock;
-import com.terraformersmc.terraform.dirt.block.TerraformSnowyBlock;
-import com.terraformersmc.terraform.tree.block.TerraformDesertSaplingBlock;
-import com.terraformersmc.terraform.wood.block.BareSmallLogBlock;
-import com.terraformersmc.terraform.wood.block.SmallLogBlock;
+import com.terraformersmc.terraform.dirt.api.DirtBlocks;
+import com.terraformersmc.terraform.dirt.api.block.TerraformDirtPathBlock;
+import com.terraformersmc.terraform.dirt.api.block.TerraformFarmlandBlock;
+import com.terraformersmc.terraform.dirt.api.block.TerraformSnowyBlock;
+import com.terraformersmc.terraform.dirt.api.registry.TerraformDirtRegistry;
+import com.terraformersmc.terraform.tree.api.block.TerraformDesertSaplingBlock;
+import com.terraformersmc.terraform.wood.api.block.BareSmallLogBlock;
+import com.terraformersmc.terraform.wood.api.block.SmallLogBlock;
 import com.terraformersmc.terrestria.block.*;
 import com.terraformersmc.terrestria.init.helpers.StoneBlocks;
 import com.terraformersmc.terrestria.init.helpers.TerrestriaRegistry;

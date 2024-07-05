@@ -1,9 +1,8 @@
 package com.terraformersmc.terrestria.block;
 
-import com.terraformersmc.terraform.wood.block.BareSmallLogBlock;
+import com.terraformersmc.terraform.wood.api.block.BareSmallLogBlock;
 import com.terraformersmc.terrestria.init.TerrestriaBlocks;
 import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.piston.PistonBehavior;
@@ -68,47 +67,50 @@ public class SaguaroCactusBlock extends BareSmallLogBlock {
 		return super.getStateForNeighborUpdate(state, facing, neighborState, world, pos, neighborPos);
 	}
 
-	public boolean isSupportedBlock(Block block) {
-		return block == TerrestriaBlocks.SAGUARO_CACTUS || block.getDefaultState().isIn(BlockTags.SAND);
+	private boolean isSupportedBlock(BlockState state) {
+		return state.isOf(TerrestriaBlocks.SAGUARO_CACTUS) || state.isIn(BlockTags.SAND);
 	}
 
 	private boolean isSupported(BlockState state, WorldView world, BlockPos pos) {
 		BlockState blockState;
-		if (isSupportedBlock(world.getBlockState(pos.down()).getBlock())) {
+
+		if (isSupportedBlock(world.getBlockState(pos.down()))) {
 			return true;
 		}
+
 		if (state.get(BareSmallLogBlock.DOWN)) {
 			blockState = world.getBlockState(pos.down());
-			return (blockState.getBlock() == TerrestriaBlocks.SAGUARO_CACTUS && blockState.get(BareSmallLogBlock.UP));
+			return (blockState.isOf(TerrestriaBlocks.SAGUARO_CACTUS) && blockState.get(BareSmallLogBlock.UP));
 		}
 		if (state.get(BareSmallLogBlock.SOUTH)) {
 			blockState = world.getBlockState(pos.south());
-			return (blockState.getBlock() == TerrestriaBlocks.SAGUARO_CACTUS && blockState.get(BareSmallLogBlock.NORTH));
+			return (blockState.isOf(TerrestriaBlocks.SAGUARO_CACTUS) && blockState.get(BareSmallLogBlock.NORTH));
 		}
 		if (state.get(BareSmallLogBlock.NORTH)) {
 			blockState = world.getBlockState(pos.north());
-			return (blockState.getBlock() == TerrestriaBlocks.SAGUARO_CACTUS && blockState.get(BareSmallLogBlock.SOUTH));
+			return (blockState.isOf(TerrestriaBlocks.SAGUARO_CACTUS) && blockState.get(BareSmallLogBlock.SOUTH));
 		}
 		if (state.get(BareSmallLogBlock.WEST)) {
 			blockState = world.getBlockState(pos.west());
-			return (blockState.getBlock() == TerrestriaBlocks.SAGUARO_CACTUS && blockState.get(BareSmallLogBlock.EAST));
+			return (blockState.isOf(TerrestriaBlocks.SAGUARO_CACTUS) && blockState.get(BareSmallLogBlock.EAST));
 		}
 		if (state.get(BareSmallLogBlock.EAST)) {
 			blockState = world.getBlockState(pos.east());
-			return (blockState.getBlock() == TerrestriaBlocks.SAGUARO_CACTUS && blockState.get(BareSmallLogBlock.WEST));
+			return (blockState.isOf(TerrestriaBlocks.SAGUARO_CACTUS) && blockState.get(BareSmallLogBlock.WEST));
 		}
+
 		return false;
 	}
 
 	private boolean canBeSupported(WorldView world, BlockPos pos) {
-		return world.getBlockState(pos.north()).getBlock() == TerrestriaBlocks.SAGUARO_CACTUS ||
-				world.getBlockState(pos.south()).getBlock() == TerrestriaBlocks.SAGUARO_CACTUS ||
-				world.getBlockState(pos.east()).getBlock() == TerrestriaBlocks.SAGUARO_CACTUS ||
-				world.getBlockState(pos.west()).getBlock() == TerrestriaBlocks.SAGUARO_CACTUS;
+		return world.getBlockState(pos.north()).isOf(TerrestriaBlocks.SAGUARO_CACTUS) ||
+				world.getBlockState(pos.south()).isOf(TerrestriaBlocks.SAGUARO_CACTUS) ||
+				world.getBlockState(pos.east()).isOf(TerrestriaBlocks.SAGUARO_CACTUS) ||
+				world.getBlockState(pos.west()).isOf(TerrestriaBlocks.SAGUARO_CACTUS);
 	}
 
 	@Override
 	public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-		return isSupportedBlock(world.getBlockState(pos.down()).getBlock()) || canBeSupported(world, pos);
+		return isSupportedBlock(world.getBlockState(pos.down())) || canBeSupported(world, pos);
 	}
 }
