@@ -231,9 +231,6 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 
 		// Adding to FENCE_GATES or any WOODEN tag does this for AXE_MINEABLE.
 		getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(woodBlock.leaves);
-		if (woodBlock.hasLeafPile()) {
-			getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(woodBlock.leafPile);
-		}
 
 		// If the log burns, we assume all the logs, planks, and wood burn.
 		if (woodBlock.log.getDefaultState().isBurnable()) {

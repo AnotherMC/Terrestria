@@ -236,9 +236,6 @@ public class TerrestriaItemGroups {
 
 		// Leaves
 		addGroupEntry(items.leaves, ItemGroups.NATURAL, NATURAL_LEAVES);
-		if (items.hasLeafPile()) {
-			addGroupEntry(items.leafPile, ItemGroups.NATURAL, NATURAL_LEAVES);
-		}
 
 	}
 

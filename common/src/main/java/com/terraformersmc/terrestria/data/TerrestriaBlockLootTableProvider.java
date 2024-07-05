@@ -152,9 +152,6 @@ public class TerrestriaBlockLootTableProvider extends FabricBlockLootTableProvid
 
 		if (sapling != null) {
 			addDrop(woodBlock.leaves, leavesDrops(woodBlock.leaves, sapling, 0.05f, 0.0625f, 0.083333336f, 0.1f));
-			if (woodBlock.hasLeafPile()) {
-				addDrop(woodBlock.leafPile, leavesDrops(woodBlock.leafPile, sapling, 0.00625f, 0.0078125f, 0.010416667f, 0.0125f));
-			}
 		}
 	}
 }

@@ -91,9 +91,7 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 
 		getOrCreateTagBuilder(ConventionalBiomeTags.IS_DECIDUOUS_TREE)
 			.addOptional(TerrestriaBiomes.DENSE_WOODLANDS)
-			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
-			.addOptional(TerrestriaBiomes.RAINBOW_RAINFOREST)
-			.addOptional(TerrestriaBiomes.SAKURA_FOREST);
+			.addOptional(TerrestriaBiomes.RAINBOW_RAINFOREST);
 
 		getOrCreateTagBuilder(ConventionalBiomeTags.IS_DESERT)
 			.addOptional(TerrestriaBiomes.CANYON)
@@ -145,10 +143,8 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 			.addOptional(TerrestriaBiomes.CYPRESS_SWAMP)
 			.addOptional(TerrestriaBiomes.DENSE_WOODLANDS)
 			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
-			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
 			.addOptional(TerrestriaBiomes.LUSH_REDWOOD_FOREST)
-			.addOptional(TerrestriaBiomes.REDWOOD_FOREST)
-			.addOptional(TerrestriaBiomes.SAKURA_FOREST);
+			.addOptional(TerrestriaBiomes.REDWOOD_FOREST);
 
 		getOrCreateTagBuilder(ConventionalBiomeTags.IS_VEGETATION_DENSE_OVERWORLD)
 			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
@@ -252,7 +248,6 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 			.addOptional(TerrestriaBiomes.DENSE_WOODLANDS)
 			.addOptional(TerrestriaBiomes.DUNES)
 			.addOptional(TerrestriaBiomes.HEMLOCK_RAINFOREST)
-			.addOptional(TerrestriaBiomes.JAPANESE_MAPLE_FOREST)
 			.addOptional(TerrestriaBiomes.LUSH_DESERT)
 			.addOptional(TerrestriaBiomes.LUSH_REDWOOD_FOREST)
 			.addOptional(TerrestriaBiomes.OASIS)

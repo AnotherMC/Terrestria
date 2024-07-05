@@ -72,17 +72,9 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 	private void generateWood(RecipeExporter exporter, WoodItems woodItem, TagKey<Item> logsTag) {
 		if (woodItem.fallbackPlanks != null) {
 			ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, woodItem.fallbackPlanks, 4)
-					.input(logsTag).group("planks").criterion("has_logs", conditionsFromTag(logsTag)).offerTo(exporter, new Identifier("terrestria", getItemPath(woodItem.log) + "_to_planks"));
+					.input(logsTag).group("planks").criterion("has_logs", conditionsFromTag(logsTag)).offerTo(exporter, Identifier.of("terrestria", getItemPath(woodItem.log) + "_to_planks"));
 		}
 		// leaf piles are an optional wood feature
-		if (woodItem.hasLeafPile()) {
-			assert (woodItem.leafPile != null);  // it's not null; this is just for IDEA
-			new ShapedRecipeJsonBuilder(RecipeCategory.DECORATIONS, woodItem.leafPile, 16)
-					.pattern("LL")
-					.input('L', woodItem.leaves)
-					.criterion("has_leaves", InventoryChangedCriterion.Conditions.items(woodItem.leaves))
-					.offerTo(exporter);
-		}
 
 		// some woodItem with no real wood have wood set to log
 		if (woodItem.hasWood()) {

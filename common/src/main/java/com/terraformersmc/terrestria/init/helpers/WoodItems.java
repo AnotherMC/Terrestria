@@ -12,7 +12,6 @@ public class WoodItems {
 	public final BlockItem log;
 	public final BlockItem wood;
 	public final BlockItem leaves;
-	public final BlockItem leafPile;
 	public final BlockItem strippedLog;
 	public final BlockItem strippedWood;
 
@@ -24,11 +23,6 @@ public class WoodItems {
 
 		log = TerrestriaRegistry.registerBlockItem(name + "_log", blocks.log);
 		leaves = TerrestriaRegistry.registerBlockItem(name + "_leaves", blocks.leaves);
-		if (blocks.hasLeafPile()) {
-			leafPile = TerrestriaRegistry.registerBlockItem(name + "_leaf_pile", blocks.leafPile);
-		} else {
-			leafPile = null;
-		}
 		strippedLog = TerrestriaRegistry.registerBlockItem("stripped_" + name + "_log", blocks.strippedLog);
 
 		if (blocks.hasWood()) {
@@ -55,9 +49,6 @@ public class WoodItems {
 		float LEAVES_CHANCE = compostingRegistry.get(Items.OAK_LEAVES);
 
 		compostingRegistry.add(leaves, LEAVES_CHANCE);
-		if (hasLeafPile()) {
-			compostingRegistry.add(leafPile, LEAVES_CHANCE);
-		}
 	}
 
 	protected void addFuels() {
@@ -73,7 +64,7 @@ public class WoodItems {
 	}
 
 	public boolean hasLeafPile() {
-		return (leafPile != null);
+		return false;
 	}
 
 	public boolean hasWood() {
