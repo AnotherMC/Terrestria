@@ -11,7 +11,6 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.chunk.BlockColumn;
 
 public class CanyonSurfaceBuilder extends BiolithSurfaceBuilder {
-
 	private static final OpenSimplexNoise CLIFF_NOISE = new OpenSimplexNoise(346987);
 
 	private final BlockState cliffMaterial;

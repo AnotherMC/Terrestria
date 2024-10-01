@@ -3,15 +3,21 @@ package com.terraformersmc.terrestria.feature.structure.volcano;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.terraformersmc.biolith.api.biomeperimeters.BiomePerimeters;
 import com.terraformersmc.terrestria.Terrestria;
 import com.terraformersmc.terrestria.init.TerrestriaBiomes;
 import com.terraformersmc.terrestria.init.TerrestriaStructures;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.structure.*;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.source.BiomeAccess;
 import net.minecraft.world.biome.source.BiomeCoords;
+import net.minecraft.world.biome.source.BiomeSource;
+import net.minecraft.world.biome.source.util.MultiNoiseUtil;
 import net.minecraft.world.gen.structure.Structure;
 import net.minecraft.world.gen.structure.StructureType;
 
@@ -41,11 +47,26 @@ public class VolcanoStructure extends Structure {
 		int x = context.chunkPos().getCenterX();
 		int z = context.chunkPos().getCenterZ();
 		int y = context.chunkGenerator().getHeightInGround(x, z, Heightmap.Type.OCEAN_FLOOR_WG, context.world(), context.noiseConfig());
+		int seaLevel = context.chunkGenerator().getSeaLevel();
 		RegistryEntry<Biome> biome = context.chunkGenerator().getBiomeSource().getBiome(BiomeCoords.fromBlock(x),
 				BiomeCoords.fromBlock(y), BiomeCoords.fromBlock(z), context.noiseConfig().getMultiNoiseSampler());
 
-		if (!biome.matchesKey(TerrestriaBiomes.VOLCANIC_ISLAND) &&
-				!Terrestria.getConfigManager().getGeneralConfig().areOceanVolcanoesEnabled()) {
+		if (biome.matchesKey(TerrestriaBiomes.VOLCANIC_ISLAND)) {
+			// Shore volcanoes at the edges and regular volcanoes in the center.
+			int distance = BiomePerimeters.getOrCreateInstance(
+					context.dynamicRegistryManager().get(RegistryKeys.BIOME).getOrThrow(TerrestriaBiomes.VOLCANIC_ISLAND), 40)
+					.getPerimeterDistance(new BiomeAccess(
+							new BiomeAccessStorage(context.biomeSource(), context.noiseConfig().getMultiNoiseSampler()),
+							context.seed()), new BlockPos(x, seaLevel, z));
+
+			if (this.baseY < seaLevel - 10 && distance >= 20) {
+				return Optional.empty();
+			}
+			if (this.baseY >= seaLevel - 10 && distance < 20) {
+				return Optional.empty();
+			}
+		} else if (!Terrestria.getConfigManager().getGeneralConfig().areOceanVolcanoesEnabled()) {
+			// No need to consider starting a structure outside Volcanic Island unless sea volcanoes are enabled.
 			return Optional.empty();
 		}
 
@@ -59,5 +80,13 @@ public class VolcanoStructure extends Structure {
 	@Override
 	public StructureType<?> getType() {
 		return TerrestriaStructures.VOLCANO_STRUCTURE_TYPE;
+	}
+
+	// Shim class to instantiate a BiomeAccess.Storage from available information.
+	private record BiomeAccessStorage(BiomeSource biomeSource, MultiNoiseUtil.MultiNoiseSampler noiseSampler) implements BiomeAccess.Storage {
+		@Override
+		public RegistryEntry<Biome> getBiomeForNoiseGen(int biomeX, int biomeY, int biomeZ) {
+			return biomeSource.getBiome(biomeX, biomeY, biomeZ, noiseSampler);
+		}
 	}
 }

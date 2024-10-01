@@ -13,7 +13,6 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.chunk.BlockColumn;
 
 public class DuneSurfaceBuilder extends BiolithSurfaceBuilder {
-
 	private static final OpenSimplexNoise NOISE = new OpenSimplexNoise(3445);
 
 	private final BlockState topMaterial;
