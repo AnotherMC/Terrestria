@@ -258,7 +258,7 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 			woodBuilder
 				.add(woodBlock.wood)
 				.add(woodBlock.strippedWood);
-			getOrCreateTagBuilder(TerrestriaBlockTags.STRIPPED_WOOD).add(woodBlock.strippedWood);
+			getOrCreateTagBuilder(TerrestriaBlockTags.STRIPPED_WOODS).add(woodBlock.strippedWood);
 		}
 
 		if (woodBlock.hasQuarterLog()) {

@@ -51,24 +51,24 @@ public class WoodBlocks {
 
 		// register manufactured blocks
 
-		planks = TerrestriaRegistry.register(name + "_planks", new Block(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS).mapColor(colors.planks)));
-		slab = TerrestriaRegistry.register(name + "_slab", new SlabBlock(AbstractBlock.Settings.copy(Blocks.OAK_SLAB).mapColor(colors.planks)));
-		stairs = TerrestriaRegistry.register(name + "_stairs", new StairsBlock(planks.getDefaultState(), AbstractBlock.Settings.copy(Blocks.OAK_STAIRS).mapColor(colors.planks)));
-		fence = TerrestriaRegistry.register(name + "_fence", new FenceBlock(AbstractBlock.Settings.copy(Blocks.OAK_FENCE).mapColor(colors.planks)));
-		fenceGate = TerrestriaRegistry.register(name + "_fence_gate", new FenceGateBlock(WoodType.OAK, AbstractBlock.Settings.copy(Blocks.OAK_FENCE_GATE).mapColor(colors.planks)));
-		door = TerrestriaRegistry.register(name + "_door", new DoorBlock(BlockSetType.OAK, AbstractBlock.Settings.copy(Blocks.OAK_DOOR).mapColor(colors.planks)));
-		button = TerrestriaRegistry.register(name + "_button", new ButtonBlock(BlockSetType.OAK, 30, AbstractBlock.Settings.copy(Blocks.OAK_BUTTON).mapColor(colors.planks)));
-		pressurePlate = TerrestriaRegistry.register(name + "_pressure_plate", new PressurePlateBlock(BlockSetType.OAK, AbstractBlock.Settings.copy(Blocks.OAK_PRESSURE_PLATE).mapColor(colors.planks)));
-		trapdoor = TerrestriaRegistry.register(name + "_trapdoor", new TrapdoorBlock(BlockSetType.OAK, AbstractBlock.Settings.copy(Blocks.OAK_TRAPDOOR).mapColor(colors.planks)));
+		planks = TerrestriaRegistry.register(name + "_planks", Block::new, AbstractBlock.Settings.copy(Blocks.OAK_PLANKS).mapColor(colors.planks));
+		slab = TerrestriaRegistry.register(name + "_slab", SlabBlock::new, AbstractBlock.Settings.copy(Blocks.OAK_SLAB).mapColor(colors.planks));
+		stairs = TerrestriaRegistry.register(name + "_stairs", settings -> new StairsBlock(planks.getDefaultState(), settings), AbstractBlock.Settings.copy(Blocks.OAK_STAIRS).mapColor(colors.planks));
+		fence = TerrestriaRegistry.register(name + "_fence", FenceBlock::new, AbstractBlock.Settings.copy(Blocks.OAK_FENCE).mapColor(colors.planks));
+		fenceGate = TerrestriaRegistry.register(name + "_fence_gate", settings -> new FenceGateBlock(WoodType.OAK, settings), AbstractBlock.Settings.copy(Blocks.OAK_FENCE_GATE).mapColor(colors.planks));
+		door = TerrestriaRegistry.register(name + "_door", settings -> new DoorBlock(BlockSetType.OAK, settings), AbstractBlock.Settings.copy(Blocks.OAK_DOOR).mapColor(colors.planks));
+		button = TerrestriaRegistry.register(name + "_button", settings -> new ButtonBlock(BlockSetType.OAK, 30, settings), AbstractBlock.Settings.copy(Blocks.OAK_BUTTON).mapColor(colors.planks));
+		pressurePlate = TerrestriaRegistry.register(name + "_pressure_plate", settings -> new PressurePlateBlock(BlockSetType.OAK, settings), AbstractBlock.Settings.copy(Blocks.OAK_PRESSURE_PLATE).mapColor(colors.planks));
+		trapdoor = TerrestriaRegistry.register(name + "_trapdoor", settings -> new TrapdoorBlock(BlockSetType.OAK, settings), AbstractBlock.Settings.copy(Blocks.OAK_TRAPDOOR).mapColor(colors.planks));
 
 		Identifier signTexture = Identifier.of(Terrestria.MOD_ID, "entity/signs/" + name);
-		sign = TerrestriaRegistry.register(name + "_sign", new TerraformSignBlock(signTexture, AbstractBlock.Settings.copy(Blocks.OAK_SIGN).mapColor(colors.planks)));
-		wallSign = TerrestriaRegistry.register(name + "_wall_sign", new TerraformWallSignBlock(signTexture, AbstractBlock.Settings.copy(Blocks.OAK_WALL_SIGN).mapColor(colors.planks).dropsLike(sign)));
+		sign = TerrestriaRegistry.register(name + "_sign", settings -> new TerraformSignBlock(signTexture, settings), AbstractBlock.Settings.copy(Blocks.OAK_SIGN).mapColor(colors.planks));
+		wallSign = TerrestriaRegistry.register(name + "_wall_sign", settings -> new TerraformWallSignBlock(signTexture, settings), AbstractBlock.Settings.copy(Blocks.OAK_WALL_SIGN).mapColor(colors.planks).lootTable(sign.getLootTableKey()));
 
 		Identifier hangingSignTexture = Identifier.of(Terrestria.MOD_ID, "entity/signs/hanging/" + name);
 		Identifier hangingSignGuiTexture = Identifier.of(Terrestria.MOD_ID, "textures/gui/hanging_signs/" + name);
-		hangingSign = TerrestriaRegistry.register(name + "_hanging_sign", new TerraformHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, AbstractBlock.Settings.copy(Blocks.OAK_HANGING_SIGN).mapColor(colors.planks)));
-		wallHangingSign = TerrestriaRegistry.register(name + "_wall_hanging_sign", new TerraformWallHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, AbstractBlock.Settings.copy(Blocks.OAK_WALL_HANGING_SIGN).mapColor(colors.planks).dropsLike(hangingSign)));
+		hangingSign = TerrestriaRegistry.register(name + "_hanging_sign", settings -> new TerraformHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, settings), AbstractBlock.Settings.copy(Blocks.OAK_HANGING_SIGN).mapColor(colors.planks));
+		wallHangingSign = TerrestriaRegistry.register(name + "_wall_hanging_sign", settings -> new TerraformWallHangingSignBlock(hangingSignTexture, hangingSignGuiTexture, settings), AbstractBlock.Settings.copy(Blocks.OAK_WALL_HANGING_SIGN).mapColor(colors.planks).lootTable(hangingSign.getLootTableKey()));
 
 		// register natural and stripped blocks
 
@@ -76,25 +76,25 @@ public class WoodBlocks {
 			if (size.equals(LogSize.SMALL)) {
 				throw new IllegalArgumentException("Small log trees are not compatible with extended leaves, I'm not sure how you even did this...");
 			}
-			leaves = TerrestriaRegistry.register(name + "_leaves", new TerrestriaOptiLeavesBlock(AbstractBlock.Settings.copy(Blocks.OAK_LEAVES).mapColor(colors.leaves).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never)));
+			leaves = TerrestriaRegistry.register(name + "_leaves", TerrestriaOptiLeavesBlock::new, AbstractBlock.Settings.copy(Blocks.OAK_LEAVES).mapColor(colors.leaves).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never));
 		} else {
 			if (size.equals(LogSize.SMALL)) {
-				leaves = TerrestriaRegistry.register(name + "_leaves", new TransparentLeavesBlock(AbstractBlock.Settings.copy(Blocks.OAK_LEAVES).mapColor(colors.leaves).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never)));
+				leaves = TerrestriaRegistry.register(name + "_leaves", TransparentLeavesBlock::new, AbstractBlock.Settings.copy(Blocks.OAK_LEAVES).mapColor(colors.leaves).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never));
 			} else {
-				leaves = TerrestriaRegistry.register(name + "_leaves", new LeavesBlock(AbstractBlock.Settings.copy(Blocks.OAK_LEAVES).mapColor(colors.leaves).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never)));
+				leaves = TerrestriaRegistry.register(name + "_leaves", LeavesBlock::new, AbstractBlock.Settings.copy(Blocks.OAK_LEAVES).mapColor(colors.leaves).allowsSpawning(TerrestriaBlocks::canSpawnOnLeaves).suffocates(TerrestriaBlocks::never).blockVision(TerrestriaBlocks::never));
 			}
 		}
 
 		if (hasLeafPile) {
-			leafPile = TerrestriaRegistry.register(name + "_leaf_pile", new LeafPileBlock(AbstractBlock.Settings.copy(Blocks.PINK_PETALS).mapColor(colors.leaves)));
+			leafPile = TerrestriaRegistry.register(name + "_leaf_pile", LeafPileBlock::new, AbstractBlock.Settings.copy(Blocks.PINK_PETALS).mapColor(colors.leaves));
 		} else {
 			leafPile = null;
 		}
 
 		if (size.equals(LogSize.SMALL)) {
 			// Small logs have neither wood nor quarter logs.
-			log = TerrestriaRegistry.register(name + "_log", SmallLogBlock.of(leaves, colors.planks, colors.bark));
-			strippedLog = TerrestriaRegistry.register("stripped_" + name + "_log", SmallLogBlock.of(leaves, colors.planks));
+			log = TerrestriaRegistry.register(name + "_log", settings -> new SmallLogBlock(leaves, settings), PillarLogHelper.createSmallLogSettings(leaves, colors.planks, colors.bark));
+			strippedLog = TerrestriaRegistry.register("stripped_" + name + "_log", settings -> new SmallLogBlock(leaves, settings), PillarLogHelper.createSmallLogSettings(leaves, colors.planks));
 
 			wood = null;
 			strippedWood = null;
@@ -102,15 +102,15 @@ public class WoodBlocks {
 			quarterLog = null;
 			strippedQuarterLog = null;
 		} else {
-			log = TerrestriaRegistry.register(name + "_log", PillarLogHelper.of(colors.planks, colors.bark));
-			strippedLog = TerrestriaRegistry.register("stripped_" + name + "_log", PillarLogHelper.of(colors.planks));
+			log = TerrestriaRegistry.register(name + "_log", PillarBlock::new, PillarLogHelper.createSettings(colors.planks, colors.bark));
+			strippedLog = TerrestriaRegistry.register("stripped_" + name + "_log", PillarBlock::new, PillarLogHelper.createSettings(colors.planks));
 
-			wood = TerrestriaRegistry.register(name + "_wood", PillarLogHelper.of(colors.bark));
-			strippedWood = TerrestriaRegistry.register("stripped_" + name + "_wood", PillarLogHelper.of(colors.planks));
+			wood = TerrestriaRegistry.register(name + "_wood", PillarBlock::new, PillarLogHelper.createSettings(colors.bark));
+			strippedWood = TerrestriaRegistry.register("stripped_" + name + "_wood", PillarBlock::new, PillarLogHelper.createSettings(colors.planks));
 
 			if (hasQuarterLog) {
-				quarterLog = TerrestriaRegistry.register(name + "_quarter_log", QuarterLogBlock.of(colors.planks, colors.bark));
-				strippedQuarterLog = TerrestriaRegistry.register("stripped_" + name + "_quarter_log", QuarterLogBlock.of(colors.planks));
+				quarterLog = TerrestriaRegistry.register(name + "_quarter_log", QuarterLogBlock::new, PillarLogHelper.createQuarterLogSettings(colors.planks, colors.bark));
+				strippedQuarterLog = TerrestriaRegistry.register("stripped_" + name + "_quarter_log", QuarterLogBlock::new, PillarLogHelper.createSettings(colors.planks));
 			} else {
 				quarterLog = null;
 				strippedQuarterLog = null;

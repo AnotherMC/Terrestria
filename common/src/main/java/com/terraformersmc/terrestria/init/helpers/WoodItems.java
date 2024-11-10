@@ -1,14 +1,14 @@
 package com.terraformersmc.terrestria.init.helpers;
 
-import com.terraformersmc.terraform.boat.api.TerraformBoatType;
-
+import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
+import com.terraformersmc.terrestria.Terrestria;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.item.*;
+import net.minecraft.util.Identifier;
 
 public class WoodItems {
 	private final String NAME;
-	private final TerraformBoatType BOAT_TYPE;
 
 	public final BlockItem log;
 	public final BlockItem quarterLog;
@@ -51,18 +51,13 @@ public class WoodItems {
 		button = TerrestriaRegistry.registerBlockItem(name + "_button", blocks.button);
 		pressurePlate = TerrestriaRegistry.registerBlockItem(name + "_pressure_plate", blocks.pressurePlate);
 		trapdoor = TerrestriaRegistry.registerBlockItem(name + "_trapdoor", blocks.trapdoor);
-		sign = TerrestriaRegistry.register(name + "_sign", new SignItem(new Item.Settings().maxCount(16), blocks.sign, blocks.wallSign));
-		hangingSign = TerrestriaRegistry.register(name + "_hanging_sign", new HangingSignItem(blocks.hangingSign, blocks.wallHangingSign, new Item.Settings().maxCount(16)));
+		sign = TerrestriaRegistry.register(name + "_sign", settings -> new SignItem(blocks.sign, blocks.wallSign, settings), new Item.Settings().maxCount(16));
+		hangingSign = TerrestriaRegistry.register(name + "_hanging_sign", settings -> new HangingSignItem(blocks.hangingSign, blocks.wallHangingSign, settings), new Item.Settings().maxCount(16));
 		strippedLog = TerrestriaRegistry.registerBlockItem("stripped_" + name + "_log", blocks.strippedLog);
 
-		BOAT_TYPE = TerrestriaBoats.register(name, planks);
-		if (BOAT_TYPE != null) {
-			boat = BOAT_TYPE.getItem();
-			chestBoat = BOAT_TYPE.getChestItem();
-		} else {
-			boat = null;
-			chestBoat = null;
-		}
+		Identifier family = Identifier.of(Terrestria.MOD_ID, name);
+		boat = TerraformBoatItemHelper.registerBoatItem(family, false);
+		chestBoat = TerraformBoatItemHelper.registerBoatItem(family, true);
 
 		if (blocks.hasWood()) {
 			wood = TerrestriaRegistry.registerBlockItem(name + "_wood", blocks.wood);
@@ -102,10 +97,10 @@ public class WoodItems {
 	}
 
 	protected void addFuels() {
-		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
-
-		fuelRegistry.add(fence, 300);
-		fuelRegistry.add(fenceGate, 300);
+		FuelRegistryEvents.BUILD.register((builder, context) -> {
+			builder.add(fence, 300);
+			builder.add(fenceGate, 300);
+		});
 	}
 
 	public String getName() {
@@ -125,6 +120,6 @@ public class WoodItems {
 	}
 
 	public boolean hasBoat() {
-		return (BOAT_TYPE != null && boat != null && chestBoat != null);
+		return (boat != null && chestBoat != null);
 	}
 }

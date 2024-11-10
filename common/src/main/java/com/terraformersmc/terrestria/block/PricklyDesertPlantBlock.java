@@ -16,11 +16,11 @@ import org.joml.Vector3d;
 
 public class PricklyDesertPlantBlock extends TerraformDesertPlantBlock implements Fertilizable {
 	public PricklyDesertPlantBlock(Settings settings) {
-		super(settings, false);
+		super(false, settings);
 	}
 
-	public PricklyDesertPlantBlock(Settings settings, boolean onlySand) {
-		super(settings, onlySand);
+	public PricklyDesertPlantBlock(boolean onlySand, Settings settings) {
+		super(onlySand, settings);
 	}
 
 	@Override
@@ -79,7 +79,9 @@ public class PricklyDesertPlantBlock extends TerraformDesertPlantBlock implement
 
 	@Override
 	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-		entity.damage(world.getDamageSources().cactus(), 1.0f);
+		if (world instanceof ServerWorld serverWorld) {
+			entity.damage(serverWorld, world.getDamageSources().cactus(), 1.0f);
+		}
 	}
 
 	@Override

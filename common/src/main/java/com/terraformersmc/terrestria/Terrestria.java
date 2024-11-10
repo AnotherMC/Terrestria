@@ -18,7 +18,7 @@ public class Terrestria implements ModInitializer {
 	private static final TerrestriaConfigManager CONFIG_MANAGER = new TerrestriaConfigManager();
 
 	private static Boolean initialized = false;
-	private static final ArrayList<Runnable> runnables = new ArrayList<>(1);
+	private static final ArrayList<Runnable> RUNNABLES = new ArrayList<>(1);
 
 	private static void register() {
 		// Load the general config if it hasn't been loaded already
@@ -50,7 +50,7 @@ public class Terrestria implements ModInitializer {
 
 		// At this point Terrestria is completely initialized.
 		initialized = true;
-		for (Runnable callback : runnables) {
+		for (Runnable callback : RUNNABLES) {
 			callback.run();
 		}
 	}
@@ -59,7 +59,7 @@ public class Terrestria implements ModInitializer {
 		if (initialized) {
 			callback.run();
 		} else {
-			runnables.add(callback);
+			RUNNABLES.add(callback);
 		}
 	}
 

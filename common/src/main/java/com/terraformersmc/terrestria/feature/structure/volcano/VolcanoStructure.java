@@ -54,7 +54,7 @@ public class VolcanoStructure extends Structure {
 		if (biome.matchesKey(TerrestriaBiomes.VOLCANIC_ISLAND)) {
 			// Shore volcanoes at the edges and regular volcanoes in the center.
 			int distance = BiomePerimeters.getOrCreateInstance(
-					context.dynamicRegistryManager().get(RegistryKeys.BIOME).getOrThrow(TerrestriaBiomes.VOLCANIC_ISLAND), 40)
+					context.dynamicRegistryManager().getOrThrow(RegistryKeys.BIOME).getValueOrThrow(TerrestriaBiomes.VOLCANIC_ISLAND), 40)
 					.getPerimeterDistance(new BiomeAccess(
 							new BiomeAccessStorage(context.biomeSource(), context.noiseConfig().getMultiNoiseSampler()),
 							context.seed()), new BlockPos(x, seaLevel, z));

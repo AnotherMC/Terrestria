@@ -84,7 +84,7 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 
 		copy(TerrestriaBlockTags.STRIPPED_LOGS, TerrestriaItemTags.STRIPPED_LOGS);
 
-		copy(TerrestriaBlockTags.STRIPPED_WOOD, TerrestriaItemTags.STRIPPED_WOOD);
+		copy(TerrestriaBlockTags.STRIPPED_WOODS, TerrestriaItemTags.STRIPPED_WOODS);
 
 
 		// dirt type tags

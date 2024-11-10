@@ -153,15 +153,15 @@ public class TerrestriaClient implements ClientModInitializer {
 	}
 
 	private void registerEntityRenderers() {
-		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "redwood"), false);
-		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "hemlock"), false);
-		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "rubber"), false);
-		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "cypress"), false);
-		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "willow"), false);
-		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "japanese_maple"), false);
-		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "rainbow_eucalyptus"), false);
-		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "sakura"), false);
-		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "yucca_palm"), false);
+		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "redwood"));
+		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "hemlock"));
+		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "rubber"));
+		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "cypress"));
+		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "willow"));
+		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "japanese_maple"));
+		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "rainbow_eucalyptus"));
+		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "sakura"));
+		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Terrestria.MOD_ID, "yucca_palm"));
 	}
 
 	private void addColoredGrass(Block grass) {

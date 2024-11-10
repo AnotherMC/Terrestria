@@ -50,7 +50,6 @@ public class VolcanicIslandBiomes {
 		DefaultBiomeFeatures.addDefaultMushrooms(builder);
 		DefaultBiomeFeatures.addDefaultVegetation(builder);
 		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_WARM);
-		DefaultBiomeFeatures.addSeagrassOnStone(builder);
 		return builder.build();
 	}
 

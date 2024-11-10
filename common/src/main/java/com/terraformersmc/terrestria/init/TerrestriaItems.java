@@ -6,7 +6,7 @@ import com.terraformersmc.terrestria.init.helpers.WoodItems;
 
 import com.terraformersmc.terrestria.item.LogTurnerItem;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -118,7 +118,7 @@ public class TerrestriaItems {
 		ALOE_VERA = TerrestriaRegistry.registerBlockItem("aloe_vera", TerrestriaBlocks.ALOE_VERA);
 		DEAD_GRASS = TerrestriaRegistry.registerBlockItem("dead_grass", TerrestriaBlocks.DEAD_GRASS);
 
-		LOG_TURNER = TerrestriaRegistry.register("log_turner", new LogTurnerItem(new Item.Settings()));
+		LOG_TURNER = TerrestriaRegistry.register("log_turner", LogTurnerItem::new, new Item.Settings());
 
 		addCompostables();
 		addFuels();
@@ -166,9 +166,9 @@ public class TerrestriaItems {
 	}
 
 	private static void addFuels() {
-		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
-
-		fuelRegistry.add(DEAD_GRASS, 100);
-		fuelRegistry.add(LOG_TURNER, 300);
+		FuelRegistryEvents.BUILD.register((builder, context) -> {
+			builder.add(DEAD_GRASS, 100);
+			builder.add(LOG_TURNER, 300);
+		});
 	}
 }
