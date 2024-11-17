@@ -496,6 +496,18 @@
   "item.terrestria.saguaro_cactus_sapling": "Саженец кактуса сагуаро",
   "item.terrestria.yucca_palm_sapling": "Саженец юкки пальмовой",
 
+  "tag.item.terrestria.cypress_logs": "Брёвна кипариса",
+  "tag.item.terrestria.hemlock_logs": "Брёвна тсуги",
+  "tag.item.terrestria.japanese_maple_logs": "Брёвна японского клёна",
+  "tag.item.terrestria.mossy_ingredients": "Замшелые ингридиенты",
+  "tag.item.terrestria.rainbow_eucalyptus_logs": "Брёвна радужного эвкалипта",
+  "tag.item.terrestria.redwood_logs": "Брёвна секвойи",
+  "tag.item.terrestria.rubber_logs": "Брёвна гевеи",
+  "tag.item.terrestria.sakura_logs": "Брёвна сакуры",
+  "tag.item.terrestria.small_oak_logs": "Тонкие дубовые брёвна",
+  "tag.item.terrestria.willow_logs": "Брёвна ивы",
+  "tag.item.terrestria.yucca_palm_logs": "Брёвна юкки пальмовой",
+
   "tag.item.c.basalt": "Базальт",
   "tag.item.c.basalts": "Базальтовые",
   "tag.item.c.black_sand": "Чёрный песок",
@@ -507,18 +519,5 @@
   "tag.item.c.podzols": "Подзолы",
   "tag.item.c.sand": "Песок",
   "tag.item.c.sands": "Пески",
-  "tag.item.c.stone": "Камень",
-  "tag.item.c.stripped_logs": "Обтёсанные брёвна",
-  "tag.item.c.stripped_woods": "Обтёсанная древесина",
-  "tag.item.terrestria.cypress_logs": "Брёвна кипариса",
-  "tag.item.terrestria.hemlock_logs": "Брёвна тсуги",
-  "tag.item.terrestria.japanese_maple_logs": "Брёвна японского клёна",
-  "tag.item.terrestria.mossy_ingredients": "Замшелые ингридиенты",
-  "tag.item.terrestria.rainbow_eucalyptus_logs": "Брёвна радужного эвкалипта",
-  "tag.item.terrestria.redwood_logs": "Брёвна секвойи",
-  "tag.item.terrestria.rubber_logs": "Брёвна гевеи",
-  "tag.item.terrestria.sakura_logs": "Брёвна сакуры",
-  "tag.item.terrestria.small_oak_logs": "Тонкие дубовые брёвна",
-  "tag.item.terrestria.willow_logs": "Брёвна ивы",
-  "tag.item.terrestria.yucca_palm_logs": "Брёвна юкки пальмовой"
+  "tag.item.c.stone": "Камень"
 }

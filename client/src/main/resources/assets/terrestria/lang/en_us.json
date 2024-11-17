@@ -549,7 +549,5 @@
   "tag.item.c.podzols": "Podzols",
   "tag.item.c.sand": "Sand",
   "tag.item.c.sands": "Sands",
-  "tag.item.c.stone": "Stone",
-  "tag.item.c.stripped_logs": "Stripped Logs",
-  "tag.item.c.stripped_woods": "Stripped Woods"
+  "tag.item.c.stone": "Stone"
 }

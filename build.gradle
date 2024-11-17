@@ -91,11 +91,6 @@ allprojects {
 			name = 'TerraformersMC'
 			url = 'https://maven.terraformersmc.com/'
 		}
-
-		// TerraBlender
-		maven {
-			url = 'https://maven.minecraftforge.net/'
-		}
 	}
 }
 
