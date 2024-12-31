@@ -15,6 +15,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
@@ -74,8 +76,9 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 
 		private void generateWood(RecipeExporter exporter, WoodItems woodItem, TagKey<Item> logsTag) {
 			if (woodItem.fallbackPlanks != null) {
-				ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, woodItem.fallbackPlanks, 4)
-						.input(logsTag).group("planks").criterion("has_logs", conditionsFromTag(logsTag)).offerTo(exporter, Identifier.of("terrestria", getItemPath(woodItem.log) + "_to_planks"));
+				createShapeless(RecipeCategory.BUILDING_BLOCKS, woodItem.fallbackPlanks, 4)
+						.input(logsTag).group("planks").criterion("has_logs", conditionsFromTag(logsTag))
+					.offerTo(exporter, RegistryKey.of(RegistryKeys.RECIPE, Identifier.of("terrestria", getItemPath(woodItem.log) + "_to_planks")));
 			}
 			// leaf piles are an optional wood feature
 

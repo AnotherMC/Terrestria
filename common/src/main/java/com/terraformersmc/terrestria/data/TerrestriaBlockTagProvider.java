@@ -56,8 +56,6 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 		getOrCreateTagBuilder(BlockTags.LEAVES)
 			.add(TerrestriaBlocks.JUNGLE_PALM_LEAVES);
 
-		getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
-				.addTag(TerrestriaBlockTags.SMALL_OAK_LOGS);
 
 		getOrCreateTagBuilder(BlockTags.MOSS_REPLACEABLE)
 				.add(TerrestriaBlocks.VOLCANIC_ROCK.plain.full);
