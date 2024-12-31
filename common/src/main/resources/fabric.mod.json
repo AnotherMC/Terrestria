@@ -17,6 +17,9 @@
     "terraform-biome-remapper": [
       "com.terraformersmc.terrestria.init.helpers.TerrestriaBiomeRemappings"
     ],
+    "terraform-boat-dfu": [
+      "com.terraformersmc.terrestria.init.helpers.TerrestriaBoatDfu"
+    ],
     "fabric-datagen": [
       "com.terraformersmc.terrestria.data.TerrestriaDatagen"
     ]

@@ -1,10 +1,11 @@
 package com.terraformersmc.terrestria.init.helpers;
 
-import com.terraformersmc.terraform.boat.api.TerraformBoatType;
-
+import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
+import com.terraformersmc.terrestria.Terrestria;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.item.*;
+import net.minecraft.util.Identifier;
 
 public class WoodItems {
 	private final String NAME;
@@ -52,7 +53,6 @@ public class WoodItems {
 	}
 
 	protected void addFuels() {
-		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
 	}
 
 	public String getName() {

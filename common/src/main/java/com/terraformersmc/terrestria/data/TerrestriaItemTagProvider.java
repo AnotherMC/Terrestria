@@ -22,6 +22,9 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 
 	@Override
 	public void configure(RegistryWrapper.WrapperLookup registries) {
+		/*
+		 * Vanilla item tags
+		 */
 		copy(BlockTags.BUTTONS, ItemTags.BUTTONS);
 
 		copy(BlockTags.DIRT, ItemTags.DIRT);
@@ -67,42 +70,58 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 		copy(BlockTags.WOODEN_TRAPDOORS, ItemTags.WOODEN_TRAPDOORS);
 
 
+		/*
+		 * Conventional item tags
+		 */
+		copy(TerrestriaBlockTags.BLACK_SANDS, TerrestriaItemTags.BLACK_SANDS);
+
 		copy(ConventionalBlockTags.COBBLESTONES, ConventionalItemTags.COBBLESTONES);
+
+		copy(ConventionalBlockTags.STRIPPED_LOGS, ConventionalItemTags.STRIPPED_LOGS);
+
+		copy(ConventionalBlockTags.STRIPPED_WOODS, ConventionalItemTags.STRIPPED_WOODS);
 
 		copy(ConventionalBlockTags.STONES, ConventionalItemTags.STONES);
 
 
-		copy(TerrestriaBlockTags.BLACK_SANDS, TerrestriaItemTags.BLACK_SANDS);
-
+		/*
+		 * Local item tags
+		 */
 		getOrCreateTagBuilder(TerrestriaItemTags.MOSSY_INGREDIENTS)
-			.add(Items.MOSS_BLOCK)
-			.add(Items.VINE);
+				.add(Items.MOSS_BLOCK)
+				.add(Items.VINE);
 
 		copy(TerrestriaBlockTags.PLANKS_THAT_BURN, TerrestriaItemTags.PLANKS_THAT_BURN);
 
 		copy(TerrestriaBlockTags.SMALL_OAK_LOGS, TerrestriaItemTags.SMALL_OAK_LOGS);
 
-		copy(TerrestriaBlockTags.STRIPPED_LOGS, TerrestriaItemTags.STRIPPED_LOGS);
 
-		copy(TerrestriaBlockTags.STRIPPED_WOOD, TerrestriaItemTags.STRIPPED_WOOD);
-
-
-		// dirt type tags
+		/*
+		 * Dirt type tags
+		 */
 		copy(BlockTags.DIRT, ItemTags.DIRT);
 		copy(TerrestriaBlockTags.DIRTS, TerrestriaItemTags.DIRTS);
 		copy(TerrestriaBlockTags.PODZOLS, TerrestriaItemTags.PODZOLS);
 
-		// sand type tags
+		/*
+		 * Sand type tags
+		 */
 		copy(BlockTags.SAND, ItemTags.SAND);
 		copy(TerrestriaBlockTags.SANDS, TerrestriaItemTags.SANDS);
 
-		// stone type tags
+		/*
+		 * Stone type tags
+		 */
 		copy(TerrestriaBlockTags.BASALTS, TerrestriaItemTags.BASALTS);
 
-		// stone items
+		/*
+		 * Stone items
+		 */
 		addStone(TerrestriaItems.VOLCANIC_ROCK);
 
-		// wood type tags
+		/*
+		 * Wood type tags
+		 */
 		copy(TerrestriaBlockTags.CYPRESS_LOGS, TerrestriaItemTags.CYPRESS_LOGS);
 		copy(TerrestriaBlockTags.HEMLOCK_LOGS, TerrestriaItemTags.HEMLOCK_LOGS);
 		copy(TerrestriaBlockTags.RAINBOW_EUCALYPTUS_LOGS, TerrestriaItemTags.RAINBOW_EUCALYPTUS_LOGS);
@@ -112,7 +131,9 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 		copy(TerrestriaBlockTags.WILLOW_LOGS, TerrestriaItemTags.WILLOW_LOGS);
 		copy(TerrestriaBlockTags.YUCCA_PALM_LOGS, TerrestriaItemTags.YUCCA_PALM_LOGS);
 
-		// wood items
+		/*
+		 * Wood items
+		 */
 		addWood(TerrestriaItems.CYPRESS);
 		addWood(TerrestriaItems.HEMLOCK);
 		addWood(TerrestriaItems.RAINBOW_EUCALYPTUS);

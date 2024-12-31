@@ -7,7 +7,6 @@ import com.terraformersmc.terrestria.init.helpers.WoodBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.SaplingBlock;
-import net.minecraft.data.server.loottable.vanilla.VanillaBlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.loot.condition.TableBonusLootCondition;
@@ -25,14 +24,14 @@ public class TerrestriaBlockLootTableProvider extends FabricBlockLootTableProvid
 
 	@Override
 	public void generate() {
-		RegistryWrapper.Impl<Enchantment> enchantmentRegistry = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+		RegistryWrapper.Impl<Enchantment> enchantmentRegistry = this.registries.getOrThrow(RegistryKeys.ENCHANTMENT);
 
 		// simple blocks
 		addDrop(TerrestriaBlocks.AGAVE);
 		addDrop(TerrestriaBlocks.ALOE_VERA);
 		addDrop(TerrestriaBlocks.BLACK_SAND);
 		addDrop(TerrestriaBlocks.BRYCE_SAPLING);
-		addDrop(TerrestriaBlocks.CATTAIL, VanillaBlockLootTableGenerator::dropsWithShears);
+		addDrop(TerrestriaBlocks.CATTAIL, this::dropsWithShears);
 		addDrop(TerrestriaBlocks.CYPRESS_SAPLING);
 		addDrop(TerrestriaBlocks.DEAD_GRASS);
 		addDrop(TerrestriaBlocks.HEMLOCK_SAPLING);

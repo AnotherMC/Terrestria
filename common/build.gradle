@@ -23,3 +23,8 @@ sourceSets {
 		}
 	}
 }
+
+dependencies {
+	// Biolith for BiomePerimeters in the VolcanoStructure
+	modImplementation "com.terraformersmc:biolith-fabric:${biolith_version}"
+}

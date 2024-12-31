@@ -25,8 +25,8 @@ public class StoneBlocks {
 		blocks.bricks = StoneVariantBlocks.register(name + "_bricks", name + "_brick", color, Blocks.STONE_BRICKS);
 		blocks.mossyBricks = StoneVariantBlocks.register("mossy_" + name + "_bricks", "mossy_" + name + "_brick", color, Blocks.MOSSY_STONE_BRICKS);
 
-		blocks.chiseledBricks = TerrestriaRegistry.register("chiseled_" + name + "_bricks", new Block(AbstractBlock.Settings.copy(Blocks.CRACKED_STONE_BRICKS).mapColor(color)));
-		blocks.crackedBricks = TerrestriaRegistry.register("cracked_" + name + "_bricks", new Block(AbstractBlock.Settings.copy(Blocks.CHISELED_STONE_BRICKS).mapColor(color)));
+		blocks.chiseledBricks = TerrestriaRegistry.register("chiseled_" + name + "_bricks", Block::new, AbstractBlock.Settings.copy(Blocks.CRACKED_STONE_BRICKS).mapColor(color));
+		blocks.crackedBricks = TerrestriaRegistry.register("cracked_" + name + "_bricks", Block::new, AbstractBlock.Settings.copy(Blocks.CHISELED_STONE_BRICKS).mapColor(color));
 
 		return blocks;
 	}

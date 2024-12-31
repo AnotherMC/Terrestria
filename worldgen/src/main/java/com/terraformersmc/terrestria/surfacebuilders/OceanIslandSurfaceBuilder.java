@@ -3,58 +3,68 @@ package com.terraformersmc.terrestria.surfacebuilders;
 import com.terraformersmc.biolith.api.biomeperimeters.BiomePerimeters;
 import com.terraformersmc.biolith.api.surface.BiolithSurfaceBuilder;
 import com.terraformersmc.terraform.noise.OpenSimplexNoise;
+import com.terraformersmc.terrestria.TerrestriaWorldgen;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.noise.DoublePerlinNoiseSampler;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.BiomeAccess;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.chunk.BlockColumn;
+import net.minecraft.world.gen.noise.NoiseParametersKeys;
 
 public class OceanIslandSurfaceBuilder extends BiolithSurfaceBuilder {
 	private static final OpenSimplexNoise ISLAND_NOISE = new OpenSimplexNoise(346987);
-	private static final int DEEP_DEPTH = 32;
-	private static final int SHALLOW_DEPTH = 16;
-	private static final double HEIGHT_FACTOR = 1.1;
+	private static final int ISLAND_HEIGHT = 12;
+	private static final double NOISE_SCALE = 9.5d;
 
 	private final BlockState topMaterial;
 	private final BlockState midMaterial;
 	private final BlockState lowMaterial;
 	private final BlockState beachMaterial;
 	private final BlockState underwaterMaterial;
-	private final boolean deepOcean;
 
-	public OceanIslandSurfaceBuilder(BlockState topMaterial, BlockState midMaterial, BlockState lowMaterial, BlockState beachMaterial, BlockState underwaterMaterial, boolean deepOcean) {
+	public OceanIslandSurfaceBuilder(BlockState topMaterial, BlockState midMaterial, BlockState lowMaterial, BlockState beachMaterial, BlockState underwaterMaterial) {
 		this.topMaterial = topMaterial;
 		this.midMaterial = midMaterial;
 		this.lowMaterial = lowMaterial;
 		this.beachMaterial = beachMaterial;
 		this.underwaterMaterial = underwaterMaterial;
-		this.deepOcean = deepOcean;
 	}
 
 	@Override
 	public void generate(BiomeAccess biomeAccess, BlockColumn column, Random rand, Chunk chunk, Biome biome, int x, int z, int vHeight, int seaLevel) {
-		int delta = (int)((deepOcean ? DEEP_DEPTH : SHALLOW_DEPTH) * HEIGHT_FACTOR);
+		ServerWorld overworld = TerrestriaWorldgen.getOverworld();
+		if (overworld == null) {
+			throw new IllegalStateException("Overworld does not exist during Overworld surface generation...");
+		}
+		DoublePerlinNoiseSampler surface = overworld.getChunkManager().chunkLoadingManager.noiseConfig
+				.getOrCreateSampler(NoiseParametersKeys.SURFACE);
 
-		// We are going to accept the ocean surface noise and just raise it so we need the ocean surface.
+		// Find the original top Y value, the desired top Y value, and the delta between them.
+		// We can't trust the provided vHeight because we need the ocean floor instead of surface.
 		vHeight = chunk.sampleHeightmap(Heightmap.Type.OCEAN_FLOOR_WG, x & 0xf, z & 0xf);
+		int top = seaLevel + ISLAND_HEIGHT + (int) (NOISE_SCALE * surface.sample(x, seaLevel, z));
+		int delta = MathHelper.clamp(top - vHeight, 0, 128);
 
 		// Work around noise-adapting structures (like villages)...
-		if (vHeight >= 60) {
+		if (vHeight >= seaLevel - 2) {
 			vHeight = seaLevel - delta;
 		}
 
 		// Delta is how much we are raising the surface.  Reduce it as we approach the edge of the island biome.
 		int borderAdjustment = BiomePerimeters.getOrCreateInstance(biome, 40)
-				.getPerimeterDistance(biomeAccess, new BlockPos(x, 62, z));
+				.getPerimeterDistance(biomeAccess, new BlockPos(x, seaLevel, z));
 		if (borderAdjustment < 32) {
 			delta = delta * borderAdjustment / 32;
 		}
 
-		int top = vHeight + delta;
+		top = vHeight + delta;
 		for (int y = 0; y <= top; y++) {
 			BlockState originalState = column.getState(y);
 			if (originalState.isOf(Blocks.STONE) || originalState.isOf(Blocks.WATER) || originalState.isAir()) {

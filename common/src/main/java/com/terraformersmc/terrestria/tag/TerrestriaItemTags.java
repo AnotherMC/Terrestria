@@ -19,8 +19,6 @@ public final class TerrestriaItemTags {
 	public static final TagKey<Item> SAND = TerrestriaItemTags.of(Identifier.of("c", "sand"));
 	public static final TagKey<Item> SANDS = TerrestriaItemTags.of(Identifier.of("c", "sands"));
 	public static final TagKey<Item> STONE = TerrestriaItemTags.of(Identifier.of("c", "stone"));
-	public static final TagKey<Item> STRIPPED_LOGS = TerrestriaItemTags.of(Identifier.of("c", "stripped_logs"));
-	public static final TagKey<Item> STRIPPED_WOOD = TerrestriaItemTags.of(Identifier.of("c", "stripped_wood"));
 
 	public static final TagKey<Item> CYPRESS_LOGS = TerrestriaItemTags.of("cypress_logs");
 	public static final TagKey<Item> HEMLOCK_LOGS = TerrestriaItemTags.of("hemlock_logs");

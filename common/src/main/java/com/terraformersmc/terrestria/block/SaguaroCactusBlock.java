@@ -15,35 +15,35 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.tick.ScheduledTickView;
 
 public class SaguaroCactusBlock extends BareSmallLogBlock {
 	public SaguaroCactusBlock(Settings settings) {
 		super(settings);
 	}
 
-	public static SaguaroCactusBlock of(MapColor color) {
-		return new SaguaroCactusBlock(AbstractBlock.Settings.create()
+	public static AbstractBlock.Settings createSettings(MapColor color) {
+		return AbstractBlock.Settings.create()
 				.mapColor(color)
 				.strength(0.4F)
 				.sounds(BlockSoundGroup.WOOL)
-				.pistonBehavior(PistonBehavior.DESTROY)
-		);
+				.pistonBehavior(PistonBehavior.DESTROY);
 	}
 
-	public static SaguaroCactusBlock of(MapColor flesh, MapColor skin) {
-		return new SaguaroCactusBlock(AbstractBlock.Settings.create()
+	public static AbstractBlock.Settings createSettings(MapColor flesh, MapColor skin) {
+		return AbstractBlock.Settings.create()
 				.mapColor((state) -> state.get(UP) ? flesh : skin)
 				.strength(0.4F)
 				.sounds(BlockSoundGroup.WOOL)
-				.pistonBehavior(PistonBehavior.DESTROY)
-		);
+				.pistonBehavior(PistonBehavior.DESTROY);
 	}
 
 	@Override
 	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-		entity.damage(world.getDamageSources().cactus(), 1.0f);
+		if (world instanceof ServerWorld serverWorld) {
+			entity.damage(serverWorld, world.getDamageSources().cactus(), 1.0f);
+		}
 	}
 
 	@Override
@@ -59,12 +59,12 @@ public class SaguaroCactusBlock extends BareSmallLogBlock {
 	}
 
 	@Override
-	public BlockState getStateForNeighborUpdate(BlockState state, Direction facing, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-		if (!isSupported(state, world, pos)) {
-			world.scheduleBlockTick(pos, this, 1);
+	public BlockState getStateForNeighborUpdate(BlockState state, WorldView world, ScheduledTickView tickView, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, Random random) {
+		if (world instanceof ServerWorld serverWorld && !isSupported(state, world, pos)) {
+			serverWorld.scheduleBlockTick(pos, this, 1);
 		}
 
-		return super.getStateForNeighborUpdate(state, facing, neighborState, world, pos, neighborPos);
+		return super.getStateForNeighborUpdate(state, world, tickView, pos, direction, neighborPos, neighborState, random);
 	}
 
 	private boolean isSupportedBlock(BlockState state) {

@@ -13,8 +13,6 @@ public final class TerrestriaBlockTags {
 	public static final TagKey<Block> PLANKS_THAT_BURN = TerrestriaBlockTags.of(Identifier.of("c", "planks_that_burn"));
 	public static final TagKey<Block> PODZOLS = TerrestriaBlockTags.of(Identifier.of("c", "podzols"));
 	public static final TagKey<Block> SANDS = TerrestriaBlockTags.of(Identifier.of("c", "sands"));
-	public static final TagKey<Block> STRIPPED_LOGS = TerrestriaBlockTags.of(Identifier.of("c", "stripped_logs"));
-	public static final TagKey<Block> STRIPPED_WOOD = TerrestriaBlockTags.of(Identifier.of("c", "stripped_wood"));
 
 	public static final TagKey<Block> CYPRESS_LOGS = TerrestriaBlockTags.of("cypress_logs");
 	public static final TagKey<Block> HEMLOCK_LOGS = TerrestriaBlockTags.of("hemlock_logs");

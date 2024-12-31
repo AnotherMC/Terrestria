@@ -15,7 +15,7 @@ public class StoneVariantBlocks {
 	public static StoneVariantBlocks register(String name, String shapedName, MapColor color, Block family) {
 		StoneVariantBlocks blocks = new StoneVariantBlocks();
 
-		blocks.full = TerrestriaRegistry.register(name, new Block(AbstractBlock.Settings.copy(family).mapColor(color)));
+		blocks.full = TerrestriaRegistry.register(name, Block::new, AbstractBlock.Settings.copy(family).mapColor(color));
 
 		return blocks;
 	}

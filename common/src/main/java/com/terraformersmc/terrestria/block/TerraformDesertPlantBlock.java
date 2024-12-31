@@ -11,15 +11,15 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
 public class TerraformDesertPlantBlock extends PlantBlock {
-	public static final MapCodec<TerraformDesertPlantBlock> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(TerraformDesertPlantBlock.createSettingsCodec(), Codec.BOOL.fieldOf("onlySand").forGetter(args -> args.onlySand)).apply(instance, TerraformDesertPlantBlock::new));
+	public static final MapCodec<TerraformDesertPlantBlock> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.BOOL.fieldOf("onlySand").forGetter(args -> args.onlySand), TerraformDesertPlantBlock.createSettingsCodec()).apply(instance, TerraformDesertPlantBlock::new));
 	protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 	private final boolean onlySand;
 
 	public TerraformDesertPlantBlock(Settings settings) {
-		this(settings, false);
+		this(false, settings);
 	}
 
-	public TerraformDesertPlantBlock(Settings settings, boolean onlySand) {
+	public TerraformDesertPlantBlock(boolean onlySand, Settings settings) {
 		super(settings.offset(AbstractBlock.OffsetType.XYZ));
 		this.onlySand = onlySand;
 	}
@@ -40,7 +40,7 @@ public class TerraformDesertPlantBlock extends PlantBlock {
 
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		Vec3d vec3d = state.getModelOffset(world, pos);
+		Vec3d vec3d = state.getModelOffset(pos);
 		return SHAPE.offset(vec3d.x, vec3d.y, vec3d.z);
 	}
 }

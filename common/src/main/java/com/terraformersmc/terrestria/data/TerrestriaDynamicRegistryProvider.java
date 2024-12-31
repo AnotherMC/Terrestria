@@ -27,9 +27,9 @@ public class TerrestriaDynamicRegistryProvider extends FabricDynamicRegistryProv
 
 	@Override
 	public void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
-		addAll(entries, registries.getWrapperOrThrow(RegistryKeys.CONFIGURED_FEATURE), Terrestria.MOD_ID);
-		addAll(entries, registries.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE), Terrestria.MOD_ID);
-		addAll(entries, registries.getWrapperOrThrow(RegistryKeys.BIOME), Terrestria.MOD_ID);
+		addAll(entries, registries.getOrThrow(RegistryKeys.CONFIGURED_FEATURE), Terrestria.MOD_ID);
+		addAll(entries, registries.getOrThrow(RegistryKeys.PLACED_FEATURE), Terrestria.MOD_ID);
+		addAll(entries, registries.getOrThrow(RegistryKeys.BIOME), Terrestria.MOD_ID);
 	}
 
 	@Override

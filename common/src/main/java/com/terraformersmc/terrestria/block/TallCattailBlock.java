@@ -33,7 +33,7 @@ public class TallCattailBlock extends TallSeagrassBlock {
 		BlockPos pos = context.getBlockPos();
 		World world = context.getWorld();
 
-		if (pos.getY() < world.getTopY() && world.getBlockState(pos.up()).canReplace(context)) {
+		if (pos.getY() < world.getTopYInclusive() && world.getBlockState(pos.up()).canReplace(context)) {
 			return this.getDefaultState();
 		}
 
