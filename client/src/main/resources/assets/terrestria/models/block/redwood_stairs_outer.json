@@ -1,8 +1,0 @@
-{
-  "parent": "block/outer_stairs",
-  "textures": {
-    "bottom": "terrestria:block/redwood_planks",
-    "top": "terrestria:block/redwood_planks",
-    "side": "terrestria:block/redwood_planks"
-  }
-}

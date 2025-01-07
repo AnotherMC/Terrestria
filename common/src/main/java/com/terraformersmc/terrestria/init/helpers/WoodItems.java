@@ -51,8 +51,8 @@ public class WoodItems {
 		button = TerrestriaRegistry.registerBlockItem(name + "_button", blocks.button);
 		pressurePlate = TerrestriaRegistry.registerBlockItem(name + "_pressure_plate", blocks.pressurePlate);
 		trapdoor = TerrestriaRegistry.registerBlockItem(name + "_trapdoor", blocks.trapdoor);
-		sign = TerrestriaRegistry.register(name + "_sign", settings -> new SignItem(blocks.sign, blocks.wallSign, settings), new Item.Settings().maxCount(16));
-		hangingSign = TerrestriaRegistry.register(name + "_hanging_sign", settings -> new HangingSignItem(blocks.hangingSign, blocks.wallHangingSign, settings), new Item.Settings().maxCount(16));
+		sign = TerrestriaRegistry.register(name + "_sign", settings -> new SignItem(blocks.sign, blocks.wallSign, settings), new Item.Settings().maxCount(16).useBlockPrefixedTranslationKey());
+		hangingSign = TerrestriaRegistry.register(name + "_hanging_sign", settings -> new HangingSignItem(blocks.hangingSign, blocks.wallHangingSign, settings), new Item.Settings().maxCount(16).useBlockPrefixedTranslationKey());
 		strippedLog = TerrestriaRegistry.registerBlockItem("stripped_" + name + "_log", blocks.strippedLog);
 
 		Identifier family = Identifier.of(Terrestria.MOD_ID, name);

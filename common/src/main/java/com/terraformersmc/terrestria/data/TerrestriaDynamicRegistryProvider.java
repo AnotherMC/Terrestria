@@ -34,7 +34,7 @@ public class TerrestriaDynamicRegistryProvider extends FabricDynamicRegistryProv
 
 	@Override
 	public String getName() {
-		return "Terrestria";
+		return "Terrestria Dynamic Registries";
 	}
 
 	/**

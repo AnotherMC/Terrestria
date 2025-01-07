@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "terrestria:block/jungle_palm_sapling"
-  }
-}

@@ -1,6 +1,7 @@
 package com.terraformersmc.terrestria.data;
 
 import com.terraformersmc.terrestria.Terrestria;
+import com.terraformersmc.terrestria.init.TerrestriaBlockFamilies;
 import com.terraformersmc.terrestria.init.TerrestriaItems;
 import com.terraformersmc.terrestria.init.helpers.StoneItems;
 import com.terraformersmc.terrestria.init.helpers.StoneVariantItems;
@@ -8,8 +9,10 @@ import com.terraformersmc.terrestria.init.helpers.WoodItems;
 import com.terraformersmc.terrestria.tag.TerrestriaItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.advancement.criterion.InventoryChangedCriterion;
-import net.minecraft.data.server.recipe.*;
+import net.minecraft.data.family.BlockFamily;
+import net.minecraft.data.recipe.CookingRecipeJsonBuilder;
+import net.minecraft.data.recipe.RecipeExporter;
+import net.minecraft.data.recipe.RecipeGenerator;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -17,6 +20,8 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.resource.featuretoggle.FeatureFlags;
+import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,15 +42,15 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 				createShapeless(RecipeCategory.DECORATIONS, TerrestriaItems.BRYCE_SAPLING, 1)
 						.input(Items.OAK_SAPLING)
 						.input(Items.STICK)
-						.criterion("has_bryce_sapling", InventoryChangedCriterion.Conditions.items(TerrestriaItems.BRYCE_SAPLING))
+						.criterion("has_bryce_sapling", this.conditionsFromItem(TerrestriaItems.BRYCE_SAPLING))
 						.offerTo(exporter, "bryce_sapling_from_oak_sapling");
 
 				CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(TerrestriaItems.SAGUARO_CACTUS), RecipeCategory.MISC, Items.GREEN_DYE, 1.0f, 200)
-						.criterion("has_cactus", InventoryChangedCriterion.Conditions.items(TerrestriaItems.SAGUARO_CACTUS))
+						.criterion("has_cactus", this.conditionsFromItem(TerrestriaItems.SAGUARO_CACTUS))
 						.offerTo(exporter);
 
 				CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(TerrestriaItems.TINY_CACTUS), RecipeCategory.MISC, Items.LIME_DYE, 1.0f, 200)
-						.criterion("has_tiny_cactus", InventoryChangedCriterion.Conditions.items(TerrestriaItems.TINY_CACTUS))
+						.criterion("has_tiny_cactus", this.conditionsFromItem(TerrestriaItems.TINY_CACTUS))
 						.offerTo(exporter);
 
 				createShaped(RecipeCategory.TOOLS, TerrestriaItems.LOG_TURNER, 1)
@@ -53,96 +58,55 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 						.pattern(" s")
 						.pattern("ss")
 						.input('s', Items.STICK)
-						.criterion("has_sticks", InventoryChangedCriterion.Conditions.items(Items.STICK))
+						.criterion("has_sticks", this.conditionsFromItem(Items.STICK))
 						.offerTo(exporter);
 
 				offerSingleOutputShapelessRecipe(Items.RED_DYE, TerrestriaItems.INDIAN_PAINTBRUSH, "dyes");
 
 
 				// wood building block recipes
-				generateWood(exporter, TerrestriaItems.CYPRESS, TerrestriaItemTags.CYPRESS_LOGS);
-				generateWood(exporter, TerrestriaItems.HEMLOCK, TerrestriaItemTags.HEMLOCK_LOGS);
-				generateWood(exporter, TerrestriaItems.JAPANESE_MAPLE, TerrestriaItemTags.JAPANESE_MAPLE_LOGS);
-				generateWood(exporter, TerrestriaItems.RAINBOW_EUCALYPTUS, TerrestriaItemTags.RAINBOW_EUCALYPTUS_LOGS);
-				generateWood(exporter, TerrestriaItems.REDWOOD, TerrestriaItemTags.REDWOOD_LOGS);
-				generateWood(exporter, TerrestriaItems.RUBBER, TerrestriaItemTags.RUBBER_LOGS);
-				generateWood(exporter, TerrestriaItems.SAKURA, TerrestriaItemTags.SAKURA_LOGS);
-				generateWood(exporter, TerrestriaItems.WILLOW, TerrestriaItemTags.WILLOW_LOGS);
-				generateWood(exporter, TerrestriaItems.YUCCA_PALM, TerrestriaItemTags.YUCCA_PALM_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.CYPRESS, TerrestriaItems.CYPRESS, TerrestriaItemTags.CYPRESS_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.HEMLOCK, TerrestriaItems.HEMLOCK, TerrestriaItemTags.HEMLOCK_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.JAPANESE_MAPLE, TerrestriaItems.JAPANESE_MAPLE, TerrestriaItemTags.JAPANESE_MAPLE_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.RAINBOW_EUCALYPTUS, TerrestriaItems.RAINBOW_EUCALYPTUS, TerrestriaItemTags.RAINBOW_EUCALYPTUS_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.REDWOOD, TerrestriaItems.REDWOOD, TerrestriaItemTags.REDWOOD_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.RUBBER, TerrestriaItems.RUBBER, TerrestriaItemTags.RUBBER_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.SAKURA, TerrestriaItems.SAKURA, TerrestriaItemTags.SAKURA_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.WILLOW, TerrestriaItems.WILLOW, TerrestriaItemTags.WILLOW_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.YUCCA_PALM, TerrestriaItems.YUCCA_PALM, TerrestriaItemTags.YUCCA_PALM_LOGS);
 
 				// stone building block recipes
 				generateStone(exporter, TerrestriaItems.VOLCANIC_ROCK);
 			}
 
-			private void generateWood(RecipeExporter exporter, WoodItems woodItem, TagKey<Item> logsTag) {
+			private void generateWood(RecipeExporter exporter, BlockFamily blockFamily, WoodItems woodItem, TagKey<Item> logsTag) {
+				// We don't really use feature sets, so this is good enough...
+				FeatureSet enabledFeatures = FeatureSet.of(FeatureFlags.VANILLA);
+
+				generateFamily(blockFamily, enabledFeatures);
+
+				offerPlanksRecipe(woodItem.planks, logsTag, 4);
+
+				// Some WoodItems with no real wood have wood set to log
+				if (woodItem.hasWood()) {
+					offerBarkBlockRecipe(woodItem.wood, woodItem.log);
+					offerBarkBlockRecipe(woodItem.strippedWood, woodItem.strippedLog);
+				}
+
+				// Boats are an optional wood feature
 				if (woodItem.hasBoat()) {
 					offerBoatRecipe(woodItem.boat, woodItem.planks);
 					offerChestBoatRecipe(woodItem.chestBoat, woodItem.boat);
 				}
 
-				createShapeless(RecipeCategory.REDSTONE, woodItem.button, 1)
-						.group("wooden_button")
-						.input(woodItem.planks)
-						.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-						.offerTo(exporter);
-
-				createDoorRecipe(woodItem.door, Ingredient.ofItems(woodItem.planks))
-						.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-						.offerTo(exporter);
-
-				createFenceRecipe(woodItem.fence, Ingredient.ofItems(woodItem.planks))
-						.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-						.offerTo(exporter);
-
-				createFenceGateRecipe(woodItem.fenceGate, Ingredient.ofItems(woodItem.planks))
-						.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-						.offerTo(exporter);
-
 				offerHangingSignRecipe(woodItem.hangingSign, woodItem.strippedLog);
 
-				offerPlanksRecipe(woodItem.planks, logsTag, 4);
-
-				offerPressurePlateRecipe(woodItem.pressurePlate, woodItem.planks);
-
-				createSignRecipe(woodItem.sign, Ingredient.ofItems(woodItem.planks))
-						.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-						.offerTo(exporter);
-
-				offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, woodItem.slab, woodItem.planks);
-
-				createStairsRecipe(woodItem.stairs, Ingredient.ofItems(woodItem.planks))
-						.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-						.offerTo(exporter);
-
-				createTrapdoorRecipe(woodItem.trapdoor, Ingredient.ofItems(woodItem.planks))
-						.criterion("has_planks", InventoryChangedCriterion.Conditions.items(woodItem.planks))
-						.offerTo(exporter);
-
-				// leaf piles are an optional wood feature
+				// Leaf piles are an optional wood feature
 				if (woodItem.hasLeafPile()) {
 					createShaped(RecipeCategory.DECORATIONS, woodItem.leafPile, 16)
 							.pattern("LL")
 							.input('L', woodItem.leaves)
-							.criterion("has_leaves", InventoryChangedCriterion.Conditions.items(woodItem.leaves))
-							.offerTo(exporter);
-				}
-
-				// some woodItem with no real wood have wood set to log
-				if (woodItem.hasWood()) {
-					createShaped(RecipeCategory.BUILDING_BLOCKS, woodItem.wood, 3)
-							.group("bark")
-							.pattern("LL")
-							.pattern("LL")
-							.input('L', woodItem.log)
-							.criterion("has_logs", InventoryChangedCriterion.Conditions.items(woodItem.log))
-							.offerTo(exporter);
-
-					createShaped(RecipeCategory.BUILDING_BLOCKS, woodItem.strippedWood, 3)
-							.group("bark")
-							.pattern("LL")
-							.pattern("LL")
-							.input('L', woodItem.strippedLog)
-							.criterion("has_logs", InventoryChangedCriterion.Conditions.items(woodItem.strippedLog))
+							.criterion("has_leaves", this.conditionsFromItem(woodItem.leaves))
 							.offerTo(exporter);
 				}
 			}
@@ -156,7 +120,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 							.pattern("SS")
 							.pattern("SS")
 							.input('S', stoneItem.plain.full)
-							.criterion("has_stone", InventoryChangedCriterion.Conditions.items(stoneItem.plain.full))
+							.criterion("has_stone", this.conditionsFromItem(stoneItem.plain.full))
 							.offerTo(exporter);
 					offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, stoneItem.bricks.full, stoneItem.plain.full);
 
@@ -176,7 +140,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 							.group("mossy_bricks")
 							.input(stoneItem.bricks.full)
 							.input(TerrestriaItemTags.MOSSY_INGREDIENTS)
-							.criterion("has_stone", InventoryChangedCriterion.Conditions.items(stoneItem.bricks.full))
+							.criterion("has_mossy_ingredients", this.conditionsFromTag(TerrestriaItemTags.MOSSY_INGREDIENTS))
 							.offerTo(exporter);
 				}
 				if (stoneItem.mossyCobblestone != null) {
@@ -186,7 +150,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 							.group("mossy_cobblestone")
 							.input(stoneItem.cobblestone.full)
 							.input(TerrestriaItemTags.MOSSY_INGREDIENTS)
-							.criterion("has_stone", InventoryChangedCriterion.Conditions.items(stoneItem.cobblestone.full))
+							.criterion("has_mossy_ingredients", this.conditionsFromTag(TerrestriaItemTags.MOSSY_INGREDIENTS))
 							.offerTo(exporter);
 				}
 				if (stoneItem.plain != null) {
@@ -202,14 +166,14 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 					createShapeless(RecipeCategory.REDSTONE, stoneItem.button, 1)
 							.group("stone_button")
 							.input(stoneItem.plain.full)
-							.criterion("has_stone", InventoryChangedCriterion.Conditions.items(stoneItem.plain.full))
+							.criterion("has_stone", this.conditionsFromItem(stoneItem.plain.full))
 							.offerTo(exporter);
 
 					createShaped(RecipeCategory.REDSTONE, stoneItem.pressurePlate, 1)
 							.group("stone_pressure_plate")
 							.pattern("SS")
 							.input('S', stoneItem.plain.full)
-							.criterion("has_stone", InventoryChangedCriterion.Conditions.items(stoneItem.plain.full))
+							.criterion("has_stone", this.conditionsFromItem(stoneItem.plain.full))
 							.offerTo(exporter);
 				}
 				if (stoneItem.smooth != null) {
@@ -227,7 +191,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 			private void generateStoneVariant(RecipeExporter exporter, StoneVariantItems stoneVariantItem, @Nullable BlockItem cutPlainItem) {
 				offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, stoneVariantItem.slab, stoneVariantItem.full);
 				createStairsRecipe(stoneVariantItem.stairs, Ingredient.ofItems(stoneVariantItem.full))
-						.criterion("has_stone", InventoryChangedCriterion.Conditions.items(stoneVariantItem.full))
+						.criterion("has_stone", this.conditionsFromItem(stoneVariantItem.full))
 						.offerTo(exporter);  // ?? so lame there is no offerStairsRecipe() !!
 				offerWallRecipe(RecipeCategory.DECORATIONS, stoneVariantItem.wall, stoneVariantItem.full);
 

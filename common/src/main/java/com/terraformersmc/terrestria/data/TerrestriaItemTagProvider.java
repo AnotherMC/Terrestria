@@ -172,4 +172,9 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 			getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(woodItem.chestBoat);
 		}
 	}
+
+	@Override
+	public String getName() {
+		return "Terrestria Item Tags";
+	}
 }

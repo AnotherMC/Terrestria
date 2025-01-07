@@ -22,6 +22,8 @@ public class WoodBlocks {
 	private final WoodColors COLORS;
 	private final LogSize SIZE;
 
+	private final boolean tintable;
+
 	public final Block log;
 	public final Block quarterLog;
 	public final Block wood;
@@ -44,7 +46,9 @@ public class WoodBlocks {
 	public final Block strippedQuarterLog;
 	public final Block strippedWood;
 
-	private WoodBlocks(String name, WoodColors colors, LogSize size, boolean hasLeafPile, boolean hasQuarterLog, boolean usesExtendedLeaves) {
+	private WoodBlocks(String name, WoodColors colors, LogSize size, boolean hasLeafPile, boolean hasQuarterLog, boolean usesExtendedLeaves, boolean isTintable) {
+		this.tintable = isTintable;
+
 		this.NAME = name;
 		this.COLORS = colors;
 		this.SIZE = size;
@@ -118,8 +122,8 @@ public class WoodBlocks {
 		}
 	}
 
-	public static WoodBlocks register(String name, WoodColors colors, LogSize size, boolean hasLeafPile, boolean hasQuarteredLog, boolean usesExtendedLeaves) {
-		WoodBlocks blocks = new WoodBlocks(name, colors, size, hasLeafPile, hasQuarteredLog, usesExtendedLeaves);
+	public static WoodBlocks register(String name, WoodColors colors, LogSize size, boolean hasLeafPile, boolean hasQuarteredLog, boolean usesExtendedLeaves, boolean isTintable) {
+		WoodBlocks blocks = new WoodBlocks(name, colors, size, hasLeafPile, hasQuarteredLog, usesExtendedLeaves, isTintable);
 
 		blocks.addFlammables();
 		blocks.addStrippables();
@@ -128,7 +132,7 @@ public class WoodBlocks {
 	}
 
 	public static WoodBlocks register(String name, WoodColors colors, LogSize size) {
-		return register(name, colors, size, false, false, false);
+		return register(name, colors, size, false, false, false, true);
 	}
 
 	public static WoodBlocks register(String name, WoodColors colors) {
@@ -197,6 +201,10 @@ public class WoodBlocks {
 
 	public boolean hasWood() {
 		return (wood != null && strippedWood != null);
+	}
+
+	public boolean isTintable() {
+		return tintable;
 	}
 
 	public enum LogSize {

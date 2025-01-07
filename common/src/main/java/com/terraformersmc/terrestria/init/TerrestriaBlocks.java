@@ -3,6 +3,7 @@ package com.terraformersmc.terrestria.init;
 import com.terraformersmc.terraform.dirt.api.DirtBlocks;
 import com.terraformersmc.terraform.dirt.api.block.TerraformDirtPathBlock;
 import com.terraformersmc.terraform.dirt.api.block.TerraformFarmlandBlock;
+import com.terraformersmc.terraform.dirt.api.block.TerraformGrassBlock;
 import com.terraformersmc.terraform.dirt.api.block.TerraformSnowyBlock;
 import com.terraformersmc.terraform.dirt.api.registry.TerraformDirtRegistry;
 import com.terraformersmc.terraform.tree.api.block.TerraformDesertSaplingBlock;
@@ -83,7 +84,7 @@ public class TerrestriaBlocks {
 	public static FlowerPotBlock POTTED_YUCCA_PALM_SAPLING;
 
 	// Volcanic Island blocks
-	public static ColoredFallingBlock BLACK_SAND;
+	public static ColoredFallingBlock VOLCANIC_SAND;
 	public static DirtBlocks ANDISOL;
 	public static StoneBlocks VOLCANIC_ROCK;
 	public static PlantBlock INDIAN_PAINTBRUSH;
@@ -102,19 +103,19 @@ public class TerrestriaBlocks {
 
 	public static void init() {
 		// quartered mega
-		CYPRESS = WoodBlocks.register("cypress", WoodColors.CYPRESS, WoodBlocks.LogSize.NORMAL, false, true, false);
-		HEMLOCK = WoodBlocks.register("hemlock", WoodColors.HEMLOCK, WoodBlocks.LogSize.NORMAL, false, true, true);
-		RAINBOW_EUCALYPTUS = WoodBlocks.register("rainbow_eucalyptus", WoodColors.RAINBOW_EUCALYPTUS, WoodBlocks.LogSize.NORMAL, false, true, false);
-		REDWOOD = WoodBlocks.register("redwood", WoodColors.REDWOOD, WoodBlocks.LogSize.NORMAL, false, true, true);
+		CYPRESS = WoodBlocks.register("cypress", WoodColors.CYPRESS, WoodBlocks.LogSize.NORMAL, false, true, false, true);
+		HEMLOCK = WoodBlocks.register("hemlock", WoodColors.HEMLOCK, WoodBlocks.LogSize.NORMAL, false, true, true, true);
+		RAINBOW_EUCALYPTUS = WoodBlocks.register("rainbow_eucalyptus", WoodColors.RAINBOW_EUCALYPTUS, WoodBlocks.LogSize.NORMAL, false, true, false, true);
+		REDWOOD = WoodBlocks.register("redwood", WoodColors.REDWOOD, WoodBlocks.LogSize.NORMAL, false, true, true, true);
 
 		// normal trunk
-		JAPANESE_MAPLE = WoodBlocks.register("japanese_maple", WoodColors.JAPANESE_MAPLE);
+		JAPANESE_MAPLE = WoodBlocks.register("japanese_maple", WoodColors.JAPANESE_MAPLE, WoodBlocks.LogSize.NORMAL, false, false, false, false);
 		RUBBER = WoodBlocks.register("rubber", WoodColors.RUBBER);
 		WILLOW = WoodBlocks.register("willow", WoodColors.WILLOW);
 
 		// small trunk
-		SAKURA = WoodBlocks.register("sakura", WoodColors.SAKURA, WoodBlocks.LogSize.SMALL, true, false, false);
-		YUCCA_PALM = WoodBlocks.register("yucca_palm", WoodColors.YUCCA_PALM, WoodBlocks.LogSize.SMALL);
+		SAKURA = WoodBlocks.register("sakura", WoodColors.SAKURA, WoodBlocks.LogSize.SMALL, true, false, false, false);
+		YUCCA_PALM = WoodBlocks.register("yucca_palm", WoodColors.YUCCA_PALM, WoodBlocks.LogSize.SMALL, false, false, false, false);
 
 		SAGUARO_CACTUS = TerrestriaRegistry.register("saguaro_cactus", SaguaroCactusBlock::new, SaguaroCactusBlock.createSettings(Blocks.CACTUS.getDefaultMapColor()));
 		SMALL_OAK_LOG = TerrestriaRegistry.register("small_oak_log", settings -> new SmallLogBlock(Blocks.OAK_LEAVES, settings), PillarLogHelper.createSmallLogSettings(Blocks.OAK_LEAVES, Blocks.STRIPPED_OAK_WOOD.getDefaultMapColor(), Blocks.OAK_WOOD.getDefaultMapColor()));
@@ -149,17 +150,15 @@ public class TerrestriaBlocks {
 
 		// Volcanic Island blocks
 
-		BLACK_SAND = TerrestriaRegistry.register("basalt_sand", settings -> new ColoredFallingBlock(new ColorCode(0x202020), settings), AbstractBlock.Settings.copy(Blocks.SAND).mapColor(MapColor.BLACK));
+		Block andisol = TerrestriaRegistry.register("andisol", Block::new, AbstractBlock.Settings.copy(Blocks.DIRT).mapColor(MapColor.BLACK));
+		TerraformDirtPathBlock andisolDirtPath = TerrestriaRegistry.register("andisol_dirt_path", TerraformDirtPathBlock::new, AbstractBlock.Settings.copy(Blocks.DIRT_PATH));
+		TerraformFarmlandBlock andisolFarmland = TerrestriaRegistry.register("andisol_farmland", TerraformFarmlandBlock::new, AbstractBlock.Settings.copy(Blocks.FARMLAND).mapColor(MapColor.BLACK));
+		TerraformGrassBlock andisolGrassBlock = TerrestriaRegistry.register("andisol_grass_block", settings -> new BasaltGrassBlock(andisol, () -> ANDISOL.getDirtPath(), settings), AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK));
+		TerraformSnowyBlock andisolPodzol = TerrestriaRegistry.register("andisol_podzol", TerraformSnowyBlock::new, AbstractBlock.Settings.copy(Blocks.PODZOL));
+		ANDISOL = TerraformDirtRegistry.register(new DirtBlocks(andisol, andisolGrassBlock, andisolDirtPath, andisolPodzol, andisolFarmland));
 
-		Block andisolDirt = TerrestriaRegistry.register("basalt_dirt", Block::new, AbstractBlock.Settings.copy(Blocks.DIRT).mapColor(MapColor.BLACK));
-		ANDISOL = TerraformDirtRegistry.register(new DirtBlocks (
-			andisolDirt,
-			TerrestriaRegistry.register("basalt_grass_block", settings -> new BasaltGrassBlock(andisolDirt, () -> ANDISOL.getDirtPath(), settings), AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK)),
-			TerrestriaRegistry.register("basalt_grass_path", TerraformDirtPathBlock::new, AbstractBlock.Settings.copy(Blocks.DIRT_PATH)),
-			TerrestriaRegistry.register("basalt_podzol", TerraformSnowyBlock::new, AbstractBlock.Settings.copy(Blocks.PODZOL)),
-			TerrestriaRegistry.register("andisol_farmland", TerraformFarmlandBlock::new, AbstractBlock.Settings.copy(Blocks.FARMLAND).mapColor(MapColor.BLACK))
-		));
-		VOLCANIC_ROCK = StoneBlocks.register("basalt", MapColor.BLACK);
+		VOLCANIC_ROCK = StoneBlocks.register("volcanic_rock", MapColor.BLACK);
+		VOLCANIC_SAND = TerrestriaRegistry.register("volcanic_sand", settings -> new ColoredFallingBlock(new ColorCode(0x202020), settings), AbstractBlock.Settings.copy(Blocks.SAND).mapColor(MapColor.BLACK));
 
 		INDIAN_PAINTBRUSH = TerrestriaRegistry.register("indian_paintbrush", settings -> new BasaltFlowerBlock(StatusEffects.SATURATION, 4, settings), AbstractBlock.Settings.copy(Blocks.POPPY).mapColor(MapColor.TERRACOTTA_ORANGE));
 		MONSTERAS = TerrestriaRegistry.register("monsteras", settings -> new BasaltFlowerBlock(StatusEffects.REGENERATION, 2, settings), AbstractBlock.Settings.copy(Blocks.FERN).mapColor(MapColor.GREEN));

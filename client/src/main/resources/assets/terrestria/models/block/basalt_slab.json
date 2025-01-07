@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "terrestria:block/basalt",
-    "top": "terrestria:block/basalt",
-    "side": "terrestria:block/basalt"
-  }
-}

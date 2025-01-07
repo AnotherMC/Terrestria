@@ -36,7 +36,7 @@ public class TerrestriaSurfaceBuilders {
 						TerrestriaBlocks.ANDISOL.getGrassBlock().getDefaultState(),
 						TerrestriaBlocks.ANDISOL.getDirt().getDefaultState(),
 						TerrestriaBlocks.VOLCANIC_ROCK.plain.full.getDefaultState(),
-						TerrestriaBlocks.BLACK_SAND.getDefaultState(),
+						TerrestriaBlocks.VOLCANIC_SAND.getDefaultState(),
 						Blocks.SAND.getDefaultState()
 				).setBiomeKey(TerrestriaBiomes.VOLCANIC_ISLAND));
 	}

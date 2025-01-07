@@ -55,7 +55,7 @@ public class PalmFanFoliagePlacer extends FoliagePlacer {
 
 		// Place 2 dangly bits in each direction
 		for (int d = 0; d < 4; d++) {
-			Direction direction = Direction.fromHorizontal(d);
+			Direction direction = Direction.fromHorizontalQuarterTurns(d);
 
 			pos.set(center).move(direction, 2);
 			placeSpiral(world, random, pos, placer, config, direction, !flipSpiral);

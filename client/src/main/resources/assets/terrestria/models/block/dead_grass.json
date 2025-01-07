@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "terrestria:block/dead_grass"
-  }
-}
