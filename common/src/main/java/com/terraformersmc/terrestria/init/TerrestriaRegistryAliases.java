@@ -1,7 +1,6 @@
 package com.terraformersmc.terrestria.init;
 
 import com.terraformersmc.terrestria.Terrestria;
-import net.fabricmc.fabric.api.event.registry.FabricRegistry;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 
@@ -51,8 +50,8 @@ public final class TerrestriaRegistryAliases {
 				entry("basalt_wall",                     "volcanic_rock_wall"),
 				entry("basalt_sand",                     "volcanic_sand")
 		);
-		BLOCKS_ITEMS.forEach(((FabricRegistry) Registries.BLOCK)::addAlias);
-		BLOCKS_ITEMS.forEach(((FabricRegistry) Registries.ITEM)::addAlias);
+		BLOCKS_ITEMS.forEach(Registries.BLOCK::addAlias);
+		BLOCKS_ITEMS.forEach(Registries.ITEM::addAlias);
 	}
 
 	private static Map.Entry<Identifier, Identifier> entry(String oldName, String newName) {
