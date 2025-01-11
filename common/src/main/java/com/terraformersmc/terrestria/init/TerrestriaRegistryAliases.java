@@ -14,6 +14,10 @@ public final class TerrestriaRegistryAliases {
 
 	// Use Fabric registry aliases to repair identifier changes
 	public static void init() {
+		registerStatic();
+	}
+
+	private static void registerStatic() {
 		// Blocks with identically ID'd items
 		Map<Identifier, Identifier> BLOCKS_ITEMS = Map.ofEntries(
 				entry("basalt_dirt",                     "andisol"),
