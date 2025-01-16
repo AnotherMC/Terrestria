@@ -293,4 +293,9 @@ public class TerrestriaBiomeTagProvider extends FabricTagProvider<Biome> {
 		getOrCreateTagBuilder(TerrestriaBiomeTags.VOLCANO_HAS_STRUCTURE)
 				.addOptional(TerrestriaBiomes.VOLCANIC_ISLAND);
 	}
+
+	@Override
+	public String getName() {
+		return "Terrestria Biome Tags";
+	}
 }

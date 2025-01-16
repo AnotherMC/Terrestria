@@ -1,6 +1,7 @@
 package com.terraformersmc.terrestria.data;
 
 import com.terraformersmc.terrestria.Terrestria;
+import com.terraformersmc.terrestria.init.TerrestriaBlockFamilies;
 import com.terraformersmc.terrestria.init.TerrestriaItems;
 import com.terraformersmc.terrestria.init.helpers.StoneItems;
 import com.terraformersmc.terrestria.init.helpers.StoneVariantItems;
@@ -8,8 +9,10 @@ import com.terraformersmc.terrestria.init.helpers.WoodItems;
 import com.terraformersmc.terrestria.tag.TerrestriaItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.advancement.criterion.InventoryChangedCriterion;
-import net.minecraft.data.server.recipe.*;
+import net.minecraft.data.family.BlockFamily;
+import net.minecraft.data.recipe.CookingRecipeJsonBuilder;
+import net.minecraft.data.recipe.RecipeExporter;
+import net.minecraft.data.recipe.RecipeGenerator;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -19,6 +22,8 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.resource.featuretoggle.FeatureFlags;
+import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,15 +44,15 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 				createShapeless(RecipeCategory.DECORATIONS, TerrestriaItems.BRYCE_SAPLING, 1)
 						.input(Items.OAK_SAPLING)
 						.input(Items.STICK)
-						.criterion("has_bryce_sapling", InventoryChangedCriterion.Conditions.items(TerrestriaItems.BRYCE_SAPLING))
+						.criterion("has_bryce_sapling", this.conditionsFromItem(TerrestriaItems.BRYCE_SAPLING))
 						.offerTo(exporter, "bryce_sapling_from_oak_sapling");
 
 				CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(TerrestriaItems.SAGUARO_CACTUS), RecipeCategory.MISC, Items.GREEN_DYE, 1.0f, 200)
-						.criterion("has_cactus", InventoryChangedCriterion.Conditions.items(TerrestriaItems.SAGUARO_CACTUS))
+						.criterion("has_cactus", this.conditionsFromItem(TerrestriaItems.SAGUARO_CACTUS))
 						.offerTo(exporter);
 
 				CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(TerrestriaItems.TINY_CACTUS), RecipeCategory.MISC, Items.LIME_DYE, 1.0f, 200)
-						.criterion("has_tiny_cactus", InventoryChangedCriterion.Conditions.items(TerrestriaItems.TINY_CACTUS))
+						.criterion("has_tiny_cactus", this.conditionsFromItem(TerrestriaItems.TINY_CACTUS))
 						.offerTo(exporter);
 
 				createShaped(RecipeCategory.TOOLS, TerrestriaItems.LOG_TURNER, 1)
@@ -55,20 +60,20 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 						.pattern(" s")
 						.pattern("ss")
 						.input('s', Items.STICK)
-						.criterion("has_sticks", InventoryChangedCriterion.Conditions.items(Items.STICK))
+						.criterion("has_sticks", this.conditionsFromItem(Items.STICK))
 						.offerTo(exporter);
 
 				offerSingleOutputShapelessRecipe(Items.RED_DYE, TerrestriaItems.INDIAN_PAINTBRUSH, "dyes");
 
 
 				// wood building block recipes
-				generateWood(exporter, TerrestriaItems.CYPRESS, TerrestriaItemTags.CYPRESS_LOGS);
-				generateWood(exporter, TerrestriaItems.HEMLOCK, TerrestriaItemTags.HEMLOCK_LOGS);
-				generateWood(exporter, TerrestriaItems.RAINBOW_EUCALYPTUS, TerrestriaItemTags.RAINBOW_EUCALYPTUS_LOGS);
-				generateWood(exporter, TerrestriaItems.REDWOOD, TerrestriaItemTags.REDWOOD_LOGS);
-				generateWood(exporter, TerrestriaItems.RUBBER, TerrestriaItemTags.RUBBER_LOGS);
-				generateWood(exporter, TerrestriaItems.WILLOW, TerrestriaItemTags.WILLOW_LOGS);
-				generateWood(exporter, TerrestriaItems.YUCCA_PALM, TerrestriaItemTags.YUCCA_PALM_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.CYPRESS, TerrestriaItems.CYPRESS, TerrestriaItemTags.CYPRESS_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.HEMLOCK, TerrestriaItems.HEMLOCK, TerrestriaItemTags.HEMLOCK_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.RAINBOW_EUCALYPTUS, TerrestriaItems.RAINBOW_EUCALYPTUS, TerrestriaItemTags.RAINBOW_EUCALYPTUS_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.REDWOOD, TerrestriaItems.REDWOOD, TerrestriaItemTags.REDWOOD_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.RUBBER, TerrestriaItems.RUBBER, TerrestriaItemTags.RUBBER_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.WILLOW, TerrestriaItems.WILLOW, TerrestriaItemTags.WILLOW_LOGS);
+				generateWood(exporter, TerrestriaBlockFamilies.YUCCA_PALM, TerrestriaItems.YUCCA_PALM, TerrestriaItemTags.YUCCA_PALM_LOGS);
 
 				// stone building block recipes
 				generateStone(exporter, TerrestriaItems.VOLCANIC_ROCK);
@@ -111,7 +116,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 							.pattern("SS")
 							.pattern("SS")
 							.input('S', stoneItem.plain.full)
-							.criterion("has_stone", InventoryChangedCriterion.Conditions.items(stoneItem.plain.full))
+							.criterion("has_stone", this.conditionsFromItem(stoneItem.plain.full))
 							.offerTo(exporter);
 					offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, stoneItem.bricks.full, stoneItem.plain.full);
 
@@ -130,7 +135,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 							.group("mossy_bricks")
 							.input(stoneItem.bricks.full)
 							.input(TerrestriaItemTags.MOSSY_INGREDIENTS)
-							.criterion("has_stone", InventoryChangedCriterion.Conditions.items(stoneItem.bricks.full))
+							.criterion("has_mossy_ingredients", this.conditionsFromTag(TerrestriaItemTags.MOSSY_INGREDIENTS))
 							.offerTo(exporter);
 				}
 				if (stoneItem.mossyCobblestone != null) {
@@ -140,7 +145,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 							.group("mossy_cobblestone")
 							.input(stoneItem.cobblestone.full)
 							.input(TerrestriaItemTags.MOSSY_INGREDIENTS)
-							.criterion("has_stone", InventoryChangedCriterion.Conditions.items(stoneItem.cobblestone.full))
+							.criterion("has_mossy_ingredients", this.conditionsFromTag(TerrestriaItemTags.MOSSY_INGREDIENTS))
 							.offerTo(exporter);
 				}
 				if (stoneItem.plain != null) {

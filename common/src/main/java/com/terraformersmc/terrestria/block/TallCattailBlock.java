@@ -24,7 +24,7 @@ public class TallCattailBlock extends TallSeagrassBlock {
 	}
 
 	@Override
-	public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
+	public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData) {
 		return new ItemStack(TerrestriaBlocks.CATTAIL);
 	}
 

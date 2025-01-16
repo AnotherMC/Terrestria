@@ -1,7 +1,0 @@
-{
-	"parent": "terraform:block/small_log_leaves_cutout",
-	"textures": {
-		"particle": "terrestria:block/sakura_leaves",
-		"leaves": "terrestria:block/sakura_leaves"
-	}
-}

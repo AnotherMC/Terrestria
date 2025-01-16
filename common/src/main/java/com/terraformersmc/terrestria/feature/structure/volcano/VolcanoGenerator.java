@@ -245,7 +245,7 @@ public class VolcanoGenerator extends StructurePiece {
 					double scaledHeight = (double) (columnHeight) / (double) (lavaHeight);
 					if (scaledHeight < vegetation) {
 						if (columnHeight < 4) {
-							top = TerrestriaBlocks.BLACK_SAND.getDefaultState();
+							top = TerrestriaBlocks.VOLCANIC_SAND.getDefaultState();
 						} else {
 							top = TerrestriaBlocks.ANDISOL.getGrassBlock().getDefaultState();
 						}

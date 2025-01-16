@@ -164,4 +164,9 @@ public class TerrestriaItemTagProvider extends FabricTagProvider.ItemTagProvider
 		// Add boats if they exist via the WoodItem.
 
 	}
+
+	@Override
+	public String getName() {
+		return "Terrestria Item Tags";
+	}
 }

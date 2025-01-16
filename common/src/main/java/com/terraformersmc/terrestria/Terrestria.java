@@ -35,6 +35,7 @@ public class Terrestria implements ModInitializer {
 		TerrestriaTrades.register();
 		TerrestriaVillagerTypes.init();
 		TerrestriaItemGroups.init();
+		TerrestriaRegistryAliases.init();
 	}
 
 	@Override

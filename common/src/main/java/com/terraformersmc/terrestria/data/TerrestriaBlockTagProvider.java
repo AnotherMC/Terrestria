@@ -32,6 +32,9 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 		getOrCreateTagBuilder(BlockTags.AZALEA_ROOT_REPLACEABLE)
 				.add(TerrestriaBlocks.VOLCANIC_ROCK.plain.full);
 
+		getOrCreateTagBuilder(BlockTags.CONVERTABLE_TO_MUD)
+				.add(TerrestriaBlocks.ANDISOL.getDirt());
+
 		getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
 			.add(TerrestriaBlocks.POTTED_AGAVE)
 			.add(TerrestriaBlocks.POTTED_ALOE_VERA)
@@ -95,7 +98,7 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 		 * Conventional block tags
 		 */
 		getOrCreateTagBuilder(TerrestriaBlockTags.BLACK_SANDS)
-				.add(TerrestriaBlocks.BLACK_SAND);
+				.add(TerrestriaBlocks.VOLCANIC_SAND);
 
 		// custom dirt block tags
 		addDirt(TerrestriaBlocks.ANDISOL);
@@ -103,7 +106,7 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 		/*
 		 * Custom sand block tags
 		 */
-		addSand(TerrestriaBlocks.BLACK_SAND);
+		addSand(TerrestriaBlocks.VOLCANIC_SAND);
 
 		/*
 		 * Stone building block tags
@@ -255,5 +258,10 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 		if (woodBlock.log.getDefaultState().isBurnable()) {
 			getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(logTag);
 		}
+	}
+
+	@Override
+	public String getName() {
+		return "Terrestria Block Tags";
 	}
 }

@@ -29,7 +29,7 @@ public class TerrestriaBlockLootTableProvider extends FabricBlockLootTableProvid
 		// simple blocks
 		addDrop(TerrestriaBlocks.AGAVE);
 		addDrop(TerrestriaBlocks.ALOE_VERA);
-		addDrop(TerrestriaBlocks.BLACK_SAND);
+		addDrop(TerrestriaBlocks.VOLCANIC_SAND);
 		addDrop(TerrestriaBlocks.BRYCE_SAPLING);
 		addDrop(TerrestriaBlocks.CATTAIL, this::dropsWithShears);
 		addDrop(TerrestriaBlocks.CYPRESS_SAPLING);
@@ -152,5 +152,10 @@ public class TerrestriaBlockLootTableProvider extends FabricBlockLootTableProvid
 		if (sapling != null) {
 			addDrop(woodBlock.leaves, leavesDrops(woodBlock.leaves, sapling, 0.05f, 0.0625f, 0.083333336f, 0.1f));
 		}
+	}
+
+	@Override
+	public String getName() {
+		return "Terrestria Block Loot Tables";
 	}
 }

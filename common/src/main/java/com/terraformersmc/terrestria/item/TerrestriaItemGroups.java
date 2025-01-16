@@ -60,7 +60,7 @@ public class TerrestriaItemGroups {
 
 		// Wood Items
 		// Sand and Sandstone
-		addGroupEntry(TerrestriaBlocks.BLACK_SAND, ItemGroups.NATURAL, NATURAL_SAND);
+		addGroupEntry(TerrestriaBlocks.VOLCANIC_SAND, ItemGroups.NATURAL, NATURAL_SAND);
 
 		// Leaves
 		addGroupEntry(TerrestriaBlocks.JUNGLE_PALM_LEAVES, ItemGroups.NATURAL, NATURAL_LEAVES);
