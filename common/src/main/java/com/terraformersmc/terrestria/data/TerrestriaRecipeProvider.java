@@ -5,10 +5,12 @@ import com.terraformersmc.terrestria.init.TerrestriaBlockFamilies;
 import com.terraformersmc.terrestria.init.TerrestriaItems;
 import com.terraformersmc.terrestria.init.helpers.StoneItems;
 import com.terraformersmc.terrestria.init.helpers.StoneVariantItems;
+import com.terraformersmc.terrestria.init.helpers.WoodBlocks;
 import com.terraformersmc.terrestria.init.helpers.WoodItems;
 import com.terraformersmc.terrestria.tag.TerrestriaItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.data.family.BlockFamily;
 import net.minecraft.data.recipe.CookingRecipeJsonBuilder;
 import net.minecraft.data.recipe.RecipeExporter;
@@ -79,7 +81,7 @@ public class TerrestriaRecipeProvider extends FabricRecipeProvider {
 				generateStone(exporter, TerrestriaItems.VOLCANIC_ROCK);
 			}
 
-		private void generateWood(RecipeExporter exporter, WoodItems woodItem, TagKey<Item> logsTag) {
+		private void generateWood(RecipeExporter exporter, BlockFamily family, WoodItems woodItem, TagKey<Item> logsTag) {
 			if (woodItem.fallbackPlanks != null) {
 				createShapeless(RecipeCategory.BUILDING_BLOCKS, woodItem.fallbackPlanks, 4)
 						.input(logsTag).group("planks").criterion("has_logs", conditionsFromTag(logsTag))
