@@ -48,7 +48,6 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 			.add(TerrestriaBlocks.POTTED_REDWOOD_SAPLING)
 			.add(TerrestriaBlocks.POTTED_RUBBER_SAPLING)
 			.add(TerrestriaBlocks.POTTED_SAGUARO_CACTUS_SAPLING)
-			.add(TerrestriaBlocks.POTTED_SAKURA_SAPLING)
 			.add(TerrestriaBlocks.POTTED_TINY_CACTUS)
 			.add(TerrestriaBlocks.POTTED_WILLOW_SAPLING)
 			.add(TerrestriaBlocks.POTTED_YUCCA_PALM_SAPLING);
@@ -77,7 +76,6 @@ public class TerrestriaBlockTagProvider extends FabricTagProvider.BlockTagProvid
 			.add(TerrestriaBlocks.RAINBOW_EUCALYPTUS_SAPLING)
 			.add(TerrestriaBlocks.REDWOOD_SAPLING)
 			.add(TerrestriaBlocks.RUBBER_SAPLING)
-			.add(TerrestriaBlocks.SAKURA_SAPLING)
 			.add(TerrestriaBlocks.SAGUARO_CACTUS_SAPLING)
 			.add(TerrestriaBlocks.WILLOW_SAPLING)
 			.add(TerrestriaBlocks.YUCCA_PALM_SAPLING);

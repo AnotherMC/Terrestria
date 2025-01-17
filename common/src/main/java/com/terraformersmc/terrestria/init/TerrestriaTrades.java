@@ -13,7 +13,6 @@ public class TerrestriaTrades {
 				TerrestriaBlocks.REDWOOD_SAPLING,
 				TerrestriaBlocks.RUBBER_SAPLING,
 				TerrestriaBlocks.SAGUARO_CACTUS_SAPLING,
-				TerrestriaBlocks.SAKURA_SAPLING,
 				TerrestriaBlocks.WILLOW_SAPLING,
 				TerrestriaBlocks.YUCCA_PALM_SAPLING
 		);

@@ -35,7 +35,6 @@ public class TerrestriaItems {
 	public static BlockItem CYPRESS_SAPLING;
 	public static BlockItem WILLOW_SAPLING;
 	public static BlockItem RAINBOW_EUCALYPTUS_SAPLING;
-	public static BlockItem SAKURA_SAPLING;
 	public static BlockItem JUNGLE_PALM_SAPLING;
 	public static BlockItem SAGUARO_CACTUS_SAPLING;
 	public static BlockItem YUCCA_PALM_SAPLING;
@@ -89,7 +88,6 @@ public class TerrestriaItems {
 		CYPRESS_SAPLING = TerrestriaRegistry.registerBlockItem("cypress_sapling", TerrestriaBlocks.CYPRESS_SAPLING);
 		WILLOW_SAPLING = TerrestriaRegistry.registerBlockItem("willow_sapling", TerrestriaBlocks.WILLOW_SAPLING);
 		RAINBOW_EUCALYPTUS_SAPLING = TerrestriaRegistry.registerBlockItem("rainbow_eucalyptus_sapling", TerrestriaBlocks.RAINBOW_EUCALYPTUS_SAPLING);
-		SAKURA_SAPLING = TerrestriaRegistry.registerBlockItem("sakura_sapling", TerrestriaBlocks.SAKURA_SAPLING);
 		JUNGLE_PALM_SAPLING = TerrestriaRegistry.registerBlockItem("jungle_palm_sapling", TerrestriaBlocks.JUNGLE_PALM_SAPLING);
 		SAGUARO_CACTUS_SAPLING = TerrestriaRegistry.registerBlockItem("saguaro_cactus_sapling", TerrestriaBlocks.SAGUARO_CACTUS_SAPLING);
 		YUCCA_PALM_SAPLING = TerrestriaRegistry.registerBlockItem("yucca_palm_sapling", TerrestriaBlocks.YUCCA_PALM_SAPLING);
@@ -148,7 +146,6 @@ public class TerrestriaItems {
 		compostingRegistry.add(REDWOOD_SAPLING, SAPLING_CHANCE);
 		compostingRegistry.add(RUBBER_SAPLING, SAPLING_CHANCE);
 		compostingRegistry.add(SAGUARO_CACTUS_SAPLING, SAPLING_CHANCE);
-		compostingRegistry.add(SAKURA_SAPLING, SAPLING_CHANCE);
 		compostingRegistry.add(WILLOW_SAPLING, SAPLING_CHANCE);
 		compostingRegistry.add(YUCCA_PALM_SAPLING, SAPLING_CHANCE);
 	}

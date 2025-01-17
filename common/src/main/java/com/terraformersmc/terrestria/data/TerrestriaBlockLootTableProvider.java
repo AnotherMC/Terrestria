@@ -42,7 +42,6 @@ public class TerrestriaBlockLootTableProvider extends FabricBlockLootTableProvid
 		addDrop(TerrestriaBlocks.REDWOOD_SAPLING);
 		addDrop(TerrestriaBlocks.RUBBER_SAPLING);
 		addDrop(TerrestriaBlocks.SAGUARO_CACTUS_SAPLING);
-		addDrop(TerrestriaBlocks.SAKURA_SAPLING);
 		addDrop(TerrestriaBlocks.TALL_CATTAIL, dropsWithShears(TerrestriaBlocks.CATTAIL));
 		addDrop(TerrestriaBlocks.TINY_CACTUS);
 		addDrop(TerrestriaBlocks.WILLOW_SAPLING);
@@ -76,7 +75,6 @@ public class TerrestriaBlockLootTableProvider extends FabricBlockLootTableProvid
 		addPottedPlantDrops(TerrestriaBlocks.POTTED_REDWOOD_SAPLING);
 		addPottedPlantDrops(TerrestriaBlocks.POTTED_RUBBER_SAPLING);
 		addPottedPlantDrops(TerrestriaBlocks.POTTED_SAGUARO_CACTUS_SAPLING);
-		addPottedPlantDrops(TerrestriaBlocks.POTTED_SAKURA_SAPLING);
 		addPottedPlantDrops(TerrestriaBlocks.POTTED_TINY_CACTUS);
 		addPottedPlantDrops(TerrestriaBlocks.POTTED_WILLOW_SAPLING);
 		addPottedPlantDrops(TerrestriaBlocks.POTTED_YUCCA_PALM_SAPLING);

@@ -74,7 +74,6 @@ public class TerrestriaItemGroups {
 		addGroupEntry(TerrestriaBlocks.REDWOOD_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
 		addGroupEntry(TerrestriaBlocks.RUBBER_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
 		addGroupEntry(TerrestriaBlocks.SAGUARO_CACTUS_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
-		addGroupEntry(TerrestriaBlocks.SAKURA_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
 		addGroupEntry(TerrestriaBlocks.WILLOW_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
 		addGroupEntry(TerrestriaBlocks.YUCCA_PALM_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
 
